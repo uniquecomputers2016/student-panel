@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Panel Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- TOP BAR -->
+        <div class="topbar">
+
+            <div>
+                <h1>🎓 Student Panel</h1>
+                <p>Computer Training Centre</p>
+            </div>
+
+            <button onclick="logout()">Logout</button>
+
+        </div>
+
+
+        <!-- DASHBOARD CARDS -->
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">👨‍🎓</div>
+                <h3>Total Students</h3>
+                <h2 id="totalStudents">0</h2>
+            </div>
+
+
+            <div class="card">
+                <div class="icon">💰</div>
+                <h3>Total Fees</h3>
+                <h2 id="totalFees">₹0</h2>
+            </div>
+
+
+            <div class="card">
+                <div class="icon">📅</div>
+                <h3>Attendance</h3>
+                <h2>0%</h2>
+            </div>
+
+
+            <div class="card">
+                <div class="icon">📝</div>
+                <h3>Results</h3>
+                <h2>0</h2>
+            </div>
+
+        </div>
+
+
+        <!-- MENU -->
+        <div class="menu">
+
+            <button onclick="openStudent()">
+                👨‍🎓 Add Student
+            </button>
+
+            <button>
+                💰 Fee Management
+            </button>
+
+            <button>
+                📅 Attendance
+            </button>
+
+            <button>
+                📝 Result
+            </button>
+
+            <button>
+                📢 Notice
+            </button>
+
+        </div>
+
+
+        <!-- STUDENT REGISTRATION -->
+        <div id="studentSection" class="student-section">
+
+            <h2>👨‍🎓 Student Registration</h2>
+
+
+            <!-- SEARCH -->
+            <input
+                type="text"
+                id="searchStudent"
+                placeholder="🔍 Search Student Name..."
+                onkeyup="searchStudent()"
+            >
+
+
+            <!-- STUDENT NAME -->
+            <input
+                type="text"
+                id="studentName"
+                placeholder="Student Name"
+            >
+
+
+            <!-- COURSE -->
+            <input
+                type="text"
+                id="courseName"
+                placeholder="Course Name"
+            >
+
+
+            <!-- FEE -->
+            <input
+                type="number"
+                id="feePaid"
+                placeholder="Fee Paid"
+            >
+
+
+            <!-- ADD BUTTON -->
+            <button onclick="addStudent()">
+                Add Student
+            </button>
+
+
+            <!-- STUDENT TABLE -->
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Fee</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="studentTable">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // =========================================
+        // GOOGLE APPS SCRIPT WEB APP URL
+        // =========================================
+
+        const API_URL =
+            "https://script.google.com/macros/s/AKfycbyfrW8wj6HlNr_ImgUk3nzKjGvr2WSEYpd_7usbFKApgEEcS8_Fs1j1acBQbzlMdmnf/exec";
+
+
+        // =========================================
+        // OPEN STUDENT SECTION
+        // =========================================
+
+        function openStudent() {
+
+            document.getElementById("studentSection")
+                .style.display = "block";
+
+        }
+
+
+        // =========================================
+        // ADD STUDENT
+        // =========================================
+
+        async function addStudent() {
+
+            const name =
+                document.getElementById("studentName")
+                    .value
+                    .trim();
+
+
+            const course =
+                document.getElementById("courseName")
+                    .value
+                    .trim();
+
+
+            const fee =
+                document.getElementById("feePaid")
+                    .value
+                    .trim();
+
+
+            if (
+                name === "" ||
+                course === "" ||
+                fee === ""
+            ) {
+
+                alert("Please fill all fields");
+
+                return;
+
+            }
+
+
+            const data = {
+
+                name: name,
+
+                course: course,
+
+                fee: fee
+
+            };
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        API_URL,
+                        {
+                            method: "POST",
+                            body: JSON.stringify(data)
+                        }
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (result.status === "success") {
+
+                    alert(
+                        "Student Google Sheet-এ Save হয়েছে!"
+                    );
+
+
+                    // CLEAR INPUTS
+
+                    document.getElementById(
+                        "studentName"
+                    ).value = "";
+
+
+                    document.getElementById(
+                        "courseName"
+                    ).value = "";
+
+
+                    document.getElementById(
+                        "feePaid"
+                    ).value = "";
+
+
+                    // RELOAD STUDENT LIST
+
+                    loadStudents();
+
+                }
+
+                else {
+
+                    alert(
+                        "Error: " +
+                        result.message
+                    );
+
+                }
+
+            }
+
+
+            catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "Data save হয়নি। আবার চেষ্টা করুন।"
+                );
+
+            }
+
+        }
+
+
+        // =========================================
+        // SEARCH STUDENT
+        // =========================================
+
+        function searchStudent() {
+
+            const searchText =
+                document.getElementById(
+                    "searchStudent"
+                )
+                .value
+                .toLowerCase();
+
+
+            const table =
+                document.getElementById(
+                    "studentTable"
+                );
+
+
+            const rows =
+                table.getElementsByTagName(
+                    "tr"
+                );
+
+
+            for (
+                let i = 0;
+                i < rows.length;
+                i++
+            ) {
+
+                const studentName =
+                    rows[i]
+                    .getElementsByTagName(
+                        "td"
+                    )[0];
+
+
+                if (studentName) {
+
+                    const name =
+                        studentName.innerText
+                            .toLowerCase();
+
+
+                    if (
+                        name.includes(searchText)
+                    ) {
+
+                        rows[i].style.display = "";
+
+                    }
+
+                    else {
+
+                        rows[i].style.display = "none";
+
+                    }
+
+                }
+
+            }
+
+        }
+
+
+        // =========================================
+        // DELETE STUDENT
+        // =========================================
+
+        async function deleteStudent(id) {
+
+            const confirmDelete =
+                confirm(
+                    "এই Student-কে Delete করতে চান?"
+                );
+
+
+            if (!confirmDelete) {
+
+                return;
+
+            }
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        API_URL +
+                        "?action=delete&id=" +
+                        id
+                    );
+
+
+                const result =
+                    await response.json();
+
+
+                if (
+                    result.status === "success"
+                ) {
+
+                    alert(
+                        "Student Delete হয়েছে!"
+                    );
+
+
+                    // RELOAD LIST
+
+                    loadStudents();
+
+                }
+
+                else {
+
+                    alert(
+                        "Delete হয়নি: " +
+                        result.message
+                    );
+
+                }
+
+            }
+
+
+            catch (error) {
+
+                console.error(error);
+
+                alert(
+                    "Delete করার সময় সমস্যা হয়েছে।"
+                );
+
+            }
+
+        }
+
+
+        // =========================================
+        // LOAD STUDENTS FROM GOOGLE SHEET
+        // =========================================
+
+        async function loadStudents() {
+
+            try {
+
+                const response =
+                    await fetch(API_URL);
+
+
+                const data =
+                    await response.json();
+
+
+                const table =
+                    document.getElementById(
+                        "studentTable"
+                    );
+
+
+                table.innerHTML = "";
+
+
+                let totalStudents = 0;
+
+                let totalFees = 0;
+
+
+                // HEADER বাদ দিয়ে data পড়বে
+
+                for (
+                    let i = 1;
+                    i < data.length;
+                    i++
+                ) {
+
+
+                    // Empty row skip
+
+                    if (!data[i][1]) {
+
+                        continue;
+
+                    }
+
+
+                    const row =
+                        table.insertRow();
+
+
+                    // NAME
+
+                    row.insertCell(0)
+                        .innerText =
+                        data[i][1];
+
+
+                    // COURSE
+
+                    row.insertCell(1)
+                        .innerText =
+                        data[i][2];
+
+
+                    // FEE
+
+                    row.insertCell(2)
+                        .innerText =
+                        "₹" + data[i][3];
+
+
+                    // ACTION
+
+                    const actionCell =
+                        row.insertCell(3);
+
+
+                    actionCell.innerHTML = `
+
+                        <button
+                            onclick="deleteStudent(${data[i][0]})"
+                        >
+                            🗑️ Delete
+                        </button>
+
+                    `;
+
+
+                    // TOTAL STUDENTS
+
+                    totalStudents++;
+
+
+                    // TOTAL FEES
+
+                    totalFees +=
+                        Number(data[i][3]) || 0;
+
+                }
+
+
+                // TOTAL STUDENTS CARD
+
+                document.getElementById(
+                    "totalStudents"
+                ).innerText =
+                    totalStudents;
+
+
+                // TOTAL FEES CARD
+
+                document.getElementById(
+                    "totalFees"
+                ).innerText =
+                    "₹" + totalFees;
+
+            }
+
+
+            catch (error) {
+
+                console.error(
+                    "Student loading error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        // =========================================
+        // LOGOUT
+        // =========================================
+
+        function logout() {
+
+            window.location.href =
+                "index.html";
+
+        }
+
+
+        // =========================================
+        // PAGE LOAD
+        // =========================================
+
+        loadStudents();
+
+
+    </script>
+
+</body>
+
+</html>
