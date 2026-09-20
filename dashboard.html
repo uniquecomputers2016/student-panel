@@ -2,596 +2,4011 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Student Panel Dashboard</title>
+<title>Unique Computers - Student Panel</title>
 
-    <link rel="stylesheet" href="style.css">
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f6f9;
+    color:#222;
+}
+
+.topbar{
+    background:#1e3c72;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.top-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.top-left img{
+    width:50px;
+    height:50px;
+    object-fit:contain;
+    background:white;
+    border-radius:8px;
+}
+
+.top-title{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.top-subtitle{
+    font-size:13px;
+    opacity:.9;
+    margin-top:3px;
+}
+
+.logout-btn{
+    background:#dc3545;
+    color:white;
+    border:none;
+    padding:10px 16px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.container{
+    padding:20px;
+    max-width:1400px;
+    margin:auto;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.card-title{
+    color:#666;
+    font-size:14px;
+}
+
+.card-value{
+    font-size:28px;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.menu{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.menu button{
+    border:none;
+    padding:12px 18px;
+    border-radius:7px;
+    background:#1e3c72;
+    color:white;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.menu button:hover{
+    opacity:.9;
+}
+
+.section{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    margin-bottom:20px;
+}
+
+.section h2{
+    margin-top:0;
+    color:#1e3c72;
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+}
+
+.form-group label{
+    font-weight:bold;
+    font-size:14px;
+}
+
+input,select{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    width:100%;
+}
+
+.primary-btn{
+    background:#198754;
+    color:white;
+    border:none;
+    padding:11px 18px;
+    border-radius:6px;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+.secondary-btn{
+    background:#6c757d;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.danger-btn{
+    background:#dc3545;
+    color:white;
+    border:none;
+    padding:7px 10px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.edit-btn{
+    background:#0d6efd;
+    color:white;
+    border:none;
+    padding:7px 10px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.fee-btn{
+    background:#198754;
+    color:white;
+    border:none;
+    padding:7px 10px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.receipt-btn{
+    background:#6f42c1;
+    color:white;
+    border:none;
+    padding:7px 10px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:18px;
+    min-width:750px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:9px;
+    text-align:center;
+    font-size:14px;
+}
+
+th{
+    background:#1e3c72;
+    color:white;
+}
+
+.table-wrap{
+    overflow-x:auto;
+}
+
+.search-box{
+    margin-top:15px;
+    margin-bottom:10px;
+}
+
+.search-box input{
+    max-width:400px;
+}
+
+.info-box{
+    background:#f1f8ff;
+    padding:12px;
+    border-radius:6px;
+    margin-top:10px;
+}
+
+.attendance-summary{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:15px;
+}
+
+.summary-box{
+    padding:15px;
+    background:#f8f9fa;
+    border-radius:7px;
+    text-align:center;
+}
+
+.summary-number{
+    font-size:24px;
+    font-weight:bold;
+}
+
+.present{
+    color:green;
+    font-weight:bold;
+}
+
+.absent{
+    color:red;
+    font-weight:bold;
+}
+
+.result-summary{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:15px;
+}
+
+.result-box{
+    background:#f8f9fa;
+    padding:15px;
+    border-radius:7px;
+    text-align:center;
+}
+
+.result-box strong{
+    display:block;
+    font-size:22px;
+    margin-top:5px;
+}
+
+.grade-pass{
+    color:green;
+    font-weight:bold;
+}
+
+.grade-fail{
+    color:red;
+    font-weight:bold;
+}
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    z-index:1000;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.55);
+    overflow:auto;
+}
+
+.modal-content{
+    background:white;
+    width:90%;
+    max-width:650px;
+    margin:60px auto;
+    padding:25px;
+    border-radius:10px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    right:15px;
+    top:10px;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.modal-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+/* RECEIPT */
+
+.receipt-area{
+    background:white;
+    padding:20px;
+}
+
+.receipt-header{
+    text-align:center;
+    border-bottom:2px solid #222;
+    padding-bottom:10px;
+    margin-bottom:15px;
+}
+
+.receipt-header h2{
+    margin:0;
+}
+
+.receipt-header p{
+    margin:5px 0;
+}
+
+.receipt-info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-bottom:15px;
+}
+
+.receipt-table{
+    width:100%;
+    min-width:0;
+}
+
+.receipt-table th,
+.receipt-table td{
+    border:1px solid #333;
+    padding:8px;
+}
+
+.receipt-footer{
+    margin-top:25px;
+    display:flex;
+    justify-content:space-between;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .form-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .result-summary{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .topbar{
+        flex-direction:column;
+        gap:12px;
+        align-items:flex-start;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .modal-grid{
+        grid-template-columns:1fr;
+    }
+
+    .attendance-summary{
+        grid-template-columns:1fr;
+    }
+
+    .result-summary{
+        grid-template-columns:1fr;
+    }
+
+    .container{
+        padding:10px;
+    }
+}
+
+/* PRINT */
+
+@media print{
+
+    body *{
+        visibility:hidden;
+    }
+
+    #receiptPrintArea,
+    #receiptPrintArea *{
+        visibility:visible;
+    }
+
+    #receiptPrintArea{
+        position:absolute;
+        left:0;
+        top:0;
+        width:100%;
+    }
+
+    .no-print{
+        display:none !important;
+    }
+}
+
+</style>
 </head>
 
-<body>
+<>
 
-    <div class="dashboard">
+<!-- TOP BAR -->
 
-        <!-- TOP BAR -->
-        <div class="topbar">
+<div class="topbar">
 
-            <div>
-                <h1>🎓 Student Panel</h1>
-                <p>Computer Training Centre</p>
+    <div class="top-left">
+
+        <img src="logo.png" alt="Logo">
+
+        <div>
+
+            <div class="top-title">
+                🎓 Unique Computers
             </div>
 
-            <button onclick="logout()">Logout</button>
-
-        </div>
-
-
-        <!-- DASHBOARD CARDS -->
-        <div class="cards">
-
-            <div class="card">
-                <div class="icon">👨‍🎓</div>
-                <h3>Total Students</h3>
-                <h2 id="totalStudents">0</h2>
-            </div>
-
-
-            <div class="card">
-                <div class="icon">💰</div>
-                <h3>Total Fees</h3>
-                <h2 id="totalFees">₹0</h2>
-            </div>
-
-
-            <div class="card">
-                <div class="icon">📅</div>
-                <h3>Attendance</h3>
-                <h2>0%</h2>
-            </div>
-
-
-            <div class="card">
-                <div class="icon">📝</div>
-                <h3>Results</h3>
-                <h2>0</h2>
+            <div class="top-subtitle">
+                No.1 Computer Training Centre
             </div>
 
         </div>
 
+    </div>
 
-        <!-- MENU -->
-        <div class="menu">
+    <button class="logout-btn" onclick="logout()">
+        Logout
+    </button>
 
-            <button onclick="openStudent()">
-                👨‍🎓 Add Student
-            </button>
+</div>
 
-            <button>
-                💰 Fee Management
-            </button>
 
-            <button>
-                📅 Attendance
-            </button>
+<div class="container">
 
-            <button>
-                📝 Result
-            </button>
+<!-- DASHBOARD CARDS -->
 
-            <button>
-                📢 Notice
-            </button>
+<div class="cards">
 
+    <div class="card">
+
+        <div class="card-title">
+            Total Students
         </div>
 
+        <div class="card-value" id="totalStudents">
+            0
+        </div>
 
-        <!-- STUDENT REGISTRATION -->
-        <div id="studentSection" class="student-section">
-
-            <h2>👨‍🎓 Student Registration</h2>
-
-
-            <!-- SEARCH -->
-            <input
-                type="text"
-                id="searchStudent"
-                placeholder="🔍 Search Student Name..."
-                onkeyup="searchStudent()"
-            >
+    </div>
 
 
-            <!-- STUDENT NAME -->
+    <div class="card">
+
+        <div class="card-title">
+            Total Fees Collected
+        </div>
+
+        <div class="card-value">
+            ₹<span id="totalFees">0</span>
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-title">
+            Total Due
+        </div>
+
+        <div class="card-value">
+            ₹<span id="totalDue">0</span>
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-title">
+            Attendance
+        </div>
+
+        <div class="card-value">
+            <span id="attendancePercent">0</span>%
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MENU -->
+
+<div class="menu">
+
+    <button onclick="openStudent()">
+        👨‍🎓 Add Student
+    </button>
+
+    <button onclick="openStudent()">
+        💰 Fee Management
+    </button>
+
+    <button onclick="openPaymentHistory()">
+        🧾 Payment History
+    </button>
+
+    <button onclick="openAttendance()">
+        📅 Attendance
+    </button>
+
+    <button onclick="openResult()">
+        📊 Result
+    </button>
+
+    <button onclick="openNotice()">
+        📢 Notice
+    </button>
+
+</div>
+
+
+<!-- STUDENT SECTION -->
+
+<div class="section" id="studentSection">
+
+    <h2>👨‍🎓 Student Management</h2>
+
+    <div class="form-grid">
+
+        <div class="form-group">
+
+            <label>Student Name</label>
+
             <input
                 type="text"
                 id="studentName"
-                placeholder="Student Name"
             >
 
+        </div>
 
-            <!-- COURSE -->
+
+        <div class="form-group">
+
+            <label>Course</label>
+
             <input
                 type="text"
                 id="courseName"
-                placeholder="Course Name"
             >
 
+        </div>
 
-            <!-- FEE -->
+
+        <div class="form-group">
+
+            <label>Total Fee</label>
+
+            <input
+                type="number"
+                id="totalFee"
+                oninput="updateDuePreview()"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Fee Paid</label>
+
             <input
                 type="number"
                 id="feePaid"
-                placeholder="Fee Paid"
+                oninput="updateDuePreview()"
             >
-
-
-            <!-- ADD BUTTON -->
-            <button onclick="addStudent()">
-                Add Student
-            </button>
-
-
-            <!-- STUDENT TABLE -->
-            <table>
-
-                <thead>
-
-                    <tr>
-                        <th>Name</th>
-                        <th>Course</th>
-                        <th>Fee</th>
-                        <th>Action</th>
-                    </tr>
-
-                </thead>
-
-
-                <tbody id="studentTable">
-
-                </tbody>
-
-            </table>
 
         </div>
 
     </div>
 
 
-    <script>
+    <div class="info-box">
 
-        // =========================================
-        // GOOGLE APPS SCRIPT WEB APP URL
-        // =========================================
+        Due:
+        ₹<strong id="duePreview">0</strong>
 
-        const API_URL =
-            "https://script.google.com/macros/s/AKfycbyfrW8wj6HlNr_ImgUk3nzKjGvr2WSEYpd_7usbFKApgEEcS8_Fs1j1acBQbzlMdmnf/exec";
+    </div>
 
 
-        // =========================================
-        // OPEN STUDENT SECTION
-        // =========================================
+    <button
+        class="primary-btn"
+        onclick="addStudent()"
+    >
+        ➕ Add Student
+    </button>
 
-        function openStudent() {
 
-            document.getElementById("studentSection")
-                .style.display = "block";
+    <div class="search-box">
 
-        }
+        <input
+            type="text"
+            id="searchStudent"
+            placeholder="🔍 Search Student..."
+            onkeyup="searchStudent()"
+        >
 
+    </div>
 
-        // =========================================
-        // ADD STUDENT
-        // =========================================
 
-        async function addStudent() {
+    <div class="table-wrap">
 
-            const name =
-                document.getElementById("studentName")
-                    .value
-                    .trim();
+        <table id="studentTable">
 
+            <thead>
 
-            const course =
-                document.getElementById("courseName")
-                    .value
-                    .trim();
+                <tr>
 
+                    <th>Student ID</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Total Fee</th>
+                    <th>Paid</th>
+                    <th>Due</th>
+                    <th>Action</th>
 
-            const fee =
-                document.getElementById("feePaid")
-                    .value
-                    .trim();
+                </tr>
 
+            </thead>
 
-            if (
-                name === "" ||
-                course === "" ||
-                fee === ""
-            ) {
+            <tbody></tbody>
 
-                alert("Please fill all fields");
+        </table>
 
-                return;
+    </div>
 
-            }
+</div>
 
 
-            const data = {
+<!-- ATTENDANCE SECTION -->
 
-                name: name,
+<div
+    class="section"
+    id="attendanceSection"
+    style="display:none;"
+>
 
-                course: course,
+    <h2>📅 Attendance Management</h2>
 
-                fee: fee
+    <div class="form-grid">
 
-            };
+        <div class="form-group">
 
+            <label>Date</label>
 
-            try {
+            <input
+                type="date"
+                id="attendanceDate"
+            >
 
-                const response =
-                    await fetch(
-                        API_URL,
-                        {
-                            method: "POST",
-                            body: JSON.stringify(data)
-                        }
-                    );
+        </div>
 
 
-                const result =
-                    await response.json();
+        <div class="form-group">
 
+            <label>Select Student</label>
 
-                if (result.status === "success") {
+            <select
+                id="attendanceStudent"
+                onchange="showAttendanceStudent()"
+            >
 
-                    alert(
-                        "Student Google Sheet-এ Save হয়েছে!"
-                    );
+                <option value="">
+                    -- Select Student --
+                </option>
 
+            </select>
 
-                    // CLEAR INPUTS
+        </div>
 
-                    document.getElementById(
-                        "studentName"
-                    ).value = "";
 
+        <div class="form-group">
 
-                    document.getElementById(
-                        "courseName"
-                    ).value = "";
+            <label>Status</label>
 
+            <select id="attendanceStatus">
 
-                    document.getElementById(
-                        "feePaid"
-                    ).value = "";
+                <option value="Present">
+                    Present
+                </option>
 
+                <option value="Absent">
+                    Absent
+                </option>
 
-                    // RELOAD STUDENT LIST
+            </select>
 
-                    loadStudents();
+        </div>
 
-                }
+    </div>
 
-                else {
 
-                    alert(
-                        "Error: " +
-                        result.message
-                    );
+    <div
+        class="info-box"
+        id="attendanceStudentInfo"
+        style="display:none;"
+    >
 
-                }
+        <div>
 
-            }
+            Student:
+            <strong id="attendanceStudentName"></strong>
 
+        </div>
 
-            catch (error) {
+        <div>
 
-                console.error(error);
+            Course:
+            <strong id="attendanceStudentCourse"></strong>
 
-                alert(
-                    "Data save হয়নি। আবার চেষ্টা করুন।"
-                );
+        </div>
 
-            }
+    </div>
 
-        }
 
+    <button
+        class="primary-btn"
+        onclick="saveAttendance()"
+    >
+        💾 Save Attendance
+    </button>
 
-        // =========================================
-        // SEARCH STUDENT
-        // =========================================
 
-        function searchStudent() {
+    <div class="attendance-summary">
 
-            const searchText =
-                document.getElementById(
-                    "searchStudent"
-                )
-                .value
-                .toLowerCase();
+        <div class="summary-box">
 
+            Total Records
 
-            const table =
-                document.getElementById(
-                    "studentTable"
-                );
+            <div
+                class="summary-number"
+                id="attendanceTotal"
+            >
+                0
+            </div>
 
+        </div>
 
-            const rows =
-                table.getElementsByTagName(
-                    "tr"
-                );
 
+        <div class="summary-box">
 
-            for (
-                let i = 0;
-                i < rows.length;
-                i++
-            ) {
+            Present
 
-                const studentName =
-                    rows[i]
-                    .getElementsByTagName(
-                        "td"
-                    )[0];
+            <div
+                class="summary-number present"
+                id="attendancePresent"
+            >
+                0
+            </div>
 
+        </div>
 
-                if (studentName) {
 
-                    const name =
-                        studentName.innerText
-                            .toLowerCase();
+        <div class="summary-box">
 
+            Absent
 
-                    if (
-                        name.includes(searchText)
-                    ) {
+            <div
+                class="summary-number absent"
+                id="attendanceAbsent"
+            >
+                0
+            </div>
 
-                        rows[i].style.display = "";
+        </div>
 
-                    }
+    </div>
 
-                    else {
 
-                        rows[i].style.display = "none";
+    <div class="search-box">
 
-                    }
+        <input
+            type="text"
+            id="attendanceSearch"
+            placeholder="🔍 Search Attendance..."
+            onkeyup="filterAttendance()"
+        >
 
-                }
+    </div>
 
-            }
 
-        }
+    <div class="table-wrap">
 
+        <table id="attendanceTable">
 
-        // =========================================
-        // DELETE STUDENT
-        // =========================================
+            <thead>
 
-        async function deleteStudent(id) {
+                <tr>
 
-            const confirmDelete =
-                confirm(
-                    "এই Student-কে Delete করতে চান?"
-                );
+                    <th>Date</th>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Course</th>
+                    <th>Status</th>
 
+                </tr>
 
-            if (!confirmDelete) {
+            </thead>
 
-                return;
+            <tbody></tbody>
 
-            }
+        </table>
 
+    </div>
 
-            try {
+</div>
 
-                const response =
-                    await fetch(
-                        API_URL +
-                        "?action=delete&id=" +
-                        id
-                    );
 
+<!-- RESULT SECTION -->
 
-                const result =
-                    await response.json();
+<div
+    class="section"
+    id="resultSection"
+    style="display:none;"
+>
 
+    <h2>📊 Result Management</h2>
 
-                if (
-                    result.status === "success"
-                ) {
 
-                    alert(
-                        "Student Delete হয়েছে!"
-                    );
+    <div class="form-grid">
 
+        <div class="form-group">
 
-                    // RELOAD LIST
+            <label>Student</label>
 
-                    loadStudents();
+            <select
+                id="resultStudent"
+                onchange="showResultStudent()"
+            >
 
-                }
+                <option value="">
+                    -- Select Student --
+                </option>
 
-                else {
+            </select>
 
-                    alert(
-                        "Delete হয়নি: " +
-                        result.message
-                    );
+        </div>
+        
 
-                }
 
-            }
+        <div class="form-group">
 
+            <label>Exam Name</label>
 
-            catch (error) {
+            <input
+                type="text"
+                id="examName"
+                placeholder="Example: Final Exam 2026"
+            >
 
-                console.error(error);
+        </div>
+        
 
-                alert(
-                    "Delete করার সময় সমস্যা হয়েছে।"
-                );
 
-            }
+        <div class="form-group">
 
-        }
+            <label>Subject</label>
 
+            <input
+                type="text"
+                id="resultSubject"
+                placeholder="Example: Computer"
+            >
 
-        // =========================================
-        // LOAD STUDENTS FROM GOOGLE SHEET
-        // =========================================
+        </div>
 
-        async function loadStudents() {
 
-            try {
+        <div class="form-group">
 
-                const response =
-                    await fetch(API_URL);
+            <label>Full Marks</label>
 
+            <input
+                type="number"
+                id="fullMarks"
+                min="1"
+                oninput="calculateResult()"
+            >
 
-                const data =
-                    await response.json();
+        </div>
 
 
-                const table =
-                    document.getElementById(
-                        "studentTable"
-                    );
+        <div class="form-group">
 
+            <label>Marks Obtained</label>
 
-                table.innerHTML = "";
+            <input
+                type="number"
+                id="marksObtained"
+                min="0"
+                oninput="calculateResult()"
+            >
 
+        </div>
 
-                let totalStudents = 0;
+    </div>
 
-                let totalFees = 0;
 
+    <div
+        class="info-box"
+        id="resultStudentInfo"
+        style="display:none;"
+    >
 
-                // HEADER বাদ দিয়ে data পড়বে
+        Student:
+        <strong id="resultStudentName"></strong>
 
-                for (
-                    let i = 1;
-                    i < data.length;
-                    i++
-                ) {
+        &nbsp;&nbsp; | &nbsp;&nbsp;
 
+        Course:
+        <strong id="resultStudentCourse"></strong>
 
-                    // Empty row skip
+    </div>
 
-                    if (!data[i][1]) {
 
-                        continue;
+    <div class="result-summary">
 
-                    }
+        <div class="result-box">
 
+            Percentage
 
-                    const row =
-                        table.insertRow();
+            <strong id="resultPercentage">
+                0%
+            </strong>
 
+        </div>
 
-                    // NAME
 
-                    row.insertCell(0)
-                        .innerText =
-                        data[i][1];
+        <div class="result-box">
 
+            Grade
 
-                    // COURSE
+            <strong id="resultGrade">
+                -
+            </strong>
 
-                    row.insertCell(1)
-                        .innerText =
-                        data[i][2];
+        </div>
 
 
-                    // FEE
+        <div class="result-box">
 
-                    row.insertCell(2)
-                        .innerText =
-                        "₹" + data[i][3];
+            Status
 
+            <strong id="resultStatus">
+                -
+            </strong>
 
-                    // ACTION
+        </div>
 
-                    const actionCell =
-                        row.insertCell(3);
 
+        <div class="result-box">
 
-                    actionCell.innerHTML = `
+            Marks
 
-                        <button
-                            onclick="deleteStudent(${data[i][0]})"
-                        >
-                            🗑️ Delete
-                        </button>
+            <strong id="resultMarks">
+                0 / 0
+            </strong>
 
-                    `;
+        </div>
 
+    </div>
 
-                    // TOTAL STUDENTS
 
-                    totalStudents++;
+    <button
+        class="primary-btn"
+        onclick="saveResult()"
+    >
+        💾 Save Result
+    </button>
 
 
-                    // TOTAL FEES
+    <div class="search-box">
 
-                    totalFees +=
-                        Number(data[i][3]) || 0;
+        <input
+            type="text"
+            id="resultSearch"
+            placeholder="🔍 Search Result..."
+            onkeyup="filterResult()"
+        >
 
-                }
+    </div>
 
 
-                // TOTAL STUDENTS CARD
+    <div class="table-wrap">
 
-                document.getElementById(
-                    "totalStudents"
-                ).innerText =
-                    totalStudents;
+        <table id="resultTable">
 
+            <thead>
 
-                // TOTAL FEES CARD
+                <tr>
 
-                document.getElementById(
-                    "totalFees"
-                ).innerText =
-                    "₹" + totalFees;
+                    <th>Date</th>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Course</th>
+                    <th>Exam</th>
+                    <th>Subject</th>
+                    <th>Full Marks</th>
+                    <th>Obtained</th>
+                    <th>Percentage</th>
+                    <th>Grade</th>
+                    <th>Status</th>
 
-            }
+                </tr>
 
+            </thead>
 
-            catch (error) {
+            <tbody></tbody>
 
-                console.error(
-                    "Student loading error:",
-                    error
-                );
+        </table>
 
-            }
+    </div>
 
-        }
+</div>
+<!-- =========================
+     NOTICE MANAGEMENT
+========================= -->
 
+<section id="noticeSection" class="section">
 
-        // =========================================
-        // LOGOUT
-        // =========================================
+    <h2>📢 Notice Management</h2>
 
-        function logout() {
+    <div class="form-box">
 
-            window.location.href =
-                "index.html";
+        <label>Notice Title</label>
+        <input
+            type="text"
+            id="noticeTitle"
+            placeholder="Enter notice title"
+        >
 
-        }
+        <label>Notice Description</label>
+        <textarea
+            id="noticeDescription"
+            rows="5"
+            placeholder="Write notice here..."
+        ></textarea>
 
+        <button
+            onclick="saveNotice()"
+            class="btn-primary"
+        >
+            💾 Save Notice
+        </button>
 
-        // =========================================
-        // PAGE LOAD
-        // =========================================
+    </div>
+
+
+    <div class="table-box">
+
+        <h3>📋 Notice History</h3>
+
+        <input
+            type="text"
+            id="noticeSearch"
+            placeholder="🔍 Search Notice..."
+            onkeyup="filterNotice()"
+        >
+
+        <table id="noticeTable">
+
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- PAYMENT HISTORY -->
+
+<div
+    class="section"
+    id="paymentSection"
+    style="display:none;"
+>
+
+    <h2>🧾 Payment History</h2>
+
+
+    <div class="form-grid">
+
+        <div class="form-group">
+
+            <label>Search</label>
+
+            <input
+                type="text"
+                id="paymentSearch"
+                placeholder="Receipt / Student / Course"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>From Date</label>
+
+            <input
+                type="date"
+                id="paymentFromDate"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>To Date</label>
+
+            <input
+                type="date"
+                id="paymentToDate"
+            >
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="primary-btn"
+        onclick="filterPaymentHistory()"
+    >
+        🔍 Filter
+    </button>
+
+
+    <button
+        class="secondary-btn"
+        onclick="clearPaymentFilter()"
+    >
+        Clear
+    </button>
+
+
+    <button
+        class="secondary-btn"
+        onclick="loadPaymentHistory()"
+    >
+        🔄 Refresh
+    </button>
+
+
+    <div class="info-box">
+
+        Records:
+        <strong id="paymentRecordCount">0</strong>
+
+        &nbsp;&nbsp;
+
+        Total Payment:
+        ₹<strong id="paymentTotalAmount">0</strong>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Receipt No</th>
+                    <th>Date</th>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Course</th>
+                    <th>Previous Paid</th>
+                    <th>This Payment</th>
+                    <th>Total Paid</th>
+                    <th>Due</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="paymentTableBody"></tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- EDIT STUDENT MODAL -->
+
+<div class="modal" id="editModal">
+
+    <div class="modal-content">
+
+        <span
+            class="close"
+            onclick="closeEditModal()"
+        >
+            ×
+        </span>
+
+
+        <h2>✏️ Edit Student</h2>
+
+
+        <input
+            type="hidden"
+            id="editStudentId"
+        >
+
+
+        <div class="modal-grid">
+
+            <div class="form-group">
+
+                <label>Name</label>
+
+                <input
+                    type="text"
+                    id="editName"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Course</label>
+
+                <input
+                    type="text"
+                    id="editCourse"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Total Fee</label>
+
+                <input
+                    type="number"
+                    id="editTotalFee"
+                    oninput="updateEditDue()"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Fee Paid</label>
+
+                <input
+                    type="number"
+                    id="editFee"
+                    oninput="updateEditDue()"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="info-box">
+
+            Due:
+            ₹<strong id="editDuePreview">0</strong>
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="saveEdit()"
+        >
+            💾 Save Changes
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- PAY FEE MODAL -->
+
+<div class="modal" id="payModal">
+
+    <div class="modal-content">
+
+        <span
+            class="close"
+            onclick="closePayModal()"
+        >
+            ×
+        </span>
+
+
+        <h2>💰 Pay Fee</h2>
+
+
+        <p>
+            Student:
+            <strong id="payStudentName"></strong>
+        </p>
+
+
+        <p>
+            Course:
+            <strong id="payCourse"></strong>
+        </p>
+
+
+        <p>
+            Current Due:
+            ₹<strong id="payCurrentDue">0</strong>
+        </p>
+
+
+        <div class="form-group">
+
+            <label>Payment Amount</label>
+
+            <input
+                type="number"
+                id="paymentAmount"
+                min="1"
+                oninput="updateNewDue()"
+            >
+
+        </div>
+
+
+        <div class="info-box">
+
+            New Due:
+            ₹<strong id="newDuePreview">0</strong>
+
+        </div>
+
+
+        <button
+            class="primary-btn"
+            onclick="savePayment()"
+        >
+            💾 Save Payment
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- RECEIPT MODAL -->
+
+<div class="modal" id="receiptModal">
+
+    <div class="modal-content">
+
+        <span
+            class="close no-print"
+            onclick="closeReceiptModal()"
+        >
+            ×
+        </span>
+
+
+        <div
+            id="receiptPrintArea"
+            class="receipt-area"
+        >
+
+            <div class="receipt-header">
+
+                <h2>
+                    UNIQUE COMPUTERS
+                </h2>
+
+                <p>
+                    No.1 Computer Training Centre
+                </p>
+
+                <p>
+                    Payment Receipt
+                </p>
+
+            </div>
+
+
+            <div class="receipt-info">
+
+                <div>
+                    Receipt No:
+                    <strong id="receiptNo"></strong>
+                </div>
+
+                <div>
+                    Date:
+                    <strong id="receiptDate"></strong>
+                </div>
+
+                <div>
+                    Student ID:
+                    <strong id="receiptStudentId"></strong>
+                </div>
+
+                <div>
+                    Student Name:
+                    <strong id="receiptStudentName"></strong>
+                </div>
+
+                <div>
+                    Course:
+                    <strong id="receiptCourse"></strong>
+                </div>
+
+            </div>
+
+
+            <table class="receipt-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Description
+                        </th>
+
+                        <th>
+                            Amount
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    <tr>
+
+                        <td>
+                            Previous Paid
+                        </td>
+
+                        <td>
+                            ₹<span id="receiptPreviousPaid">0</span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            This Payment
+                        </td>
+
+                        <td>
+                            ₹<span id="receiptThisPayment">0</span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Total Paid
+                        </td>
+
+                        <td>
+                            ₹<span id="receiptTotalPaid">0</span>
+                        </td>
+
+                    </tr>
+
+
+                    <tr>
+
+                        <td>
+                            Due
+                        </td>
+
+                        <td>
+                            ₹<span id="receiptDue">0</span>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+
+            <div class="receipt-footer">
+
+                <div>
+                    Student Signature
+                </div>
+
+                <div>
+                    Authorised Signature
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="no-print"
+            style="margin-top:20px;text-align:center;"
+        >
+
+            <button
+                class="primary-btn"
+                onclick="printReceipt()"
+            >
+                🖨️ Print Receipt
+            </button>
+
+
+            <button
+                class="secondary-btn"
+                onclick="closeReceiptModal()"
+            >
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbyfrW8wj6HlNr_ImgUk3nzKjGvr2WSEYpd_7usbFKApgEEcS8_Fs1j1acBQbzlMdmnf/exec";
+
+
+let studentData = [];
+let paymentHistoryData = [];
+let attendanceData = [];
+let resultData = [];
+
+
+/* =========================
+   SECTION CONTROL
+========================= */
+
+function hideAllSections(){
+
+    document.getElementById("studentSection").style.display="none";
+
+    document.getElementById("paymentSection").style.display="none";
+
+    document.getElementById("attendanceSection").style.display="none";
+
+    document.getElementById("resultSection").style.display="none";
+}
+
+
+function openStudent(){
+
+    hideAllSections();
+
+    document.getElementById("studentSection").style.display="block";
+}
+
+
+function openPaymentHistory(){
+
+    hideAllSections();
+
+    document.getElementById("paymentSection").style.display="block";
+
+    loadPaymentHistory();
+}
+
+
+function openAttendance(){
+
+    hideAllSections();
+
+    document.getElementById("attendanceSection").style.display="block";
+
+    loadAttendanceStudents();
+    loadAttendanceHistory();
+    loadAttendanceSummary();
+}
+
+
+function openResult(){
+
+    hideAllSections();
+
+    document.getElementById("resultSection").style.display="block";
+
+    loadResultStudents();
+    loadResultHistory();
+}
+
+
+
+
+
+/* =========================
+   STUDENT
+========================= */
+
+function updateDuePreview(){
+
+    const total =
+        Number(document.getElementById("totalFee").value) || 0;
+
+    const paid =
+        Number(document.getElementById("feePaid").value) || 0;
+
+    const due =
+        Math.max(0,total-paid);
+
+    document.getElementById("duePreview").textContent=due;
+}
+
+
+async function addStudent(){
+
+    const name =
+        document.getElementById("studentName").value.trim();
+
+    const course =
+        document.getElementById("courseName").value.trim();
+
+    const totalFee =
+        Number(document.getElementById("totalFee").value) || 0;
+
+    const feePaid =
+        Number(document.getElementById("feePaid").value) || 0;
+
+
+    if(!name || !course){
+
+        alert("Student Name এবং Course দিন।");
+
+        return;
+    }
+
+
+    if(totalFee < 0 || feePaid < 0 || feePaid > totalFee){
+
+        alert("Fee information ঠিক দিন।");
+
+        return;
+    }
+
+
+    try{
+
+        const response = await fetch(API_URL,{
+
+            method:"POST",
+
+            body:JSON.stringify({
+
+                action:"addStudent",
+                name:name,
+                course:course,
+                totalFee:totalFee,
+                feePaid:feePaid
+
+            })
+
+        });
+
+
+        const result =
+            await response.json();
+
+
+        alert(
+            result.message ||
+            "Student added successfully."
+        );
+
+
+        document.getElementById("studentName").value="";
+        document.getElementById("courseName").value="";
+        document.getElementById("totalFee").value="";
+        document.getElementById("feePaid").value="";
+        document.getElementById("duePreview").textContent="0";
+
 
         loadStudents();
 
+    }catch(error){
 
-    </script>
+        alert("Error: "+error);
 
+    }
+
+}
+
+
+function searchStudent(){
+
+    const search =
+        document.getElementById("searchStudent")
+        .value
+        .toLowerCase();
+
+
+    const rows =
+        document.querySelectorAll(
+            "#studentTable tbody tr"
+        );
+
+
+    rows.forEach(row=>{
+
+        row.style.display =
+            row.innerText
+            .toLowerCase()
+            .includes(search)
+            ? ""
+            : "none";
+
+    });
+
+}
+
+
+async function loadStudents(){
+
+    try{
+
+        const response =
+            await fetch(API_URL);
+
+        const data =
+            await response.json();
+
+        studentData =
+            Array.isArray(data)
+            ? data
+            : [];
+
+
+        renderStudents();
+
+        updateDashboardCards();
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+
+function renderStudents(){
+
+    const tbody =
+        document.querySelector(
+            "#studentTable tbody"
+        );
+
+    tbody.innerHTML="";
+
+
+    studentData.forEach((student,index)=>{
+
+        if(
+            index===0 &&
+            typeof student[0]==="string" &&
+            student[0].toLowerCase().includes("student")
+        ){
+
+            return;
+
+        }
+
+
+        const id = student[0];
+
+        const name =
+            student[1] || "";
+
+        const course =
+            student[2] || "";
+
+        const totalFee =
+            Number(student[3]) || 0;
+
+        const paid =
+            Number(student[4]) || 0;
+
+        const due =
+            Number(student[5]) ||
+            Math.max(0,totalFee-paid);
+
+
+        const tr =
+            document.createElement("tr");
+
+
+        tr.innerHTML = `
+
+            <td>${escapeHtml(id)}</td>
+
+            <td>${escapeHtml(name)}</td>
+
+            <td>${escapeHtml(course)}</td>
+
+            <td>₹${totalFee}</td>
+
+            <td>₹${paid}</td>
+
+            <td>₹${due}</td>
+
+            <td>
+
+                <button
+                    class="edit-btn"
+                    onclick="editStudent(
+                        '${escapeJs(id)}',
+                        '${escapeJs(name)}',
+                        '${escapeJs(course)}',
+                        ${totalFee},
+                        ${paid}
+                    )"
+                >
+                    Edit
+                </button>
+
+
+                <button
+                    class="fee-btn"
+                    onclick="openPayModal(
+                        '${escapeJs(id)}',
+                        '${escapeJs(name)}',
+                        '${escapeJs(course)}',
+                        ${due}
+                    )"
+                >
+                    Pay Fee
+                </button>
+
+
+                <button
+                    class="danger-btn"
+                    onclick="deleteStudent(
+                        '${escapeJs(id)}'
+                    )"
+                >
+                    Delete
+                </button>
+
+            </td>
+
+        `;
+
+
+        tbody.appendChild(tr);
+
+    });
+
+}
+
+
+function updateDashboardCards(){
+
+    let totalStudents=0;
+    let totalFees=0;
+    let totalDue=0;
+
+
+    studentData.forEach((student,index)=>{
+
+        if(index===0) return;
+
+        if(!student[0]) return;
+
+
+        totalStudents++;
+
+        totalFees +=
+            Number(student[4]) || 0;
+
+        totalDue +=
+            Number(student[5]) || 0;
+
+    });
+
+
+    document.getElementById("totalStudents")
+        .textContent=totalStudents;
+
+
+    document.getElementById("totalFees")
+        .textContent=totalFees;
+
+
+    document.getElementById("totalDue")
+        .textContent=totalDue;
+
+}
+
+
+/* =========================
+   EDIT
+========================= */
+
+function editStudent(
+    id,
+    name,
+    course,
+    totalFee,
+    paid
+){
+
+    document.getElementById(
+        "editStudentId"
+    ).value=id;
+
+
+    document.getElementById(
+        "editName"
+    ).value=name;
+
+
+    document.getElementById(
+        "editCourse"
+    ).value=course;
+
+
+    document.getElementById(
+        "editTotalFee"
+    ).value=totalFee;
+
+
+    document.getElementById(
+        "editFee"
+    ).value=paid;
+
+
+    updateEditDue();
+
+
+    document.getElementById(
+        "editModal"
+    ).style.display="block";
+
+}
+
+
+function updateEditDue(){
+
+    const total =
+        Number(
+            document.getElementById(
+                "editTotalFee"
+            ).value
+        ) || 0;
+
+
+    const paid =
+        Number(
+            document.getElementById(
+                "editFee"
+            ).value
+        ) || 0;
+
+
+    document.getElementById(
+        "editDuePreview"
+    ).textContent =
+        Math.max(0,total-paid);
+
+}
+
+
+async function saveEdit(){
+
+    const id =
+        document.getElementById(
+            "editStudentId"
+        ).value;
+
+
+    const name =
+        document.getElementById(
+            "editName"
+        ).value.trim();
+
+
+    const course =
+        document.getElementById(
+            "editCourse"
+        ).value.trim();
+
+
+    const totalFee =
+        Number(
+            document.getElementById(
+                "editTotalFee"
+            ).value
+        ) || 0;
+
+
+    const feePaid =
+        Number(
+            document.getElementById(
+                "editFee"
+            ).value
+        ) || 0;
+
+
+    if(!name || !course){
+
+        alert("Name এবং Course দিন।");
+
+        return;
+    }
+
+
+    if(feePaid>totalFee){
+
+        alert(
+            "Fee Paid total fee-এর বেশি হতে পারে না।"
+        );
+
+        return;
+    }
+
+
+    try{
+
+        const url =
+            API_URL+
+            "?action=edit"+
+            "&id="+
+            encodeURIComponent(id)+
+            "&name="+
+            encodeURIComponent(name)+
+            "&course="+
+            encodeURIComponent(course)+
+            "&totalFee="+
+            encodeURIComponent(totalFee)+
+            "&feePaid="+
+            encodeURIComponent(feePaid);
+
+
+        const response =
+            await fetch(url);
+
+
+        const result =
+            await response.json();
+
+
+        alert(
+            result.message ||
+            "Student updated."
+        );
+
+
+        closeEditModal();
+
+        loadStudents();
+
+    }catch(error){
+
+        alert("Error: "+error);
+
+    }
+
+}
+
+
+function closeEditModal(){
+
+    document.getElementById(
+        "editModal"
+    ).style.display="none";
+
+}
+
+
+/* =========================
+   DELETE
+========================= */
+
+async function deleteStudent(id){
+
+    if(
+        !confirm(
+            "এই student delete করতে চান?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL+
+                "?action=delete&id="+
+                encodeURIComponent(id)
+            );
+
+
+        const result =
+            await response.json();
+
+
+        alert(
+            result.message ||
+            "Deleted."
+        );
+
+
+        loadStudents();
+
+    }catch(error){
+
+        alert("Error: "+error);
+
+    }
+
+}
+
+
+/* =========================
+   PAY FEE
+========================= */
+
+function openPayModal(
+    id,
+    name,
+    course,
+    due
+){
+
+    document.getElementById(
+        "payStudentId"
+    ).value=id;
+
+
+    document.getElementById(
+        "payStudentName"
+    ).textContent=name;
+
+
+    document.getElementById(
+        "payCourse"
+    ).textContent=course;
+
+
+    document.getElementById(
+        "payCurrentDue"
+    ).textContent=due;
+
+
+    document.getElementById(
+        "paymentAmount"
+    ).value="";
+
+
+    document.getElementById(
+        "newDuePreview"
+    ).textContent=due;
+
+
+    document.getElementById(
+        "payModal"
+    ).style.display="block";
+
+}
+
+
+function updateNewDue(){
+
+    const current =
+        Number(
+            document.getElementById(
+                "payCurrentDue"
+            ).textContent
+        ) || 0;
+
+
+    const amount =
+        Number(
+            document.getElementById(
+                "paymentAmount"
+            ).value
+        ) || 0;
+
+
+    document.getElementById(
+        "newDuePreview"
+    ).textContent =
+        Math.max(0,current-amount);
+
+}
+
+
+async function savePayment(){
+
+    const id =
+        document.getElementById(
+            "payStudentId"
+        ).value;
+
+
+    const amount =
+        Number(
+            document.getElementById(
+                "paymentAmount"
+            ).value
+        ) || 0;
+
+
+    if(amount<=0){
+
+        alert(
+            "Payment amount দিন।"
+        );
+
+        return;
+    }
+
+
+    try{
+
+        const response =
+            await fetch(API_URL,{
+
+                method:"POST",
+
+                body:JSON.stringify({
+
+                    action:"payFee",
+                    studentId:id,
+                    amount:amount
+
+                })
+
+            });
+
+
+        const result =
+            await response.json();
+
+
+        if(result.success===false){
+
+            alert(
+                result.message ||
+                "Payment failed."
+            );
+
+            return;
+
+        }
+
+
+        closePayModal();
+
+        loadStudents();
+
+        loadPaymentHistory();
+
+
+        if(result.receipt){
+
+            showReceipt(
+                result.receipt
+            );
+
+        }else{
+
+            showReceipt(result);
+
+        }
+
+    }catch(error){
+
+        alert("Error: "+error);
+
+    }
+
+}
+
+
+function closePayModal(){
+
+    document.getElementById(
+        "payModal"
+    ).style.display="none";
+
+}
+
+
+/* =========================
+   RECEIPT
+========================= */
+
+function showReceipt(data){
+
+    document.getElementById(
+        "receiptNo"
+    ).textContent =
+        data.receiptNo || "—";
+
+
+    document.getElementById(
+        "receiptDate"
+    ).textContent =
+        data.date || "—";
+
+
+    document.getElementById(
+        "receiptStudentId"
+    ).textContent =
+        data.studentId || "—";
+
+
+    document.getElementById(
+        "receiptStudentName"
+    ).textContent =
+        data.studentName || "—";
+
+
+    document.getElementById(
+        "receiptCourse"
+    ).textContent =
+        data.course || "—";
+
+
+    document.getElementById(
+        "receiptPreviousPaid"
+    ).textContent =
+        Number(data.previousPaid)||0;
+
+
+    document.getElementById(
+        "receiptThisPayment"
+    ).textContent =
+        Number(data.thisPayment)||0;
+
+
+    document.getElementById(
+        "receiptTotalPaid"
+    ).textContent =
+        Number(data.totalPaid)||0;
+
+
+    document.getElementById(
+        "receiptDue"
+    ).textContent =
+        Number(data.due)||0;
+
+
+    document.getElementById(
+        "receiptModal"
+    ).style.display="block";
+
+}
+
+
+function closeReceiptModal(){
+
+    document.getElementById(
+        "receiptModal"
+    ).style.display="none";
+
+}
+
+
+function printReceipt(){
+
+    window.print();
+
+}
+
+
+/* =========================
+   PAYMENT HISTORY
+========================= */
+
+async function loadPaymentHistory(){
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL+"?action=payments"
+            );
+
+
+        const data =
+            await response.json();
+
+
+        paymentHistoryData =
+            Array.isArray(data)
+            ? data
+            : [];
+
+
+        renderPaymentHistory(
+            paymentHistoryData
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+
+function renderPaymentHistory(data){
+
+    const tbody =
+        document.getElementById(
+            "paymentTableBody"
+        );
+
+
+    tbody.innerHTML="";
+
+
+    let total=0;
+    let recordCount=0;
+
+
+    data.forEach((payment,index)=>{
+
+        if(index===0){
+
+            return;
+
+        }
+
+
+        if(!payment || !payment[0]){
+
+            return;
+
+        }
+
+
+        const receiptNo =
+            payment[0] || "—";
+
+
+        const date =
+            payment[1] || "—";
+
+
+        const studentId =
+            payment[2] || "—";
+
+
+        const studentName =
+            payment[3] || "—";
+
+
+        const course =
+            payment[4] || "—";
+
+
+        const previousPaid =
+            Number(payment[5]) || 0;
+
+
+        const thisPayment =
+            Number(payment[6]) || 0;
+
+
+        const totalPaid =
+            Number(payment[7]) || 0;
+
+
+        const due =
+            Number(payment[8]) || 0;
+
+
+        total += thisPayment;
+
+        recordCount++;
+
+
+        const safeData = {
+
+            receiptNo:receiptNo,
+            date:date,
+            studentId:studentId,
+            studentName:studentName,
+            course:course,
+            previousPaid:previousPaid,
+            thisPayment:thisPayment,
+            totalPaid:totalPaid,
+            due:due
+
+        };
+
+
+        const tr =
+            document.createElement("tr");
+
+
+        tr.innerHTML = `
+
+            <td>
+                ${escapeHtml(receiptNo)}
+            </td>
+
+            <td>
+                ${escapeHtml(date)}
+            </td>
+
+            <td>
+                ${escapeHtml(studentId)}
+            </td>
+
+            <td>
+                ${escapeHtml(studentName)}
+            </td>
+
+            <td>
+                ${escapeHtml(course)}
+            </td>
+
+            <td>
+                ₹${previousPaid}
+            </td>
+
+            <td>
+                ₹${thisPayment}
+            </td>
+
+            <td>
+                ₹${totalPaid}
+            </td>
+
+            <td>
+                ₹${due}
+            </td>
+
+            <td>
+
+                <button
+                    class="receipt-btn"
+                    onclick='openHistoryReceipt(${JSON.stringify(safeData)})'
+                >
+                    🧾 Receipt
+                </button>
+
+            </td>
+
+        `;
+
+
+        tbody.appendChild(tr);
+
+    });
+
+
+    document.getElementById(
+        "paymentRecordCount"
+    ).textContent =
+        recordCount;
+
+
+    document.getElementById(
+        "paymentTotalAmount"
+    ).textContent =
+        total;
+
+}
+
+
+function openHistoryReceipt(payment){
+
+    showReceipt(payment);
+
+}
+
+
+function parsePaymentDate(value){
+
+    if(!value){
+
+        return null;
+
+    }
+
+
+    const text =
+        String(value).trim();
+
+
+    // dd-MM-yyyy
+
+    const parts =
+        text.split("-");
+
+
+    if(parts.length===3){
+
+        const day =
+            Number(parts[0]);
+
+        const month =
+            Number(parts[1]);
+
+        const year =
+            Number(parts[2]);
+
+
+        if(
+            year &&
+            month &&
+            day
+        ){
+
+            return new Date(
+                year,
+                month-1,
+                day
+            );
+
+        }
+
+    }
+
+
+    const date =
+        new Date(value);
+
+
+    return isNaN(date.getTime())
+        ? null
+        : date;
+
+}
+
+
+function filterPaymentHistory(){
+
+    const search =
+        document.getElementById(
+            "paymentSearch"
+        )
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const from =
+        document.getElementById(
+            "paymentFromDate"
+        ).value;
+
+
+    const to =
+        document.getElementById(
+            "paymentToDate"
+        ).value;
+
+
+    const fromDate =
+        from
+        ? new Date(from+"T00:00:00")
+        : null;
+
+
+    const toDate =
+        to
+        ? new Date(to+"T23:59:59")
+        : null;
+
+
+    const filtered =
+        paymentHistoryData.filter(
+            (payment,index)=>{
+
+                if(index===0){
+
+                    return false;
+
+                }
+
+
+                const text =
+                    payment
+                    .join(" ")
+                    .toLowerCase();
+
+
+                if(
+                    search &&
+                    !text.includes(search)
+                ){
+
+                    return false;
+
+                }
+
+
+                const paymentDate =
+                    parsePaymentDate(
+                        payment[1]
+                    );
+
+
+                if(
+                    fromDate &&
+                    paymentDate &&
+                    paymentDate < fromDate
+                ){
+
+                    return false;
+
+                }
+
+
+                if(
+                    toDate &&
+                    paymentDate &&
+                    paymentDate > toDate
+                ){
+
+                    return false;
+
+                }
+
+
+                return true;
+
+            }
+        );
+
+
+    renderPaymentHistory(filtered);
+
+}
+
+
+function clearPaymentFilter(){
+
+    document.getElementById(
+        "paymentSearch"
+    ).value="";
+
+
+    document.getElementById(
+        "paymentFromDate"
+    ).value="";
+
+
+    document.getElementById(
+        "paymentToDate"
+    ).value="";
+
+
+    renderPaymentHistory(
+        paymentHistoryData
+    );
+
+}
+
+
+/* =========================
+   ATTENDANCE
+========================= */
+
+function loadAttendanceStudents(){
+
+    const select =
+        document.getElementById(
+            "attendanceStudent"
+        );
+
+
+    select.innerHTML =
+        '<option value="">-- Select Student --</option>';
+
+
+    studentData.forEach(
+        (student,index)=>{
+
+            if(index===0) return;
+
+            if(!student[0]) return;
+
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                student[0];
+
+
+            option.textContent =
+                student[0]+
+                " - "+
+                student[1];
+
+
+            select.appendChild(option);
+
+        }
+    );
+
+
+    const dateInput =
+        document.getElementById(
+            "attendanceDate"
+        );
+
+
+    if(!dateInput.value){
+
+        const today =
+            new Date()
+            .toISOString()
+            .split("T")[0];
+
+
+        dateInput.value=today;
+
+    }
+
+}
+
+
+function showAttendanceStudent(){
+
+    const id =
+        document.getElementById(
+            "attendanceStudent"
+        ).value;
+
+
+    const student =
+        studentData.find(
+            (s,index)=>
+                index>0 &&
+                String(s[0])===String(id)
+        );
+
+
+    if(!student){
+
+        document.getElementById(
+            "attendanceStudentInfo"
+        ).style.display="none";
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "attendanceStudentInfo"
+    ).style.display="block";
+
+
+    document.getElementById(
+        "attendanceStudentName"
+    ).textContent =
+        student[1] || "";
+
+
+    document.getElementById(
+        "attendanceStudentCourse"
+    ).textContent =
+        student[2] || "";
+
+}
+
+
+async function saveAttendance(){
+
+    const date =
+        document.getElementById(
+            "attendanceDate"
+        ).value;
+
+
+    const studentId =
+        document.getElementById(
+            "attendanceStudent"
+        ).value;
+
+
+    const status =
+        document.getElementById(
+            "attendanceStatus"
+        ).value;
+
+
+    if(!date || !studentId){
+
+        alert(
+            "Date এবং Student select করুন।"
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        const response =
+            await fetch(API_URL,{
+
+                method:"POST",
+
+                body:JSON.stringify({
+
+                    action:"saveAttendance",
+                    date:date,
+                    studentId:studentId,
+                    status:status
+
+                })
+
+            });
+
+
+        const result =
+            await response.json();
+
+
+        alert(
+            result.message ||
+            "Attendance saved."
+        );
+
+
+        loadAttendanceHistory();
+
+        loadAttendanceSummary();
+
+    }catch(error){
+
+        alert("Error: "+error);
+
+    }
+
+}
+
+
+async function loadAttendanceHistory(){
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL+"?action=attendance"
+            );
+
+
+        const data =
+            await response.json();
+
+
+        attendanceData =
+            Array.isArray(data)
+            ? data
+            : [];
+
+
+        renderAttendance(
+            attendanceData
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+
+function renderAttendance(data){
+
+    const tbody =
+        document.querySelector(
+            "#attendanceTable tbody"
+        );
+
+
+    tbody.innerHTML="";
+
+
+    data.forEach((row,index)=>{
+
+        if(index===0) return;
+
+        if(!row[1]) return;
+
+
+        const tr =
+            document.createElement("tr");
+
+
+        const statusClass =
+            row[4]==="Present"
+            ? "present"
+            : "absent";
+
+
+        tr.innerHTML = `
+
+            <td>
+                ${escapeHtml(row[0] || "")}
+            </td>
+
+            <td>
+                ${escapeHtml(row[1] || "")}
+            </td>
+
+            <td>
+                ${escapeHtml(row[2] || "")}
+            </td>
+
+            <td>
+                ${escapeHtml(row[3] || "")}
+            </td>
+
+            <td class="${statusClass}">
+                ${escapeHtml(row[4] || "")}
+            </td>
+
+        `;
+
+
+        tbody.appendChild(tr);
+
+    });
+
+}
+
+
+function filterAttendance(){
+
+    const search =
+        document.getElementById(
+            "attendanceSearch"
+        )
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const filtered =
+        attendanceData.filter(
+            (row,index)=>{
+
+                if(index===0){
+
+                    return false;
+
+                }
+
+
+                return row
+                    .join(" ")
+                    .toLowerCase()
+                    .includes(search);
+
+            }
+        );
+
+
+    renderAttendance(filtered);
+
+}
+
+
+async function loadAttendanceSummary(){
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL+
+                "?action=attendanceSummary"
+            );
+
+
+        const result =
+            await response.json();
+
+
+        document.getElementById(
+            "attendanceTotal"
+        ).textContent =
+            result.total || 0;
+
+
+        document.getElementById(
+            "attendancePresent"
+        ).textContent =
+            result.present || 0;
+
+
+        document.getElementById(
+            "attendanceAbsent"
+        ).textContent =
+            result.absent || 0;
+
+
+        document.getElementById(
+            "attendancePercent"
+        ).textContent =
+            result.percentage || 0;
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+function loadResultStudents(){
+
+    const select =
+        document.getElementById(
+            "resultStudent"
+        );
+
+
+    select.innerHTML =
+        '<option value="">-- Select Student --</option>';
+
+
+    studentData.forEach(
+        (student,index)=>{
+
+            if(index===0) return;
+
+            if(!student[0]) return;
+
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+
+            option.value =
+                student[0];
+
+
+            option.textContent =
+                student[0]+
+                " - "+
+                student[1];
+
+
+            select.appendChild(option);
+
+        }
+    );
+
+}
+
+
+function showResultStudent(){
+
+    const id =
+        document.getElementById(
+            "resultStudent"
+        ).value;
+
+
+    const student =
+        studentData.find(
+            (s,index)=>
+                index>0 &&
+                String(s[0])===String(id)
+        );
+
+
+    if(!student){
+
+        document.getElementById(
+            "resultStudentInfo"
+        ).style.display="none";
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "resultStudentInfo"
+    ).style.display="block";
+
+
+    document.getElementById(
+        "resultStudentName"
+    ).textContent =
+        student[1] || "";
+
+
+    document.getElementById(
+        "resultStudentCourse"
+    ).textContent =
+        student[2] || "";
+
+}
+
+
+function calculateResult(){
+
+    const full =
+        Number(
+            document.getElementById(
+                "fullMarks"
+            ).value
+        ) || 0;
+
+
+    const obtained =
+        Number(
+            document.getElementById(
+                "marksObtained"
+            ).value
+        ) || 0;
+
+
+    if(full<=0){
+
+        document.getElementById(
+            "resultPercentage"
+        ).textContent="0%";
+
+
+        document.getElementById(
+            "resultGrade"
+        ).textContent="-";
+
+
+        document.getElementById(
+            "resultStatus"
+        ).textContent="-";
+
+
+        document.getElementById(
+            "resultStatus"
+        ).className="";
+
+
+        document.getElementById(
+            "resultMarks"
+        ).textContent="0 / 0";
+
+
+        return;
+
+    }
+
+
+    const percentage =
+        Math.min(
+            100,
+            (obtained/full)*100
+        );
+
+
+    let grade="F";
+
+
+    if(percentage>=90){
+
+        grade="A+";
+
+    }else if(percentage>=80){
+
+        grade="A";
+
+    }else if(percentage>=70){
+
+        grade="B+";
+
+    }else if(percentage>=60){
+
+        grade="B";
+
+    }else if(percentage>=50){
+
+        grade="C";
+
+    }else if(percentage>=40){
+
+        grade="D";
+
+    }
+
+
+    const status =
+        percentage>=40
+        ? "PASS"
+        : "FAIL";
+
+
+    document.getElementById(
+        "resultPercentage"
+    ).textContent =
+        percentage.toFixed(2)+"%";
+
+
+    document.getElementById(
+        "resultGrade"
+    ).textContent =
+        grade;
+
+
+    document.getElementById(
+        "resultStatus"
+    ).textContent =
+        status;
+
+
+    document.getElementById(
+        "resultStatus"
+    ).className =
+        status==="PASS"
+        ? "grade-pass"
+        : "grade-fail";
+
+
+    document.getElementById(
+        "resultMarks"
+    ).textContent =
+        obtained+
+        " / "+
+        full;
+
+}
+
+
+async function saveResult(){
+
+    const studentId =
+        document.getElementById(
+            "resultStudent"
+        ).value;
+
+
+    const examName =
+        document.getElementById(
+            "examName"
+        ).value.trim();
+
+
+    const subject =
+        document.getElementById(
+            "resultSubject"
+        ).value.trim();
+
+
+    const fullMarks =
+        Number(
+            document.getElementById(
+                "fullMarks"
+            ).value
+        ) || 0;
+
+
+    const marksObtained =
+        Number(
+            document.getElementById(
+                "marksObtained"
+            ).value
+        ) || 0;
+
+
+    if(!studentId){
+
+        alert(
+            "Student select করুন।"
+        );
+
+        return;
+
+    }
+
+
+    if(!examName){
+
+        alert(
+            "Exam Name দিন।"
+        );
+
+        return;
+
+    }
+
+
+    if(!subject){
+
+        alert(
+            "Subject দিন।"
+        );
+
+        return;
+
+    }
+
+
+    if(fullMarks<=0){
+
+        alert(
+            "Full Marks দিন।"
+        );
+
+        return;
+
+    }
+
+
+    if(
+        marksObtained<0 ||
+        marksObtained>fullMarks
+    ){
+
+        alert(
+            "Marks Obtained ঠিক দিন।"
+        );
+
+        return;
+
+    }
+
+
+    calculateResult();
+
+
+    try{
+
+        const response =
+            await fetch(API_URL,{
+
+                method:"POST",
+
+                body:JSON.stringify({
+
+                    action:"saveResult",
+
+                    studentId:studentId,
+
+                    examName:examName,
+
+                    subject:subject,
+
+                    fullMarks:fullMarks,
+
+                    marksObtained:marksObtained
+
+                })
+
+            });
+
+
+        const result =
+            await response.json();
+
+
+        alert(
+            result.message ||
+            "Result saved."
+        );
+
+
+        loadResultHistory();
+
+
+        // Clear form
+
+        document.getElementById(
+            "examName"
+        ).value="";
+
+
+        document.getElementById(
+            "resultSubject"
+        ).value="";
+
+
+        document.getElementById(
+            "fullMarks"
+        ).value="";
+
+
+        document.getElementById(
+            "marksObtained"
+        ).value="";
+
+
+        document.getElementById(
+            "resultPercentage"
+        ).textContent="0%";
+
+
+        document.getElementById(
+            "resultGrade"
+        ).textContent="-";
+
+
+        document.getElementById(
+            "resultStatus"
+        ).textContent="-";
+
+
+        document.getElementById(
+            "resultStatus"
+        ).className="";
+
+
+        document.getElementById(
+            "resultMarks"
+        ).textContent="0 / 0";
+
+    }catch(error){
+
+        alert(
+            "Error: "+error
+        );
+
+    }
+
+}
+
+
+async function loadResultHistory(){
+
+    try{
+
+        const response =
+            await fetch(
+                API_URL+
+                "?action=result"
+            );
+
+
+        const data =
+            await response.json();
+
+
+        resultData =
+            Array.isArray(data)
+            ? data
+            : [];
+
+
+        renderResult(resultData);
+
+    }catch(error){
+
+        console.error(error);
+
+    }
+
+}
+
+
+/* ==================================================
+   IMPORTANT FIXED RESULT FUNCTION
+   Sheet columns:
+
+   0 Date
+   1 Student ID
+   2 Student Name
+   3 Course
+   4 Exam Name
+   5 Subject
+   6 Full Marks
+   7 Marks Obtained
+   8 Percentage
+   9 Grade
+   10 Status
+================================================== */
+
+function renderResult(data){
+
+    const tbody =
+        document.querySelector(
+            "#resultTable tbody"
+        );
+
+
+    tbody.innerHTML="";
+
+
+    data.forEach((row,index)=>{
+
+        if(index===0){
+
+            return;
+
+        }
+
+
+        if(!row[1]){
+
+            return;
+
+        }
+
+
+        const date =
+            row[0] || "";
+
+
+        const studentId =
+            row[1] || "";
+
+
+        const studentName =
+            row[2] || "";
+
+
+        const course =
+            row[3] || "";
+
+
+        const examName =
+            row[4] || "";
+
+
+        const subject =
+            row[5] || "";
+
+
+        const fullMarks =
+            Number(row[6]) || 0;
+
+
+        const obtained =
+            Number(row[7]) || 0;
+
+
+        // ★ IMPORTANT FIX ★
+        // Percentage is row[8], NOT row[7]
+
+        let percentage =
+            Number(row[8]);
+
+
+        // Safety calculation for old/missing data
+
+        if(
+            !Number.isFinite(percentage) &&
+            fullMarks>0
+        ){
+
+            percentage =
+                (obtained/fullMarks)*100;
+
+        }
+
+
+        if(!Number.isFinite(percentage)){
+
+            percentage=0;
+
+        }
+
+
+        const grade =
+            row[9] || "-";
+
+
+        const status =
+            row[10] || "-";
+
+
+        const tr =
+            document.createElement("tr");
+
+
+        tr.innerHTML = `
+
+            <td>
+                ${escapeHtml(date)}
+            </td>
+
+            <td>
+                ${escapeHtml(studentId)}
+            </td>
+
+            <td>
+                ${escapeHtml(studentName)}
+            </td>
+
+            <td>
+                ${escapeHtml(course)}
+            </td>
+
+            <td>
+                ${escapeHtml(examName)}
+            </td>
+
+            <td>
+                ${escapeHtml(subject)}
+            </td>
+
+            <td>
+                ${fullMarks}
+            </td>
+
+            <td>
+                ${obtained}
+            </td>
+
+            <td>
+                ${percentage.toFixed(2)}%
+            </td>
+
+            <td>
+                ${escapeHtml(grade)}
+            </td>
+
+            <td class="${
+                status==="PASS"
+                ? "grade-pass"
+                : status==="FAIL"
+                ? "grade-fail"
+                : ""
+            }">
+
+                ${escapeHtml(status)}
+
+            </td>
+
+        `;
+
+
+        tbody.appendChild(tr);
+
+    });
+
+}
+
+
+function filterResult(){
+
+    const search =
+        document.getElementById(
+            "resultSearch"
+        )
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const filtered =
+        resultData.filter(
+            (row,index)=>{
+
+                if(index===0){
+
+                    return false;
+
+                }
+
+
+                return row
+                    .join(" ")
+                    .toLowerCase()
+                    .includes(search);
+
+            }
+        );
+
+
+    renderResult(filtered);
+
+}
+
+
+/* =========================
+   UTILITIES
+========================= */
+
+function escapeHtml(value){
+
+    return String(value)
+
+        .replace(/&/g,"&amp;")
+
+        .replace(/</g,"&lt;")
+
+        .replace(/>/g,"&gt;")
+
+        .replace(/"/g,"&quot;")
+
+        .replace(/'/g,"&#039;");
+
+}
+
+
+function escapeJs(value){
+
+    return String(value)
+
+        .replace(/\\/g,"\\\\")
+
+        .replace(/'/g,"\\'")
+
+        .replace(/"/g,'\\"')
+
+        .replace(/\n/g," ");
+
+}
+
+
+function logout(){
+
+    window.location.href="index.html";
+
+}
+
+
+/* =========================
+   MODAL CLOSE
+========================= */
+
+window.onclick=function(event){
+
+    const editModal =
+        document.getElementById(
+            "editModal"
+        );
+
+
+    const payModal =
+        document.getElementById(
+            "payModal"
+        );
+
+
+    const receiptModal =
+        document.getElementById(
+            "receiptModal"
+        );
+
+
+    if(event.target===editModal){
+
+        closeEditModal();
+
+    }
+
+
+    if(event.target===payModal){
+
+        closePayModal();
+
+    }
+
+
+    if(event.target===receiptModal){
+
+        closeReceiptModal();
+
+    }
+
+};
+
+
+/* =========================
+   PAGE LOAD
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadStudents();
+
+        loadAttendanceSummary();
+
+    }
+);
+
+</script>
 </body>
-
 </html>
