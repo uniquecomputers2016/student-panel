@@ -1,348 +1,2340 @@
-// =========================
-// LOGIN
-// =========================
+/* =====================================================
+   UNIQUE COMPUTERS
+   API URL
+===================================================== */
 
-document.getElementById("loginForm").addEventListener("submit", function(e) {
-
-    e.preventDefault();
-
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value;
-    const message = document.getElementById("message");
-
-    if (username === "admin" && password === "1234") {
-
-        message.style.color = "green";
-        message.textContent = "Login successful...";
-
-        setTimeout(function() {
-
-            window.location.href = "dashboard.html";
-
-        }, 500);
-
-    } else {
-
-        message.style.color = "red";
-        message.textContent = "Username অথবা Password ভুল!";
-
-    }
-
-});
-
-
-// =========================
-// NOTICE MANAGEMENT
-// =========================
-
-// আপনার Google Apps Script Web App URL
 const API_URL =
 "https://script.google.com/macros/s/AKfycbyfrW8wj6HlNr_ImgUk3nzKjGvr2WSEYpd_7usbFKApgEEcS8_Fs1j1acBQbzlMdmnf/exec";
 
 
-// OPEN NOTICE
-function openNotice() {
+/* =====================================================
+   UNIQUE COMPUTERS
+   COURSE DETAILS
+===================================================== */
 
-    document.querySelectorAll(".section").forEach(function(section) {
 
-        section.style.display = "none";
+const courseData = {
 
-    });
 
-    const noticeSection =
-        document.getElementById("noticeSection");
+    /* =================================================
+       BASIC
+    ================================================= */
 
-    if (noticeSection) {
+    basic: {
 
-        noticeSection.style.display = "block";
+        title: "BASIC COURSE",
 
-        loadNoticeHistory();
+        duration: "3 Months",
+
+        content: [
+
+            "IT Fundamentals",
+
+            "Computer Fundamentals",
+
+            "Typing Master Pro",
+
+            "Windows 7/10",
+
+            "Office 2003/2007/2010",
+
+            "Microsoft Word",
+
+            "Microsoft Excel",
+
+            "Microsoft PowerPoint",
+
+            "Project Work (Word, Excel, PowerPoint)"
+
+        ],
+
+        eligibility:
+            "Madhyamik Passed or 10+2 Passed",
+
+        totalFee: "₹2,000/-",
+
+        registration: "₹1,000/-",
+
+        installment: "₹500 × 2 Months",
+
+        oneTime: "₹1,800/-"
+
+    },
+
+
+    /* =================================================
+       DIPLOMA
+    ================================================= */
+
+    diploma: {
+
+        title:
+            "DIPLOMA IN INFORMATION TECHNOLOGY (DIT)",
+
+        duration: "12 Months",
+
+        content: [
+
+            "IT Fundamentals",
+
+            "Computer Fundamentals",
+
+            "Paint",
+
+            "File & Folder Management",
+
+            "Typing Master Pro",
+
+            "Operating System (DOS & Windows)",
+
+            "Windows 7/10",
+
+            "Office 2003/2007/2010",
+
+            "Microsoft Word",
+
+            "Microsoft Excel Advanced",
+
+            "Microsoft PowerPoint",
+
+            "Microsoft Access",
+
+            "HTML",
+
+            "Bengali Fonts in Publication",
+
+            "Internet Advanced",
+
+            "E-mail, Browsing, Surfing & Chatting",
+
+            "Project Work (Word, Excel, PowerPoint, Access)"
+
+        ],
+
+        eligibility:
+            "Madhyamik Passed or 10+2 Passed",
+
+        totalFee: "₹7,000/-",
+
+        registration: "₹2,000/-",
+
+        installment: "₹1,000 × 5 Months",
+
+        oneTime: "₹6,300/-"
+
+    },
+
+
+    /* =================================================
+       DTP
+    ================================================= */
+
+    dtp: {
+
+        title:
+            "DESKTOP PUBLISHING (DTP)",
+
+        duration: "6 Months",
+
+        content: [
+
+            "IT Fundamentals",
+
+            "Adobe PageMaker",
+
+            "CorelDRAW",
+
+            "Adobe Photoshop",
+
+            "Bengali Fonts in Publication",
+
+            "Internet",
+
+            "Project Work"
+
+        ],
+
+        eligibility:
+            "Madhyamik Passed or 10+2 Passed",
+
+        totalFee: "₹6,000/-",
+
+        registration: "₹2,000/-",
+
+        installment: "₹1,000 × 4 Months",
+
+        oneTime: "₹5,400/-"
+
+    },
+
+
+    /* =================================================
+       TALLY
+    ================================================= */
+
+    tally: {
+
+        title:
+            "TALLY WITH GST",
+
+        duration: "6 Months",
+
+        content: [
+
+            "Basics of Accounting",
+
+            "Company Creation, Alteration & Deletion",
+
+            "Group Creation, Alteration & Deletion",
+
+            "Ledger Creation",
+
+            "Order Processing",
+
+            "VAT Ledgers & Stock Items",
+
+            "Invoicing & Service Tax",
+
+            "MIS Report, TDS, TCS & GST"
+
+        ],
+
+        eligibility:
+            "Madhyamik Passed or 10+2 Passed",
+
+        totalFee: "₹7,000/-",
+
+        registration: "₹2,000/-",
+
+        installment: "₹1,000 × 5 Months",
+
+        oneTime: "₹6,300/-"
+
+    },
+
+
+    /* =================================================
+       GRAPHICS PRO
+    ================================================= */
+
+    graphics: {
+
+        title:
+            "GRAPHICS PRO",
+
+        duration: "6 Months",
+
+        content: [
+
+            "IT Fundamentals",
+
+            "Adobe PageMaker",
+
+            "CorelDRAW",
+
+            "Adobe Illustrator",
+
+            "Adobe Photoshop Advanced",
+
+            "Bengali Fonts in Publication",
+
+            "Internet",
+
+            "Project Work"
+
+        ],
+
+        eligibility:
+            "Madhyamik Passed or 10+2 Passed",
+
+        totalFee: "₹8,000/-",
+
+        registration: "₹2,000/-",
+
+        installment: "₹1,000 × 6 Months",
+
+        oneTime: "₹7,200/-"
+
+    },
+
+
+    /* =================================================
+       WEB DESIGNING
+    ================================================= */
+
+    web: {
+
+        title:
+            "WEB DESIGNING",
+
+        duration: "6 Months",
+
+        content: [
+
+            "IT Fundamentals & Computer Fundamentals",
+
+            "Notepad",
+
+            "WordPad",
+
+            "Software Downloading & VS Code Setup",
+
+            "Concept of Live Server",
+
+            "Structure of an HTML Page",
+
+            "Core HTML Tags",
+
+            "HTML Text Formatting & Decoration",
+
+            "HTML Image Insertion",
+
+            "Hyperlink",
+
+            "Web Page with CSS"
+
+        ],
+
+        eligibility:
+            "Madhyamik Passed or 10+2 Passed",
+
+        totalFee: "₹6,000/-",
+
+        registration: "₹2,000/-",
+
+        installment: "₹1,000 × 3 Months",
+
+        oneTime: "₹4,500/-"
+
+    },
+
+
+    /* =================================================
+       CHILD PACKAGE
+    ================================================= */
+
+    child: {
+
+        title:
+            "CHILD PACKAGE",
+
+        duration: "12 Months",
+
+        content: [
+
+            "1st Semester:",
+
+            "Fundamentals",
+
+            "Computer Fundamentals",
+
+            "Paint",
+
+            "DOS & Windows",
+
+            "File and Folder Management",
+
+            "Typing Master Pro",
+
+            "2nd Semester:",
+
+            "Notepad",
+
+            "3rd Semester:",
+
+            "Microsoft Excel",
+
+            "Microsoft PowerPoint",
+
+            "Microsoft Access",
+
+            "4th Semester:",
+
+            "Bengali Font",
+
+            "PageMaker",
+
+            "E-Learning Online"
+
+        ],
+
+        eligibility:
+            "Nursery to Class IX",
+
+        totalFee: "—",
+
+        registration: "₹1,000/-",
+
+        installment: "₹400/- per month",
+
+        oneTime: "—"
+
+    },
+
+
+    /* =================================================
+       SMART AI
+    ================================================= */
+
+    smart: {
+
+        title:
+            "SMART AI",
+
+        duration: "6 Months",
+
+        content: [
+
+            "Computer Fundamentals & Windows 10",
+
+            "Typing Master Pro",
+
+            "DOS / Windows",
+
+            "Microsoft Word",
+
+            "Introduction to Artificial Intelligence",
+
+            "Uses of AI in Daily Life",
+
+            "ChatGPT, Gemini & Copilot Overview",
+
+            "Prompt (Basic to Advanced)",
+
+            "Excel Formula & Data Analysis Using AI"
+
+        ],
+
+        eligibility: "—",
+
+        totalFee: "₹6,000/-",
+
+        registration: "₹2,000/-",
+
+        installment: "₹1,000 × 4 Months",
+
+        oneTime: "₹5,400/-"
+
+    },
+
+
+    /* =================================================
+       ADVANCE EXCEL
+    ================================================= */
+
+    "advance-excel": {
+
+        title:
+            "ADVANCE EXCEL",
+
+        duration: "3 Months",
+
+        content: [
+
+            "Computer & Excel Fundamentals",
+
+            "Excel Workbook & Worksheet",
+
+            "Data Entry & Data Formatting",
+
+            "Basic & Advanced Excel Formulas",
+
+            "SUM, AVERAGE, COUNT, MAX, MIN",
+
+            "IF, AND, OR",
+
+            "SUMIF, COUNTIF, AVERAGEIF",
+
+            "VLOOKUP & HLOOKUP",
+
+            "XLOOKUP",
+
+            "INDEX & MATCH",
+
+            "Conditional Formatting",
+
+            "Data Validation",
+
+            "Sort & Filter",
+
+            "Advanced Filter",
+
+            "Excel Tables",
+
+            "Pivot Table",
+
+            "Pivot Chart",
+
+            "Charts & Graphs",
+
+            "Data Analysis",
+
+            "Dashboard Creation",
+
+            "Printing & Page Setup",
+
+            "Practical Project Work"
+
+        ],
+
+        eligibility:
+            "Madhyamik Passed or 10+2 Passed",
+
+        totalFee: "₹4,000/-",
+
+        registration: "₹2,000/-",
+
+        installment: "₹1,000 × 2 Months",
+
+        oneTime: "₹3,600/-"
+
+    },
+
+
+    /* =================================================
+       ADVANCED DIPLOMA
+    ================================================= */
+
+    advanced: {
+
+        title:
+            "ADVANCED DIPLOMA",
+
+        duration: "12 Months",
+
+        content: [
+
+            "Computer Fundamentals & Windows 10",
+
+            "Typing Master Pro",
+
+            "DOS / Windows",
+
+            "Microsoft Word",
+
+            "Advanced Excel (Pivot, VLOOKUP, Dashboard)",
+
+            "Microsoft PowerPoint",
+
+            "Microsoft Access",
+
+            "Google Workspace (Docs, Sheets, Drive)",
+
+            "Internet, Email & Cyber Safety",
+
+            "Basic AI Tools (ChatGPT, Copilot - Practical Use)",
+
+            "Online Form Fill-up (Government & Private)",
+
+            "Tally ERP9 with GST",
+
+            "Basics of Accounting",
+
+            "Company Creation, Alteration & Deletion",
+
+            "Group Creation, Alteration & Deletion",
+
+            "Ledger Creation",
+
+            "Order Processing",
+
+            "VAT Ledgers & Stock Items",
+
+            "Invoicing & Service Tax",
+
+            "MIS Report, TDS & GST",
+
+            "Computer Office Executive"
+
+        ],
+
+        eligibility:
+            "Madhyamik Passed or 10+2 Passed",
+
+        totalFee: "₹12,000/-",
+
+        registration: "₹5,000/-",
+
+        installment: "₹1,000 × 7 Months",
+
+        oneTime: "₹10,800/-"
+
+    },
+
+
+    /* =================================================
+       MULTIMEDIA ANIMATION
+    ================================================= */
+
+    multimedia: {
+
+        title:
+            "MULTIMEDIA ANIMATION",
+
+        packages: [
+
+            {
+
+                name: "Package 1 — 1 Year",
+
+                duration: "1 Year",
+
+                content: [
+
+                    "Computer & Multimedia Fundamentals",
+
+                    "Adobe Photoshop",
+
+                    "CorelDRAW",
+
+                    "Adobe Illustrator",
+
+                    "Image Editing & Designing",
+
+                    "2D Animation Fundamentals",
+
+                    "Adobe Animate",
+
+                    "Video Editing Fundamentals",
+
+                    "Audio Editing Basics",
+
+                    "Motion Graphics Basics",
+
+                    "Project Work"
+
+                ],
+
+                eligibility:
+                    "10+2 Passed or Above",
+
+                totalFee:
+                    "₹1,50,000/-",
+
+                registration:
+                    "₹30,000/-",
+
+                installment:
+                    "₹10,000 × 12 Months"
+
+            },
+
+
+            {
+
+                name: "Package 2 — 2 Year",
+
+                duration: "2 Year",
+
+                content: [
+
+                    "Advanced Multimedia Fundamentals",
+
+                    "Advanced Graphic Designing",
+
+                    "Adobe Photoshop Advanced",
+
+                    "CorelDRAW Advanced",
+
+                    "Adobe Illustrator",
+
+                    "2D Animation",
+
+                    "Advanced Adobe Animate",
+
+                    "Video Editing",
+
+                    "Audio Editing",
+
+                    "Motion Graphics",
+
+                    "Advanced Animation Techniques",
+
+                    "Practical Project Work"
+
+                ],
+
+                eligibility:
+                    "10+2 Passed or Above",
+
+                totalFee:
+                    "₹2,00,000/-",
+
+                registration:
+                    "₹30,000/-",
+
+                installment:
+                    "₹10,000 × 17 Months"
+
+            }
+
+        ]
+
+    },
+
+
+    /* =================================================
+       VFX
+    ================================================= */
+
+    vfx: {
+
+        title:
+            "VFX",
+
+        packages: [
+
+            {
+
+                name: "Package 3 — 3 Year",
+
+                duration: "3 Year",
+
+                content: [
+
+                    "Computer & Multimedia Fundamentals",
+
+                    "Adobe Photoshop",
+
+                    "Video Editing",
+
+                    "VFX Fundamentals",
+
+                    "Green Screen / Chroma Key",
+
+                    "Masking & Rotoscoping",
+
+                    "Visual Effects Basics",
+
+                    "Motion Tracking",
+
+                    "Compositing",
+
+                    "Basic 3D Concepts",
+
+                    "Advanced VFX Techniques",
+
+                    "Practical Project Work"
+
+                ],
+
+                eligibility:
+                    "10+2 Passed or Above",
+
+                totalFee:
+                    "₹3,75,000/-",
+
+                registration:
+                    "₹55,000/-",
+
+                installment:
+                    "₹10,000 × 32 Months"
+
+            }
+
+        ]
 
     }
+
+};
+
+
+
+/* =====================================================
+   SHOW COURSE DETAILS
+===================================================== */
+
+function showCourseDetails(course) {
+
+    const data = courseData[course];
+
+
+    if (!data) {
+
+        console.error(
+            "Course data not found:",
+            course
+        );
+
+        return;
+
+    }
+
+
+    document.getElementById(
+        "modalCourseTitle"
+    ).textContent = data.title;
+
+
+    let contentHTML = "";
+
+
+    /* =================================================
+       MULTIPLE PACKAGE COURSE
+    ================================================= */
+
+    if (data.packages) {
+
+
+        data.packages.forEach(
+            function(packageData, index) {
+
+
+                contentHTML += `
+
+                    <div class="course-info">
+
+                        <h3>
+                            📦 ${packageData.name}
+                        </h3>
+
+                    </div>
+
+
+                    <div class="course-info">
+
+                        <h3>
+                            📅 Duration
+                        </h3>
+
+                        <p>
+                            ${packageData.duration}
+                        </p>
+
+                    </div>
+
+
+                    <div class="course-info">
+
+                        <h3>
+                            📚 Course Content
+                        </h3>
+
+                        <ul>
+                `;
+
+
+                packageData.content.forEach(
+                    function(item) {
+
+                        contentHTML +=
+                            `<li>${item}</li>`;
+
+                    }
+                );
+
+
+                contentHTML += `
+
+                        </ul>
+
+                    </div>
+
+
+                    <div class="course-info">
+
+                        <h3>
+                            🎓 Eligibility
+                        </h3>
+
+                        <p>
+                            ${packageData.eligibility}
+                        </p>
+
+                    </div>
+
+
+                    <div class="course-fees">
+
+                        <h3>
+                            💰 Course Fees
+                        </h3>
+
+                        <p>
+                            Total Course Fees:
+                            <strong>
+                                ${packageData.totalFee}
+                            </strong>
+                        </p>
+
+                        <p>
+                            Registration:
+                            <strong>
+                                ${packageData.registration}
+                            </strong>
+                        </p>
+
+                        <p>
+                            Installment:
+                            <strong>
+                                ${packageData.installment}
+                            </strong>
+                        </p>
+
+                    </div>
+
+                `;
+
+
+                /* Divider between packages */
+
+                if (
+                    index <
+                    data.packages.length - 1
+                ) {
+
+                    contentHTML += `
+
+                        <hr style="
+                            margin:30px 0;
+                            border:0;
+                            border-top:2px solid #ddd;
+                        ">
+
+                    `;
+
+                }
+
+            }
+        );
+
+
+    }
+
+
+    /* =================================================
+       SINGLE COURSE
+    ================================================= */
+
+    else {
+
+
+        contentHTML = `
+
+            <div class="course-info">
+
+                <h3>
+                    📅 Duration
+                </h3>
+
+                <p>
+                    ${data.duration}
+                </p>
+
+            </div>
+
+
+            <div class="course-info">
+
+                <h3>
+                    📚 Course Content
+                </h3>
+
+                <ul>
+
+        `;
+
+
+        data.content.forEach(
+            function(item) {
+
+
+                if (
+                    item.includes("Semester:")
+                ) {
+
+                    contentHTML += `
+
+                        <li style="
+                            list-style:none;
+                            margin-left:-25px;
+                            margin-top:12px;
+                            font-weight:bold;
+                            color:#1e3a8a;
+                        ">
+
+                            ${item}
+
+                        </li>
+
+                    `;
+
+                }
+
+                else {
+
+                    contentHTML +=
+                        `<li>${item}</li>`;
+
+                }
+
+            }
+        );
+
+
+        contentHTML += `
+
+                </ul>
+
+            </div>
+
+
+            <div class="course-info">
+
+                <h3>
+                    🎓 Eligibility
+                </h3>
+
+                <p>
+                    ${data.eligibility}
+                </p>
+
+            </div>
+
+
+            <div class="course-fees">
+
+                <h3>
+                    💰 Course Fees
+                </h3>
+
+                <p>
+                    Total Course Fees:
+                    <strong>
+                        ${data.totalFee}
+                    </strong>
+                </p>
+
+                <p>
+                    Registration:
+                    <strong>
+                        ${data.registration}
+                    </strong>
+                </p>
+
+                <p>
+                    Installment:
+                    <strong>
+                        ${data.installment}
+                    </strong>
+                </p>
+
+                <p>
+                    One Time Payment:
+                    <strong>
+                        ${data.oneTime}
+                    </strong>
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =================================================
+       SHOW MODAL
+    ================================================= */
+
+    document.getElementById(
+        "courseDetailsContent"
+    ).innerHTML = contentHTML;
+
+
+    document.getElementById(
+        "courseModal"
+    ).style.display = "block";
+
+
+    document.body.style.overflow =
+        "hidden";
 
 }
 
 
-// SAVE NOTICE
-function saveNotice() {
 
-    const title =
-        document.getElementById("noticeTitle").value.trim();
+/* =====================================================
+   CLOSE COURSE DETAILS
+===================================================== */
 
-    const description =
-        document.getElementById("noticeDescription").value.trim();
+function closeCourseDetails() {
+
+    document.getElementById(
+        "courseModal"
+    ).style.display = "none";
 
 
-    if (title === "") {
+    document.body.style.overflow =
+        "auto";
 
-        alert("Please enter Notice Title");
+}
+
+
+
+/* =====================================================
+   CLICK OUTSIDE MODAL
+===================================================== */
+
+window.addEventListener(
+    "click",
+    function(event) {
+
+        const modal =
+            document.getElementById(
+                "courseModal"
+            );
+
+
+        if (
+            event.target === modal
+        ) {
+
+            closeCourseDetails();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   ESC KEY
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeCourseDetails();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   OLD ADMISSION ENQUIRY - WHATSAPP
+   Kept for now.
+   Later index.html থেকে এই form remove করা হবে.
+===================================================== */
+
+function sendAdmissionEnquiry() {
+
+    const name =
+        document.getElementById("enquiryName").value.trim();
+
+    const mobile =
+        document.getElementById("enquiryMobile").value.trim();
+
+    const course =
+        document.getElementById("enquiryCourse").value;
+
+    const message =
+        document.getElementById("enquiryMessage").value.trim();
+
+
+    if (name === "") {
+
+        alert("Please enter Student Name.");
+
         return;
 
     }
 
 
-    if (description === "") {
+    if (mobile === "") {
 
-        alert("Please enter Notice Description");
+        alert("Please enter Mobile Number.");
+
         return;
 
     }
 
 
-    const data = {
+    if (course === "") {
 
-        action: "saveNotice",
-        title: title,
-        description: description
+        alert("Please select a Course.");
+
+        return;
+
+    }
+
+
+    const whatsappMessage =
+        "Admission Enquiry - Unique Computers\n\n" +
+        "Student Name: " + name + "\n" +
+        "Mobile: " + mobile + "\n" +
+        "Course: " + course + "\n" +
+        "Message: " + message;
+
+
+    const whatsappURL =
+        "https://wa.me/918653929775?text=" +
+        encodeURIComponent(whatsappMessage);
+
+
+    window.open(
+        whatsappURL,
+        "_blank"
+    );
+
+}
+
+
+
+/* =====================================================
+   NEW STUDENT ADMISSION
+===================================================== */
+
+
+/* =====================================================
+   COURSE DATA FOR ADMISSION FORM
+===================================================== */
+
+const admissionCourseMap = {
+
+    "BASIC": {
+        duration: "3 Months",
+        fee: 2000
+    },
+
+    "DIPLOMA IN INFORMATION TECHNOLOGY (DIT)": {
+        duration: "12 Months",
+        fee: 7000
+    },
+
+    "DTP": {
+        duration: "6 Months",
+        fee: 6000
+    },
+
+    "TALLY WITH GST": {
+        duration: "6 Months",
+        fee: 7000
+    },
+
+    "GRAPHICS PRO": {
+        duration: "6 Months",
+        fee: 8000
+    },
+
+    "WEB DESIGNING": {
+        duration: "6 Months",
+        fee: 6000
+    },
+
+    "CHILD PACKAGE": {
+        duration: "12 Months",
+        fee: 0
+    },
+
+    "SMART AI": {
+        duration: "6 Months",
+        fee: 6000
+    },
+
+    "ADVANCE EXCEL": {
+        duration: "3 Months",
+        fee: 4000
+    },
+
+    "ADVANCED DIPLOMA": {
+        duration: "12 Months",
+        fee: 12000
+    },
+
+    "MULTIMEDIA ANIMATION - PACKAGE 1 (1 YEAR)": {
+        duration: "1 Year",
+        fee: 150000
+    },
+
+    "MULTIMEDIA ANIMATION - PACKAGE 2 (2 YEAR)": {
+        duration: "2 Year",
+        fee: 200000
+    },
+
+    "VFX - PACKAGE 3 (3 YEAR)": {
+        duration: "3 Year",
+        fee: 375000
+    }
+
+};
+
+
+
+/* =====================================================
+   LOAD COURSE FEE & DURATION
+===================================================== */
+
+function updateAdmissionCourseDetails() {
+
+    const courseElement =
+        document.getElementById("admissionCourse");
+
+    const durationElement =
+        document.getElementById("admissionDuration");
+
+    const feeElement =
+        document.getElementById("admissionTotalFee");
+
+    if (!courseElement) {
+        return;
+    }
+
+    const selectedCourse =
+        courseElement.value;
+
+    const data =
+        admissionCourseMap[selectedCourse];
+
+    if (!data) {
+
+        if (durationElement) {
+            durationElement.value = "";
+        }
+
+        if (feeElement) {
+            feeElement.value = "";
+        }
+
+        updateAdmissionDue();
+
+        return;
+    }
+
+    if (durationElement) {
+        durationElement.value =
+            data.duration;
+    }
+
+    if (feeElement) {
+        feeElement.value =
+            data.fee;
+    }
+
+    updateAdmissionDue();
+
+}
+
+
+
+/* =====================================================
+   CALCULATE ADMISSION DUE
+===================================================== */
+
+function updateAdmissionDue() {
+
+    const totalFeeElement =
+        document.getElementById(
+            "admissionTotalFee"
+        );
+
+    const paymentElement =
+        document.getElementById(
+            "admissionPayment"
+        );
+
+    const dueElement =
+        document.getElementById(
+            "admissionDue"
+        );
+
+    if (
+        !totalFeeElement ||
+        !paymentElement ||
+        !dueElement
+    ) {
+        return;
+    }
+
+    const totalFee =
+        Number(totalFeeElement.value) || 0;
+
+    const firstPayment =
+        Number(paymentElement.value) || 0;
+
+    let due =
+        totalFee - firstPayment;
+
+    if (due < 0) {
+        due = 0;
+    }
+
+    dueElement.value =
+        due;
+
+}
+
+
+
+/* =====================================================
+   PHOTO PREVIEW
+===================================================== */
+
+function previewStudentPhoto(event) {
+
+    const file =
+        event.target.files[0];
+
+    const preview =
+        document.getElementById(
+            "studentPhotoPreview"
+        );
+
+    if (
+        !file ||
+        !preview
+    ) {
+        return;
+    }
+
+    const reader =
+        new FileReader();
+
+    reader.onload =
+        function(e) {
+
+            preview.src =
+                e.target.result;
+
+            preview.style.display =
+                "block";
+
+        };
+
+    reader.readAsDataURL(file);
+
+}
+
+
+
+/* =====================================================
+   SAVE NEW STUDENT ADMISSION
+===================================================== */
+
+async function saveAdmission() {
+
+    const name =
+        document.getElementById(
+            "admissionName"
+        )?.value.trim();
+
+    const fatherName =
+        document.getElementById(
+            "fatherName"
+        )?.value.trim();
+
+    const motherName =
+        document.getElementById(
+            "motherName"
+        )?.value.trim();
+
+    const dob =
+        document.getElementById(
+            "dateOfBirth"
+        )?.value;
+
+    const mobile =
+        document.getElementById(
+            "admissionMobile"
+        )?.value.trim();
+
+    const alternativeMobile =
+        document.getElementById(
+            "alternativeMobile"
+        )?.value.trim();
+
+    const address =
+        document.getElementById(
+            "studentAddress"
+        )?.value.trim();
+
+    const course =
+        document.getElementById(
+            "admissionCourse"
+        )?.value;
+
+    const duration =
+        document.getElementById(
+            "admissionDuration"
+        )?.value;
+
+    const totalFee =
+        Number(
+            document.getElementById(
+                "admissionTotalFee"
+            )?.value
+        ) || 0;
+
+    const firstPayment =
+        Number(
+            document.getElementById(
+                "admissionPayment"
+            )?.value
+        ) || 0;
+
+    const due =
+        Number(
+            document.getElementById(
+                "admissionDue"
+            )?.value
+        ) || 0;
+
+    const paymentMode =
+        document.getElementById(
+            "paymentMode"
+        )?.value;
+
+    const remarks =
+        document.getElementById(
+            "admissionRemarks"
+        )?.value.trim();
+
+    const photoElement =
+        document.getElementById(
+            "studentPhoto"
+        );
+
+
+    /* =================================================
+       VALIDATION
+    ================================================= */
+
+    if (!name) {
+
+        alert(
+            "Please enter Student Name."
+        );
+
+        return;
+
+    }
+
+
+    if (!mobile) {
+
+        alert(
+            "Please enter Mobile Number."
+        );
+
+        return;
+
+    }
+
+
+    if (!course) {
+
+        alert(
+            "Please select Course."
+        );
+
+        return;
+
+    }
+
+
+    if (firstPayment > totalFee) {
+
+        alert(
+            "First Payment cannot be greater than Total Fee."
+        );
+
+        return;
+
+    }
+
+
+    /* =================================================
+       PHOTO
+    ================================================= */
+
+    let photo = "";
+
+    if (
+        photoElement &&
+        photoElement.files &&
+        photoElement.files[0]
+    ) {
+
+        const file =
+            photoElement.files[0];
+
+        photo =
+            await readFileAsDataURL(file);
+
+    }
+
+
+    /* =================================================
+       DATA
+    ================================================= */
+
+    const admissionData = {
+
+        action: "saveAdmission",
+
+        name: name,
+
+        fatherName: fatherName,
+
+        motherName: motherName,
+
+        dob: dob,
+
+        mobile: mobile,
+
+        alternativeMobile:
+            alternativeMobile,
+
+        address: address,
+
+        course: course,
+
+        duration: duration,
+
+        totalFee: totalFee,
+
+        firstPayment: firstPayment,
+
+        due: due,
+
+        paymentMode:
+            paymentMode,
+
+        remarks: remarks,
+
+        photo: photo
 
     };
 
 
-    fetch(API_URL, {
+    /* =================================================
+       BUTTON
+    ================================================= */
 
-        method: "POST",
+    const saveButton =
+        document.getElementById(
+            "saveAdmissionBtn"
+        );
 
-        body: JSON.stringify(data)
+    const oldButtonText =
+        saveButton
+            ? saveButton.textContent
+            : "";
 
-    })
 
-    .then(function(response) {
+    if (saveButton) {
 
-        return response.json();
+        saveButton.disabled =
+            true;
 
-    })
+        saveButton.textContent =
+            "Saving...";
 
-    .then(function(result) {
+    }
 
-        if (result.success) {
 
-            alert("Notice saved successfully!");
+    try {
 
-            document.getElementById("noticeTitle").value = "";
+        const response =
+            await fetch(
+                API_URL,
+                {
 
-            document.getElementById("noticeDescription").value = "";
+                    method: "POST",
 
-            loadNoticeHistory();
+                    body:
+                        JSON.stringify(
+                            admissionData
+                        )
 
-        } else {
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if (
+            result.status === "success" ||
+            result.success === true
+        ) {
+
+            alert(
+                "Admission saved successfully!"
+            );
+
+
+            /* =================================================
+               PUT RETURNED DATA INTO PRINT FORM
+            ================================================= */
+
+            fillAdmissionPrintData(
+                result.data || result
+            );
+
+
+            /* =================================================
+               RESET FORM
+            ================================================= */
+
+            const form =
+                document.getElementById(
+                    "admissionForm"
+                );
+
+            if (form) {
+                form.reset();
+            }
+
+
+            const preview =
+                document.getElementById(
+                    "studentPhotoPreview"
+                );
+
+            if (preview) {
+
+                preview.src = "";
+
+                preview.style.display =
+                    "none";
+
+            }
+
+
+            /* =================================================
+               OPEN PRINT PREVIEW
+            ================================================= */
+
+            openAdmissionPrint();
+
+        }
+
+        else {
 
             alert(
                 result.message ||
-                "Failed to save notice"
+                "Admission could not be saved."
             );
 
         }
 
-    })
 
-    .catch(function(error) {
+    }
 
-        console.error(error);
+    catch (error) {
 
-        alert("Error saving notice");
+        console.error(
+            "Admission Error:",
+            error
+        );
 
-    });
+        alert(
+            "Error saving admission. Please check your internet connection and Apps Script."
+        );
 
-}
+    }
 
 
-// LOAD NOTICE HISTORY
-function loadNoticeHistory() {
+    finally {
 
-    fetch(API_URL + "?action=notice")
+        if (saveButton) {
 
-    .then(function(response) {
+            saveButton.disabled =
+                false;
 
-        return response.json();
+            saveButton.textContent =
+                oldButtonText ||
+                "Save Admission";
 
-    })
+        }
 
-    .then(function(data) {
-
-        renderNotice(data);
-
-    })
-
-    .catch(function(error) {
-
-        console.error(error);
-
-        alert("Failed to load notices");
-
-    });
+    }
 
 }
 
 
-// DISPLAY NOTICE
-function renderNotice(data) {
 
-    const tbody =
-        document.querySelector("#noticeTable tbody");
+/* =====================================================
+   READ PHOTO FILE
+===================================================== */
+
+function readFileAsDataURL(file) {
+
+    return new Promise(
+        function(resolve, reject) {
+
+            const reader =
+                new FileReader();
+
+            reader.onload =
+                function() {
+
+                    resolve(
+                        reader.result
+                    );
+
+                };
+
+            reader.onerror =
+                function() {
+
+                    reject(
+                        new Error(
+                            "Photo could not be read."
+                        )
+                    );
+
+                };
+
+            reader.readAsDataURL(file);
+
+        }
+    );
+
+}
 
 
-    if (!tbody) {
+
+/* =====================================================
+   FILL PRINT DATA
+===================================================== */
+
+function fillAdmissionPrintData(data) {
+
+    setPrintValue(
+        "printAdmissionNo",
+        data.admissionNo || ""
+    );
+
+    setPrintValue(
+        "printStudentId",
+        data.studentId || ""
+    );
+
+    setPrintValue(
+        "printAdmissionDate",
+        data.admissionDate || ""
+    );
+
+    setPrintValue(
+        "printStudentName",
+        data.studentName || data.name || ""
+    );
+
+    setPrintValue(
+        "printFatherName",
+        data.fatherName || ""
+    );
+
+    setPrintValue(
+        "printMotherName",
+        data.motherName || ""
+    );
+
+    setPrintValue(
+        "printDOB",
+        data.dob || ""
+    );
+
+    setPrintValue(
+        "printMobile",
+        data.mobile || ""
+    );
+
+    setPrintValue(
+        "printAlternativeMobile",
+        data.alternativeMobile || ""
+    );
+
+    setPrintValue(
+        "printAddress",
+        data.address || ""
+    );
+
+    setPrintValue(
+        "printCourse",
+        data.course || ""
+    );
+
+    setPrintValue(
+        "printDuration",
+        data.duration || ""
+    );
+
+    setPrintValue(
+        "printTotalFee",
+        data.totalFee || ""
+    );
+
+    setPrintValue(
+        "printFirstPayment",
+        data.firstPayment || ""
+    );
+
+    setPrintValue(
+        "printDue",
+        data.due || ""
+    );
+
+    setPrintValue(
+        "printPaymentMode",
+        data.paymentMode || ""
+    );
+
+    setPrintValue(
+        "printRemarks",
+        data.remarks || ""
+    );
+
+
+    /* =================================================
+       PHOTO
+    ================================================= */
+
+    const printPhoto =
+        document.getElementById(
+            "printStudentPhoto"
+        );
+
+    if (
+        printPhoto &&
+        data.photo
+    ) {
+
+        printPhoto.src =
+            data.photo;
+
+        printPhoto.style.display =
+            "block";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   SET PRINT VALUE
+===================================================== */
+
+function setPrintValue(
+    elementId,
+    value
+) {
+
+    const element =
+        document.getElementById(
+            elementId
+        );
+
+    if (!element) {
+        return;
+    }
+
+    element.textContent =
+        value;
+
+}
+
+
+
+/* =====================================================
+   OPEN ADMISSION PRINT
+===================================================== */
+
+function openAdmissionPrint() {
+
+    const printArea =
+        document.getElementById(
+            "admissionPrintArea"
+        );
+
+    if (!printArea) {
+
+        alert(
+            "Print area is not available yet."
+        );
+
+        return;
+
+    }
+
+    printArea.style.display =
+        "block";
+
+
+    window.print();
+
+
+    setTimeout(
+        function() {
+
+            printArea.style.display =
+                "none";
+
+        },
+        1000
+    );
+
+}
+
+
+
+/* =====================================================
+   PRINT PHOTO PREVIEW
+===================================================== */
+
+function updatePrintPhoto() {
+
+    const source =
+        document.getElementById(
+            "studentPhotoPreview"
+        );
+
+    const target =
+        document.getElementById(
+            "printStudentPhoto"
+        );
+
+    if (
+        !source ||
+        !target
+    ) {
+        return;
+    }
+
+    if (
+        source.src &&
+        source.src !==
+        window.location.href
+    ) {
+
+        target.src =
+            source.src;
+
+        target.style.display =
+            "block";
+
+    }
+
+}
+/* =====================================================
+   PREPARE ADMISSION PRINT
+===================================================== */
+
+function prepareAdmissionPrint() {
+
+    /* Get current form values */
+
+    const data = {
+
+        admissionNo:
+            document.getElementById("printAdmissionNo")?.textContent || "",
+
+        studentId:
+            document.getElementById("printStudentId")?.textContent || "",
+
+        admissionDate:
+            document.getElementById("printAdmissionDate")?.textContent || "",
+
+        name:
+            document.getElementById("admissionName")?.value.trim() || "",
+
+        fatherName:
+            document.getElementById("fatherName")?.value.trim() || "",
+
+        motherName:
+            document.getElementById("motherName")?.value.trim() || "",
+
+        dob:
+            document.getElementById("dateOfBirth")?.value || "",
+
+        mobile:
+            document.getElementById("admissionMobile")?.value.trim() || "",
+
+        alternativeMobile:
+            document.getElementById("alternativeMobile")?.value.trim() || "",
+
+        address:
+            document.getElementById("studentAddress")?.value.trim() || "",
+
+        course:
+            document.getElementById("admissionCourse")?.value || "",
+
+        duration:
+            document.getElementById("admissionDuration")?.value || "",
+
+        totalFee:
+            document.getElementById("admissionTotalFee")?.value || "",
+
+        firstPayment:
+            document.getElementById("admissionPayment")?.value || "",
+
+        due:
+            document.getElementById("admissionDue")?.value || "",
+
+        paymentMode:
+            document.getElementById("paymentMode")?.value || "",
+
+        remarks:
+            document.getElementById("admissionRemarks")?.value.trim() || ""
+
+    };
+
+
+    /* Photo */
+
+    const photoPreview =
+        document.getElementById(
+            "studentPhotoPreview"
+        );
+
+    if (
+        photoPreview &&
+        photoPreview.src &&
+        photoPreview.style.display !== "none"
+    ) {
+
+        data.photo =
+            photoPreview.src;
+
+    }
+
+
+    /* Basic validation */
+
+    if (!data.name) {
+
+        alert(
+            "Please enter Student Name before printing."
+        );
 
         return;
 
     }
 
 
-    tbody.innerHTML = "";
+    if (!data.mobile) {
 
-
-    if (!data || data.length === 0) {
-
-        tbody.innerHTML = `
-
-            <tr>
-
-                <td colspan="4">
-                    No Notice Found
-                </td>
-
-            </tr>
-
-        `;
+        alert(
+            "Please enter Mobile Number before printing."
+        );
 
         return;
 
     }
 
 
-    data.forEach(function(row, index) {
+    if (!data.course) {
 
-        const tr =
-            document.createElement("tr");
+        alert(
+            "Please select Course before printing."
+        );
 
+        return;
 
-        tr.innerHTML = `
-
-            <td>${row[0]}</td>
-
-            <td>${row[1]}</td>
-
-            <td>${row[2]}</td>
-
-            <td>
-
-                <button
-                    onclick="deleteNotice(${index + 2})"
-                    class="delete-btn"
-                >
-                    🗑 Delete
-                </button>
-
-            </td>
-
-        `;
+    }
 
 
-        tbody.appendChild(tr);
+    /* Fill print area */
 
-    });
+    fillAdmissionPrintData(data);
+
+
+    /* Update photo */
+
+    updatePrintPhoto();
+
+
+    /* Open print */
+
+    openAdmissionPrint();
 
 }
 
 
-// SEARCH NOTICE
-function filterNotice() {
 
-    const searchInput =
-        document.getElementById("noticeSearch");
+/* =====================================================
+   RESET ADMISSION FORM
+===================================================== */
 
+function resetAdmissionForm() {
 
-    if (!searchInput) {
+    const form =
+        document.getElementById(
+            "admissionForm"
+        );
 
+    if (!form) {
         return;
-
     }
 
 
-    const search =
-        searchInput.value.toLowerCase();
-
-
-    const rows =
-        document.querySelectorAll(
-            "#noticeTable tbody tr"
+    const confirmReset =
+        confirm(
+            "Are you sure you want to reset the admission form?"
         );
 
 
-    rows.forEach(function(row) {
-
-        const text =
-            row.innerText.toLowerCase();
-
-
-        if (text.includes(search)) {
-
-            row.style.display = "";
-
-        } else {
-
-            row.style.display = "none";
-
-        }
-
-    });
-
-}
-
-
-// DELETE NOTICE
-function deleteNotice(rowNumber) {
-
-    if (
-        !confirm(
-            "Are you sure you want to delete this notice?"
-        )
-    ) {
-
+    if (!confirmReset) {
         return;
+    }
+
+
+    form.reset();
+
+
+    /* Clear course details */
+
+    const duration =
+        document.getElementById(
+            "admissionDuration"
+        );
+
+    const totalFee =
+        document.getElementById(
+            "admissionTotalFee"
+        );
+
+    const due =
+        document.getElementById(
+            "admissionDue"
+        );
+
+
+    if (duration) {
+        duration.value = "";
+    }
+
+
+    if (totalFee) {
+        totalFee.value = "";
+    }
+
+
+    if (due) {
+        due.value = "";
+    }
+
+
+    /* Clear photo */
+
+    const photoInput =
+        document.getElementById(
+            "studentPhoto"
+        );
+
+    const photoPreview =
+        document.getElementById(
+            "studentPhotoPreview"
+        );
+
+    const photoText =
+        document.getElementById(
+            "photoUploadText"
+        );
+
+
+    if (photoInput) {
+        photoInput.value = "";
+    }
+
+
+    if (photoPreview) {
+
+        photoPreview.src = "";
+
+        photoPreview.style.display =
+            "none";
 
     }
 
 
-    fetch(
-        API_URL +
-        "?action=deleteNotice&id=" +
-        rowNumber
-    )
+    if (photoText) {
+        photoText.style.display =
+            "block";
+    }
 
-    .then(function(response) {
 
-        return response.json();
+    /* Clear print photo */
 
-    })
+    const printPhoto =
+        document.getElementById(
+            "printStudentPhoto"
+        );
 
-    .then(function(result) {
+    if (printPhoto) {
 
-        if (result.success) {
+        printPhoto.src = "";
 
-            alert(
-                "Notice deleted successfully!"
+        printPhoto.style.display =
+            "none";
+
+    }
+
+
+    alert(
+        "Admission form has been reset."
+    );
+
+}
+
+
+
+/* =====================================================
+   IMPROVED PHOTO PREVIEW
+===================================================== */
+
+const originalPreviewStudentPhoto =
+    previewStudentPhoto;
+
+
+previewStudentPhoto =
+    function(event) {
+
+        originalPreviewStudentPhoto(event);
+
+
+        const photoText =
+            document.getElementById(
+                "photoUploadText"
             );
 
-            loadNoticeHistory();
+        const file =
+            event.target.files[0];
 
-        } else {
 
-            alert(
-                result.message ||
-                "Failed to delete notice"
-            );
+        if (
+            photoText &&
+            file
+        ) {
+
+            photoText.style.display =
+                "none";
 
         }
 
-    })
 
-    .catch(function(error) {
+        /* Update print photo */
 
-        console.error(error);
+        setTimeout(
+            function() {
 
-        alert("Error deleting notice");
+                updatePrintPhoto();
 
-    });
+            },
+            100
+        );
 
-}
+    };

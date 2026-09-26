@@ -1,59 +1,1592 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Panel - Login</title>
 
-    <link rel="stylesheet" href="style.css">
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Unique Computers</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-    <div class="login-container">
 
-        <div class="login-box">
+<!-- =================================================
+     NAVIGATION BAR
+================================================= -->
 
-            <div class="logo">
-                🎓
-            </div>
+<nav class="main-navbar">
 
-            <h1>Student Panel</h1>
-            <p class="subtitle">Computer Training Centre</p>
+    <div class="nav-logo">
 
-            <form id="loginForm">
+        <img src="logo.png"
+             alt="Unique Computers Logo">
 
-                <label>Username</label>
-                <input
-                    type="text"
-                    id="username"
-                    placeholder="Enter username"
-                    required
-                >
+        <span>
+            Unique Computers
+        </span>
 
-                <label>Password</label>
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Enter password"
-                    required
-                >
+    </div>
 
-                <button type="submit">Login</button>
 
-            </form>
+    <div class="nav-menu">
 
-            <p id="message"></p>
+        <a href="#home">
+            Home
+        </a>
 
-            <div class="footer">
-                © 2026 Student Management System
-            </div>
+        <a href="#courses">
+            Courses
+        </a>
+
+        <a href="#about">
+            About Us
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+        <a href="#admission"
+           class="admission-nav-btn">
+
+            New Admission
+
+        </a>
+
+        <a href="dashboard.html"
+           class="student-login-btn">
+
+            Center Login
+
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =================================================
+     HOME / WELCOME SECTION
+================================================= -->
+
+<section id="home">
+
+    <div class="welcome-box">
+
+        <img src="logo.png"
+             alt="Unique Computers Logo"
+             class="logo">
+
+        <h1>
+            Unique Computers
+        </h1>
+
+        <h2>
+            NO.1 Computer Training Institute in Kakdwip
+        </h2>
+
+        <h3>
+            AN ISO 9001:2015 CERTIFIED INSTITUTE
+        </h3>
+
+        <p>
+            Welcome to our Computer Training Centre
+        </p>
+
+        <div class="admission">
+
+            <marquee>
+                Admission Going On Session (2026-2027)
+            </marquee>
 
         </div>
 
     </div>
 
-    <script src="script.js"></script>
+</section>
+
+
+
+<!-- =================================================
+     COURSES SECTION
+================================================= -->
+
+<section id="courses"
+         class="courses-section">
+
+    <h2 class="courses-title">
+        Our Courses
+    </h2>
+
+    <p class="section-subtitle">
+
+        Choose your course and click to view
+        complete course details.
+
+    </p>
+
+
+    <div class="course-container">
+
+
+        <!-- 1. BASIC -->
+
+        <div class="course-card"
+             onclick="showCourseDetails('basic')">
+
+            <span class="course-icon">
+                💻
+            </span>
+
+            BASIC
+
+        </div>
+
+
+        <!-- 2. DIPLOMA -->
+
+        <div class="course-card"
+             onclick="showCourseDetails('diploma')">
+
+            <span class="course-icon">
+                🎓
+            </span>
+
+            DIPLOMA
+
+        </div>
+
+
+        <!-- 3. DTP -->
+
+        <div class="course-card"
+             onclick="showCourseDetails('dtp')">
+
+            <span class="course-icon">
+                🖥️
+            </span>
+
+            DTP
+
+        </div>
+
+
+        <!-- 4. TALLY -->
+
+        <div class="course-card"
+             onclick="showCourseDetails('tally')">
+
+            <span class="course-icon">
+                📊
+            </span>
+
+            TALLY WITH GST
+
+        </div>
+
+
+        <!-- 5. GRAPHICS -->
+
+        <div class="course-card"
+             onclick="showCourseDetails('graphics')">
+
+            <span class="course-icon">
+                🎨
+            </span>
+
+            GRAPHICS PRO
+
+        </div>
+
+
+        <!-- 6. WEB DESIGNING -->
+
+        <div class="course-card"
+             onclick="showCourseDetails('web')">
+
+            <span class="course-icon">
+                🌐
+            </span>
+
+            WEB DESIGNING
+
+        </div>
+
+
+        <!-- 7. CHILD PACKAGE -->
+
+        <div class="course-card"
+             onclick="showCourseDetails('child')">
+
+            <span class="course-icon">
+                👦
+            </span>
+
+            CHILD PACKAGE
+
+        </div>
+
+
+        <!-- 8. SMART AI -->
+
+        <div class="course-card"
+             onclick="showCourseDetails('smart')">
+
+            <span class="course-icon">
+                🤖
+            </span>
+
+            SMART AI
+
+        </div>
+
+
+        <!-- 9. ADVANCE EXCEL -->
+
+        <div class="course-card"
+             onclick="showCourseDetails('advance-excel')">
+
+            <span class="course-icon">
+                📈
+            </span>
+
+            ADVANCE EXCEL
+
+        </div>
+
+
+        <!-- 10. ADVANCED DIPLOMA -->
+
+        <div class="course-card"
+             onclick="showCourseDetails('advanced')">
+
+            <span class="course-icon">
+                🏆
+            </span>
+
+            ADVANCED DIPLOMA
+
+        </div>
+
+
+        <!-- 11. MULTIMEDIA -->
+
+        <div class="course-card"
+             onclick="showCourseDetails('multimedia')">
+
+            <span class="course-icon">
+                🎬
+            </span>
+
+            MULTIMEDIA ANIMATION
+
+        </div>
+
+
+        <!-- 12. VFX -->
+
+        <div class="course-card"
+             onclick="showCourseDetails('vfx')">
+
+            <span class="course-icon">
+                🎥
+            </span>
+
+            BACHELER IN VFX & ANIMATION
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     ABOUT US
+================================================= -->
+
+<section id="about"
+         class="about-section">
+
+    <h2>
+        About Unique Computers
+    </h2>
+
+    <p>
+
+        Unique Computers is a computer training
+        institute in Kakdwip dedicated to providing
+        practical and career-oriented computer education.
+
+    </p>
+
+
+    <div class="about-box-container">
+
+
+        <div class="about-box">
+
+            <div class="about-icon">
+                🎓
+            </div>
+
+            <h3>
+                Quality Education
+            </h3>
+
+            <p>
+                Practical and easy-to-understand
+                computer training.
+            </p>
+
+        </div>
+
+
+        <div class="about-box">
+
+            <div class="about-icon">
+                💻
+            </div>
+
+            <h3>
+                Practical Training
+            </h3>
+
+            <p>
+                Hands-on learning with real
+                computer applications.
+            </p>
+
+        </div>
+
+
+        <div class="about-box">
+
+            <div class="about-icon">
+                🏆
+            </div>
+
+            <h3>
+                Professional Courses
+            </h3>
+
+            <p>
+                Computer courses designed for
+                students and job seekers.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     WHY CHOOSE US
+================================================= -->
+
+<section class="why-section">
+
+    <h2>
+        Why Choose Unique Computers?
+    </h2>
+
+    <p class="why-subtitle">
+
+        Learn today, build your future tomorrow.
+
+    </p>
+
+
+    <div class="why-container">
+
+
+        <div class="why-card">
+
+            <div class="why-icon">
+                👨‍🏫
+            </div>
+
+            <h3>
+                Experienced Training
+            </h3>
+
+            <p>
+                Practical computer training with
+                easy-to-understand teaching.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-icon">
+                💻
+            </div>
+
+            <h3>
+                Practical Learning
+            </h3>
+
+            <p>
+                Students get hands-on practice
+                during their course.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-icon">
+                🎓
+            </div>
+
+            <h3>
+                Career Oriented Courses
+            </h3>
+
+            <p>
+                Courses designed to develop
+                useful computer skills.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-icon">
+                👥
+            </div>
+
+            <h3>
+                Small Batch
+            </h3>
+
+            <p>
+                Small batches help students get
+                better attention during training.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     INSTITUTE FACILITIES
+================================================= -->
+
+<section class="facility-section">
+
+    <h2>
+        Our Facilities
+    </h2>
+
+
+    <div class="facility-container">
+
+
+        <div class="facility-card">
+
+            <div class="facility-icon">
+                🖥️
+            </div>
+
+            <h3>
+                Computer Lab
+            </h3>
+
+            <p>
+                Practical computer lab for
+                hands-on training.
+            </p>
+
+        </div>
+
+
+        <div class="facility-card">
+
+            <div class="facility-icon">
+                📚
+            </div>
+
+            <h3>
+                Study Materials
+            </h3>
+
+            <p>
+                Course-related learning
+                materials for students.
+            </p>
+
+        </div>
+
+
+        <div class="facility-card">
+
+            <div class="facility-icon">
+                🌐
+            </div>
+
+            <h3>
+                Internet Facility
+            </h3>
+
+            <p>
+                Internet-based practical
+                learning facility.
+            </p>
+
+        </div>
+
+
+        <div class="facility-card">
+
+            <div class="facility-icon">
+                📝
+            </div>
+
+            <h3>
+                Practical Projects
+            </h3>
+
+            <p>
+                Project-based learning for
+                better practical knowledge.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =================================================
+     GALLERY
+================================================= -->
+
+<section class="gallery-section">
+
+    <h2>
+        Our Gallery
+    </h2>
+
+    <p class="gallery-subtitle">
+
+        Some moments from Unique Computers
+
+    </p>
+
+
+    <div class="gallery-container">
+
+
+        <div class="gallery-box">
+
+            <img src="logo.png"
+                 alt="Unique Computers">
+
+        </div>
+
+
+        <div class="gallery-box">
+
+            <img src="logo.png"
+                 alt="Unique Computers">
+
+        </div>
+
+
+        <div class="gallery-box">
+
+            <img src="logo.png"
+                 alt="Unique Computers">
+
+        </div>
+
+
+        <div class="gallery-box">
+
+            <img src="logo.png"
+                 alt="Unique Computers">
+
+        </div>
+
+
+    </div>
+
+
+    <p class="gallery-note">
+
+        Institute photos can be added here later.
+
+    </p>
+
+</section>
+
+
+
+<!-- =================================================
+     NEW STUDENT ADMISSION
+================================================= -->
+
+<section id="admission"
+         class="enquiry-form-section">
+
+
+    <h2>
+        📝 New Student Admission
+    </h2>
+
+
+    <p>
+
+        Fill up the admission form when a new
+        student joins Unique Computers.
+
+    </p>
+
+
+    <form id="admissionForm"
+          class="enquiry-form"
+          onsubmit="event.preventDefault(); saveAdmission();">
+
+
+        <!-- STUDENT PHOTO -->
+
+        <div class="form-group photo-upload-group">
+
+            <label>
+                Student Photo
+            </label>
+
+            <div class="photo-upload-box">
+
+                <img id="studentPhotoPreview"
+                     src=""
+                     alt="Student Photo Preview"
+                     style="display:none;">
+
+                <span id="photoUploadText">
+                    📷 Photo Preview
+                </span>
+
+            </div>
+
+            <input type="file"
+                   id="studentPhoto"
+                   accept="image/*"
+                   onchange="previewStudentPhoto(event); updatePrintPhoto();">
+
+            <small>
+                JPG / PNG image recommended
+            </small>
+
+        </div>
+
+
+
+        <!-- STUDENT NAME -->
+
+        <div class="form-group">
+
+            <label for="admissionName">
+                Student Name *
+            </label>
+
+            <input type="text"
+                   id="admissionName"
+                   placeholder="Enter Student Name"
+                   required>
+
+        </div>
+
+
+
+        <!-- FATHER NAME -->
+
+        <div class="form-group">
+
+            <label for="fatherName">
+                Father's Name
+            </label>
+
+            <input type="text"
+                   id="fatherName"
+                   placeholder="Enter Father's Name">
+
+        </div>
+
+
+
+        <!-- MOTHER NAME -->
+
+        <div class="form-group">
+
+            <label for="motherName">
+                Mother's Name
+            </label>
+
+            <input type="text"
+                   id="motherName"
+                   placeholder="Enter Mother's Name">
+
+        </div>
+
+
+
+        <!-- DOB -->
+
+        <div class="form-group">
+
+            <label for="dateOfBirth">
+                Date of Birth
+            </label>
+
+            <input type="date"
+                   id="dateOfBirth">
+
+        </div>
+
+
+
+        <!-- MOBILE -->
+
+        <div class="form-group">
+
+            <label for="admissionMobile">
+                Mobile Number *
+            </label>
+
+            <input type="tel"
+                   id="admissionMobile"
+                   maxlength="10"
+                   pattern="[0-9]{10}"
+                   placeholder="Enter Mobile Number"
+                   required>
+
+        </div>
+
+
+
+        <!-- ALTERNATIVE MOBILE -->
+
+        <div class="form-group">
+
+            <label for="alternativeMobile">
+                Alternative Mobile
+            </label>
+
+            <input type="tel"
+                   id="alternativeMobile"
+                   maxlength="10"
+                   pattern="[0-9]{10}"
+                   placeholder="Alternative Mobile Number">
+
+        </div>
+
+
+
+        <!-- ADDRESS -->
+
+        <div class="form-group form-full">
+
+            <label for="studentAddress">
+                Address
+            </label>
+
+            <textarea id="studentAddress"
+                      rows="3"
+                      placeholder="Enter Student Address"></textarea>
+
+        </div>
+
+
+
+        <!-- COURSE -->
+
+        <div class="form-group">
+
+            <label for="admissionCourse">
+                Select Course *
+            </label>
+
+            <select id="admissionCourse"
+                    onchange="updateAdmissionCourseDetails()"
+                    required>
+
+                <option value="">
+                    Select Course
+                </option>
+
+                <option value="BASIC">
+                    BASIC
+                </option>
+
+                <option value="DIPLOMA IN INFORMATION TECHNOLOGY (DIT)">
+                    DIPLOMA
+                </option>
+
+                <option value="DTP">
+                    DTP
+                </option>
+
+                <option value="TALLY WITH GST">
+                    TALLY WITH GST
+                </option>
+
+                <option value="GRAPHICS PRO">
+                    GRAPHICS PRO
+                </option>
+
+                <option value="WEB DESIGNING">
+                    WEB DESIGNING
+                </option>
+
+                <option value="CHILD PACKAGE">
+                    CHILD PACKAGE
+                </option>
+
+                <option value="SMART AI">
+                    SMART AI
+                </option>
+
+                <option value="ADVANCE EXCEL">
+                    ADVANCE EXCEL
+                </option>
+
+                <option value="ADVANCED DIPLOMA">
+                    ADVANCED DIPLOMA
+                </option>
+
+                <option value="MULTIMEDIA ANIMATION - PACKAGE 1 (1 YEAR)">
+                    MULTIMEDIA ANIMATION - PACKAGE 1 (1 YEAR)
+                </option>
+
+                <option value="MULTIMEDIA ANIMATION - PACKAGE 2 (2 YEAR)">
+                    MULTIMEDIA ANIMATION - PACKAGE 2 (2 YEAR)
+                </option>
+
+                <option value="VFX - PACKAGE 3 (3 YEAR)">
+                    VFX - PACKAGE 3 (3 YEAR)
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- COURSE DURATION -->
+
+        <div class="form-group">
+
+            <label for="admissionDuration">
+                Course Duration
+            </label>
+
+            <input type="text"
+                   id="admissionDuration"
+                   placeholder="Automatic"
+                   readonly>
+
+        </div>
+
+
+
+        <!-- TOTAL FEE -->
+
+        <div class="form-group">
+
+            <label for="admissionTotalFee">
+                Total Course Fee *
+            </label>
+
+            <input type="number"
+                   id="admissionTotalFee"
+                   min="0"
+                   placeholder="Automatic"
+                   oninput="updateAdmissionDue()"
+                   readonly>
+
+        </div>
+
+
+
+        <!-- FIRST PAYMENT -->
+
+        <div class="form-group">
+
+            <label for="admissionPayment">
+                Registration / First Payment *
+            </label>
+
+            <input type="number"
+                   id="admissionPayment"
+                   min="0"
+                   placeholder="Enter First Payment"
+                   oninput="updateAdmissionDue()"
+                   required>
+
+        </div>
+
+
+
+        <!-- DUE -->
+
+        <div class="form-group">
+
+            <label for="admissionDue">
+                Due Amount
+            </label>
+
+            <input type="number"
+                   id="admissionDue"
+                   placeholder="Automatic"
+                   readonly>
+
+        </div>
+
+
+
+        <!-- PAYMENT MODE -->
+
+        <div class="form-group">
+
+            <label for="paymentMode">
+                Payment Mode
+            </label>
+
+            <select id="paymentMode">
+
+                <option value="Cash">
+                    Cash
+                </option>
+
+                <option value="UPI">
+                    UPI
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+        </div>
+
+
+
+        <!-- REMARKS -->
+
+        <div class="form-group form-full">
+
+            <label for="admissionRemarks">
+                Remarks
+            </label>
+
+            <textarea id="admissionRemarks"
+                      rows="3"
+                      placeholder="Any remarks"></textarea>
+
+        </div>
+
+
+
+        <!-- BUTTONS -->
+
+        <div class="admission-button-container">
+
+
+            <button type="submit"
+                    id="saveAdmissionBtn"
+                    class="enquiry-submit-btn">
+
+                💾 Save Admission
+
+            </button>
+
+
+            <button type="button"
+                    class="print-admission-btn"
+                    onclick="prepareAdmissionPrint()">
+
+                🖨️ Print Admission Form
+
+            </button>
+
+
+            <button type="button"
+                    class="reset-admission-btn"
+                    onclick="resetAdmissionForm()">
+
+                🔄 Reset
+
+            </button>
+
+
+        </div>
+
+
+    </form>
+
+
+</section>
+
+
+
+<!-- =================================================
+     CONTACT SECTION
+================================================= -->
+
+<section id="contact"
+         class="contact-section">
+
+
+    <h2>
+        Contact Us
+    </h2>
+
+
+    <div class="contact-container">
+
+
+        <div class="contact-item">
+
+            <span>
+                📍
+            </span>
+
+            <div>
+
+                <h3>
+                    Address
+                </h3>
+
+                <p>
+
+                    Kakdwip Collage More Near Rabindra Shiksha Mandir, South 24 Parganas,
+                    West Bengal,pin-743347
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="contact-item">
+
+            <span>
+                📞
+            </span>
+
+            <div>
+
+                <h3>
+                    Phone
+                </h3>
+
+                <p>
+                    8653929775 / 9064327052
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="contact-item">
+
+            <span>
+                💻
+            </span>
+
+            <div>
+
+                <h3>
+                    Student Management
+                </h3>
+
+                <p>
+
+                    Login to manage your
+                    student account.
+
+                </p>
+
+                <a href="dashboard.html"
+                   class="panel-link">
+
+                    Center Login →
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =================================================
+     FOOTER
+================================================= -->
+
+<footer class="main-footer">
+
+
+    <h3>
+        Unique Computers
+    </h3>
+
+
+    <p>
+        NO.1 Computer Training Institute in Kakdwip
+    </p>
+
+
+    <p>
+        📞 8653929775
+    </p>
+
+
+    <p>
+        © 2026 Unique Computers.
+        All Rights Reserved.
+    </p>
+
+
+</footer>
+
+
+
+<!-- =================================================
+     COURSE DETAILS POPUP
+================================================= -->
+
+<div id="courseModal"
+     class="course-modal">
+
+
+    <div class="course-modal-content">
+
+
+        <button class="close-button"
+                onclick="closeCourseDetails()">
+
+            &times;
+
+        </button>
+
+
+        <h2 id="modalCourseTitle"
+            class="modal-title">
+
+            COURSE DETAILS
+
+        </h2>
+
+
+        <div id="courseDetailsContent">
+
+        </div>
+
+
+        <button class="modal-close-btn"
+                onclick="closeCourseDetails()">
+
+            CLOSE
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =================================================
+     PRINT AREA
+================================================= -->
+
+<div id="admissionPrintArea"
+     class="admission-print-area">
+
+
+    <!-- PRINT HEADER -->
+
+    <div class="print-header">
+
+       <center> <img src="logo.png"width="100px"
+             alt="Unique Computers"></center>
+
+        <div>
+
+            <h1>
+                <center>UNIQUE COMPUTERS</center>
+            </h1>
+
+            <p>
+                NO.1 Computer Training Institute in Kakdwip
+            </p>
+
+            <p>
+                Kakdwip, South 24 Parganas, West Bengal
+            </p>
+
+            <p>
+                Phone: 8653929775
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <h2 class="print-title">
+        STUDENT ADMISSION FORM
+    </h2>
+
+
+
+    <!-- ADMISSION INFORMATION -->
+
+    <div class="print-admission-info">
+
+        <div>
+            <strong>Admission No:</strong>
+            <span id="printAdmissionNo">—</span>
+        </div>
+
+        <div>
+            <strong>Student ID:</strong>
+            <span id="printStudentId">—</span>
+        </div>
+
+        <div>
+            <strong>Admission Date:</strong>
+            <span id="printAdmissionDate">—</span>
+        </div>
+
+    </div>
+
+
+
+    <!-- STUDENT PHOTO -->
+
+    <div class="print-photo-box">
+
+        <img id="printStudentPhoto"
+             src=""
+             alt="Student Photo"
+             style="display:none;">
+
+    </div>
+
+
+
+    <!-- STUDENT DETAILS -->
+
+    <table class="print-student-table">
+
+        <tr>
+            <th>Student Name</th>
+            <td id="printStudentName">—</td>
+        </tr>
+
+        <tr>
+            <th>Father's Name</th>
+            <td id="printFatherName">—</td>
+        </tr>
+
+        <tr>
+            <th>Mother's Name</th>
+            <td id="printMotherName">—</td>
+        </tr>
+
+        <tr>
+            <th>Date of Birth</th>
+            <td id="printDOB">—</td>
+        </tr>
+
+        <tr>
+            <th>Mobile Number</th>
+            <td id="printMobile">—</td>
+        </tr>
+
+        <tr>
+            <th>Alternative Mobile</th>
+            <td id="printAlternativeMobile">—</td>
+        </tr>
+
+        <tr>
+            <th>Address</th>
+            <td id="printAddress">—</td>
+        </tr>
+
+        <tr>
+            <th>Course</th>
+            <td id="printCourse">—</td>
+        </tr>
+
+        <tr>
+            <th>Course Duration</th>
+            <td id="printDuration">—</td>
+        </tr>
+
+    </table>
+
+
+
+    <!-- FEE DETAILS -->
+
+    <h3 class="print-fee-heading">
+        FEE DETAILS
+    </h3>
+
+
+
+    <table class="print-fee-table">
+
+        <tr>
+
+            <th>
+                Total Course Fee
+            </th>
+
+            <td id="printTotalFee">
+                ₹0
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <th>
+                Registration / First Payment
+            </th>
+
+            <td id="printFirstPayment">
+                ₹0
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <th>
+                Due Amount
+            </th>
+
+            <td id="printDue">
+                ₹0
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <th>
+                Payment Mode
+            </th>
+
+            <td id="printPaymentMode">
+                —
+            </td>
+
+        </tr>
+
+    </table>
+
+
+
+    <!-- REMARKS -->
+
+    <div class="print-remarks">
+
+        <strong>
+            Remarks:
+        </strong>
+
+        <span id="printRemarks">
+            —
+        </span>
+
+    </div>
+
+
+
+    <!-- DECLARATION -->
+
+    <div class="print-declaration">
+
+        <p>
+            I hereby confirm that the information
+            provided above is correct.
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         RULES & REGULATIONS
+    ================================================= -->
+
+    <div class="print-rules">
+
+        <h3>
+            Rules &amp; Regulations
+        </h3>
+
+
+        <ul>
+
+            <li>
+                Fees must be paid on or before the
+                specified due date of every month.
+            </li>
+
+            <li>
+                Students must strictly maintain discipline
+                and attend classes regularly. Minimum
+                80% attendance is required.
+            </li>
+
+            <li>
+                Fees once paid are strictly non-refundable
+                and non-transferable under any circumstances.
+            </li>
+
+            <li>
+                The institution reserves the right to cancel
+                admission in case of major misconduct or
+                prolonged unauthorized absence.
+            </li>
+
+        </ul>
+
+    </div>
+
+
+
+    <!-- =================================================
+         THREE SIGNATURES
+    ================================================= -->
+
+    <div class="print-signature three-signatures">
+
+
+        <div class="signature-box">
+
+            <div class="signature-space">
+            </div>
+
+            <div class="signature-line">
+                ______________________
+            </div>
+
+            <strong>
+                Signature of Student
+            </strong>
+
+        </div>
+
+
+
+        <div class="signature-box">
+
+            <div class="signature-space">
+            </div>
+
+            <div class="signature-line">
+                ______________________
+            </div>
+
+            <strong>
+                Signature of Guardian
+            </strong>
+
+        </div>
+
+
+
+        <div class="signature-box">
+
+            <div class="signature-space">
+            </div>
+
+            <div class="signature-line">
+                ______________________
+            </div>
+
+            <strong>
+                Authorized Signature
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- PRINT FOOTER -->
+
+    <div class="print-footer">
+
+        Unique Computers | Kakdwip |
+        Phone: 8653929775
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =================================================
+     JAVASCRIPT
+================================================= -->
+
+<script src="script.js"></script>
+
 
 </body>
+
 </html>

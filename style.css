@@ -1,6 +1,6 @@
-/* =========================================
+/* =====================================================
    RESET
-========================================= */
+===================================================== */
 
 * {
     margin: 0;
@@ -9,121 +9,1090 @@
 }
 
 
-/* =========================================
+/* =====================================================
    BODY
-========================================= */
+===================================================== */
 
 body {
     font-family: Arial, sans-serif;
-
-    background: linear-gradient(
-        135deg,
-        #4f46e5,
-        #7c3aed
-    );
-
-    min-height: 100vh;
+    background: #f2f4f7;
+    color: #222;
+    text-align: center;
+    padding-bottom: 60px;
 }
 
 
-/* =========================================
-   LOGIN
-========================================= */
+/* =====================================================
+   NAVIGATION BAR
+===================================================== */
 
-.login-container {
-    min-height: 100vh;
+.main-navbar {
+    width: 100%;
+    background: #1e3a8a;
+    padding: 12px 5%;
 
     display: flex;
-
-    justify-content: center;
-
     align-items: center;
+    justify-content: space-between;
 
-    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 5000;
+
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
 }
 
 
-.login-box {
-    width: 380px;
+/* LOGO + NAME */
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.nav-logo span {
+    color: #ffffff !important;
+
+    text-shadow:
+        1px 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+
+.nav-logo img {
+    width: 45px;
+    height: 45px;
+
+    object-fit: contain;
+
+    background: white;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+
+/* NAVIGATION MENU */
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.nav-menu a {
+    color: #ffffff !important;
+
+    text-decoration: none;
+
+    padding: 10px 13px;
+
+    border-radius: 6px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    background: transparent;
+
+    text-shadow:
+        1px 1px 3px rgba(0, 0, 0, 0.35);
+
+    transition: 0.3s;
+}
+
+
+.nav-menu a:hover {
+    color: #ffffff !important;
+    background: #2563eb;
+}
+
+
+/* ADMISSION BUTTON */
+
+.nav-menu .admission-nav-btn {
+    color: #ffffff !important;
+    background: #dc2626;
+}
+
+
+.nav-menu .admission-nav-btn:hover {
+    background: #b91c1c;
+}
+
+
+/* STUDENT LOGIN */
+
+.nav-menu .student-login-btn {
+    color: #ffffff !important;
+    background: #16a34a;
+}
+
+
+.nav-menu .student-login-btn:hover {
+    background: #15803d;
+}
+
+
+/* =====================================================
+   HOME SECTION
+===================================================== */
+
+#home {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+
+.welcome-box {
+    width: 80%;
+    max-width: 800px;
+
+    margin: auto;
 
     background: white;
 
-    padding: 40px;
+    padding: 35px 40px;
 
-    border-radius: 20px;
+    border-radius: 15px;
 
     box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.25);
+        0 5px 20px #cccccc;
 }
 
 
+/* MAIN LOGO */
+
 .logo {
-    width: 75px;
-    height: 75px;
+    width: 120px;
+    height: auto;
 
-    margin: 0 auto 15px;
+    display: block;
 
-    background: #eef2ff;
+    margin: 0 auto 2px auto;
+}
+
+
+/* MAIN HEADING */
+
+h1 {
+    color: #1e3a8a;
+
+    font-size: 42px;
+
+    margin: 0 0 15px 0;
+
+    line-height: 1.1;
+}
+
+
+/* HOME SUB HEADING */
+
+.welcome-box h2 {
+    color: #2563eb;
+
+    font-size: 22px;
+
+    margin: 0 0 10px 0;
+}
+
+
+.welcome-box h3 {
+    color: #dc2626;
+
+    font-size: 18px;
+
+    margin: 0 0 25px 0;
+}
+
+
+.welcome-box p {
+    color: #555555;
+
+    font-size: 20px;
+
+    font-style: italic;
+}
+
+
+/* ADMISSION MARQUEE */
+
+.admission {
+    color: red;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    margin-top: 20px;
+}
+
+
+/* =====================================================
+   COURSES
+===================================================== */
+
+.courses-section {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 50px auto 0 auto;
+}
+
+
+.courses-title {
+    color: #1e3a8a;
+
+    font-size: 32px;
+
+    margin-bottom: 12px;
+}
+
+
+.section-subtitle {
+    margin-bottom: 25px;
+
+    color: #666666;
+
+    font-size: 16px;
+
+    font-style: normal;
+}
+
+
+/* COURSE GRID */
+
+.course-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+/* COURSE CARD */
+
+.course-card {
+    background: white;
+
+    padding: 25px 15px;
+
+    border-radius: 12px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: #1e3a8a;
+
+    box-shadow:
+        0 4px 12px #d0d0d0;
+
+    transition: 0.3s;
+
+    cursor: pointer;
+}
+
+
+.course-card:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 8px 20px #bdbdbd;
+}
+
+
+/* COURSE ICON */
+
+.course-icon {
+    display: block;
+
+    font-size: 30px;
+
+    margin-bottom: 10px;
+}
+
+
+/* =====================================================
+   COURSE POPUP
+===================================================== */
+
+.course-modal {
+    display: none;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        rgba(0, 0, 0, 0.65);
+
+    z-index: 9999;
+
+    padding: 30px 15px;
+
+    overflow-y: auto;
+}
+
+
+.course-modal-content {
+    position: relative;
+
+    width: 90%;
+    max-width: 650px;
+
+    margin: 30px auto;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 18px;
+
+    text-align: left;
+
+    box-shadow:
+        0 10px 40px
+        rgba(0, 0, 0, 0.3);
+
+    animation:
+        popup 0.3s ease;
+}
+
+
+/* POPUP ANIMATION */
+
+@keyframes popup {
+
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+}
+
+
+/* POPUP TITLE */
+
+.modal-title {
+    text-align: center;
+
+    color: #1e3a8a;
+
+    font-size: 30px;
+
+    margin-bottom: 25px;
+}
+
+
+/* CLOSE X */
+
+.close-button {
+    position: absolute;
+
+    top: 12px;
+    right: 15px;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
 
     border-radius: 50%;
 
-    display: flex;
+    background: #dc2626;
 
-    justify-content: center;
+    color: white;
 
-    align-items: center;
+    font-size: 25px;
 
-    font-size: 38px;
+    cursor: pointer;
 }
 
 
-h1 {
-    text-align: center;
+/* COURSE INFORMATION */
 
-    color: #1f2937;
+.course-info {
+    margin-bottom: 22px;
+}
+
+
+.course-info h3 {
+    color: #1e3a8a;
+
+    font-size: 20px;
 
     margin-bottom: 8px;
 }
 
 
-.subtitle {
-    text-align: center;
+.course-info p {
+    color: #555;
 
-    color: #6b7280;
+    font-size: 17px;
+
+    font-style: normal;
+}
+
+
+.course-info ul {
+    padding-left: 25px;
+}
+
+
+.course-info li {
+    color: #444;
+
+    font-size: 16px;
+
+    margin-bottom: 7px;
+}
+
+
+/* FEES BOX */
+
+.course-fees {
+    background: #f0f7ff;
+
+    padding: 20px;
+
+    border-radius: 12px;
+
+    margin-top: 10px;
+}
+
+
+.course-fees h3 {
+    color: #1e3a8a;
+
+    font-size: 21px;
+
+    margin-bottom: 12px;
+}
+
+
+.course-fees p {
+    color: #333;
+
+    font-size: 17px;
+
+    font-style: normal;
+
+    margin-bottom: 8px;
+}
+
+
+.course-fees strong {
+    color: #dc2626;
+}
+
+
+/* POPUP CLOSE BUTTON */
+
+.modal-close-btn {
+    display: block;
+
+    margin: 25px auto 0 auto;
+
+    padding: 12px 35px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #1e3a8a;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.modal-close-btn:hover {
+    background: #2563eb;
+}
+
+
+/* =====================================================
+   ABOUT SECTION
+===================================================== */
+
+.about-section {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: 70px auto 0 auto;
+
+    padding: 50px 25px;
+
+    text-align: center;
+}
+
+
+.about-section > h2 {
+    color: #1e3a8a;
+
+    font-size: 32px;
+
+    margin-bottom: 18px;
+}
+
+
+.about-section > p {
+    max-width: 800px;
+
+    margin: auto;
+
+    color: #555;
+
+    font-size: 17px;
+
+    font-style: normal;
+
+    line-height: 1.7;
+}
+
+
+/* ABOUT BOXES */
+
+.about-box-container {
+    margin-top: 35px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+.about-box {
+    background: white;
+
+    padding: 30px 20px;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 15px #d0d0d0;
+}
+
+
+.about-icon {
+    font-size: 40px;
+
+    margin-bottom: 15px;
+}
+
+
+.about-box h3 {
+    color: #1e3a8a;
+
+    font-size: 20px;
+
+    margin-bottom: 10px;
+}
+
+
+.about-box p {
+    color: #666;
+
+    font-size: 15px;
+
+    font-style: normal;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   WHY CHOOSE US
+===================================================== */
+
+.why-section {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: 50px auto 0 auto;
+
+    padding: 45px 20px;
+
+    text-align: center;
+}
+
+
+.why-section h2 {
+    color: #1e3a8a;
+
+    font-size: 32px;
+
+    margin-bottom: 10px;
+}
+
+
+.why-subtitle {
+    color: #666;
+
+    font-size: 17px;
 
     margin-bottom: 30px;
 }
 
 
-/* =========================================
-   LABEL
-========================================= */
+.why-container {
+    display: grid;
 
-label {
-    display: block;
+    grid-template-columns:
+        repeat(4, 1fr);
 
-    margin-bottom: 7px;
-
-    color: #374151;
-
-    font-weight: bold;
+    gap: 18px;
 }
 
 
-/* =========================================
-   INPUT
-========================================= */
+.why-card {
+    background: white;
 
-input {
+    padding: 28px 18px;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 15px #d0d0d0;
+
+    transition: 0.3s;
+}
+
+
+.why-card:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 8px 20px #c5c5c5;
+}
+
+
+.why-icon {
+    font-size: 40px;
+
+    margin-bottom: 12px;
+}
+
+
+.why-card h3 {
+    color: #1e3a8a;
+
+    font-size: 18px;
+
+    margin-bottom: 10px;
+}
+
+
+.why-card p {
+    color: #666;
+
+    font-size: 14px;
+
+    font-style: normal;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   FACILITIES
+===================================================== */
+
+.facility-section {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: 30px auto 0 auto;
+
+    padding: 45px 20px;
+
+    text-align: center;
+}
+
+
+.facility-section h2 {
+    color: #1e3a8a;
+
+    font-size: 32px;
+
+    margin-bottom: 25px;
+}
+
+
+.facility-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-top: 30px;
+}
+
+
+.facility-card {
+    background: white;
+
+    padding: 28px 18px;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 15px #d0d0d0;
+
+    transition: 0.3s;
+}
+
+
+.facility-card:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 8px 20px #c5c5c5;
+}
+
+
+.facility-icon {
+    font-size: 40px;
+
+    margin-bottom: 12px;
+}
+
+
+.facility-card h3 {
+    color: #1e3a8a;
+
+    margin-bottom: 10px;
+}
+
+
+.facility-card p {
+    color: #666;
+
+    font-size: 14px;
+
+    font-style: normal;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+.gallery-section {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: 30px auto 0 auto;
+
+    padding: 45px 20px;
+
+    text-align: center;
+}
+
+
+.gallery-section h2 {
+    color: #1e3a8a;
+
+    font-size: 32px;
+
+    margin-bottom: 10px;
+}
+
+
+.gallery-subtitle {
+    color: #666;
+
+    font-size: 17px;
+
+    margin-bottom: 25px;
+}
+
+
+.gallery-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+
+    margin-top: 25px;
+}
+
+
+.gallery-box {
+    height: 180px;
+
+    background: white;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 15px #d0d0d0;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition: 0.3s;
+}
+
+
+.gallery-box:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 8px 20px #c5c5c5;
+}
+
+
+.gallery-box img {
     width: 100%;
+    height: 100%;
 
-    padding: 13px;
+    object-fit: contain;
+
+    padding: 20px;
+}
+
+
+.gallery-note {
+    color: #777;
+
+    font-size: 14px;
+
+    margin-top: 15px;
+}
+
+
+/* =====================================================
+   ADMISSION ENQUIRY
+===================================================== */
+
+.admission-section {
+    width: 90%;
+    max-width: 900px;
+
+    margin: 30px auto 0 auto;
+
+    padding: 45px 20px;
+
+    text-align: center;
+}
+
+
+.admission-section > h2 {
+    color: #1e3a8a;
+
+    font-size: 32px;
+
+    margin-bottom: 10px;
+}
+
+
+.admission-section > p {
+    color: #666;
+
+    font-size: 17px;
+
+    font-style: normal;
+}
+
+
+.admission-box {
+    margin: 25px auto 0 auto;
+
+    max-width: 600px;
+
+    background: white;
+
+    padding: 30px 20px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 4px 15px #d0d0d0;
+}
+
+
+.admission-box h3 {
+    color: #1e3a8a;
+
+    margin-bottom: 15px;
+}
+
+
+.admission-box p {
+    color: #444;
+
+    font-size: 18px;
+
+    font-style: normal;
 
     margin-bottom: 20px;
+}
 
-    border: 1px solid #d1d5db;
 
-    border-radius: 10px;
+.admission-box strong {
+    color: #dc2626;
+}
+
+
+/* CALL / WHATSAPP */
+
+.call-btn,
+.whatsapp-btn {
+    display: inline-block;
+
+    padding: 12px 22px;
+
+    margin: 5px;
+
+    border-radius: 8px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+.call-btn {
+    background: #1e3a8a;
+}
+
+
+.whatsapp-btn {
+    background: #16a34a;
+}
+
+
+.call-btn:hover,
+.whatsapp-btn:hover {
+    opacity: 0.85;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =====================================================
+   ONLINE ADMISSION FORM
+===================================================== */
+
+.enquiry-form-section {
+    width: 90%;
+    max-width: 850px;
+
+    margin: 30px auto 0 auto;
+
+    padding: 45px 20px;
+
+    text-align: center;
+}
+
+
+.enquiry-form-section h2 {
+    color: #1e3a8a;
+
+    font-size: 32px;
+
+    margin-bottom: 10px;
+}
+
+
+.enquiry-form-section > p {
+    color: #666;
+
+    font-size: 17px;
+
+    font-style: normal;
+
+    margin-bottom: 25px;
+}
+
+
+.enquiry-form {
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 4px 15px #d0d0d0;
+
+    text-align: left;
+}
+
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+
+.form-group label {
+    display: block;
+
+    color: #1e3a8a;
+
+    font-weight: bold;
+
+    margin-bottom: 7px;
+}
+
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 7px;
+
+    font-family: Arial, sans-serif;
 
     font-size: 15px;
 
@@ -131,25 +1100,34 @@ input {
 }
 
 
-input:focus {
-    border-color: #4f46e5;
+.form-group textarea {
+    resize: vertical;
 }
 
 
-/* =========================================
-   BUTTON
-========================================= */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #2563eb;
 
-button {
+    box-shadow:
+        0 0 0 2px
+        rgba(37, 99, 235, 0.1);
+}
+
+
+/* SUBMIT BUTTON */
+
+.enquiry-submit-btn {
     width: 100%;
 
     padding: 14px;
 
     border: none;
 
-    border-radius: 10px;
+    border-radius: 8px;
 
-    background: #4f46e5;
+    background: #16a34a;
 
     color: white;
 
@@ -158,254 +1136,712 @@ button {
     font-weight: bold;
 
     cursor: pointer;
+
+    transition: 0.3s;
 }
 
 
-button:hover {
-    background: #4338ca;
+.enquiry-submit-btn:hover {
+    background: #15803d;
+
+    transform:
+        translateY(-2px);
 }
 
 
-/* =========================================
-   LOGIN MESSAGE
-========================================= */
+/* =====================================================
+   CONTACT
+===================================================== */
 
-#message {
+.contact-section {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: 30px auto 0 auto;
+
+    padding: 45px 20px;
+}
+
+
+.contact-section > h2 {
     text-align: center;
 
-    margin-top: 15px;
+    color: #1e3a8a;
+
+    font-size: 32px;
+
+    margin-bottom: 30px;
+}
+
+
+.contact-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+.contact-item {
+    background: white;
+
+    padding: 25px 20px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: flex-start;
+
+    text-align: left;
+
+    box-shadow:
+        0 4px 12px #d0d0d0;
+}
+
+
+.contact-item > span {
+    font-size: 30px;
+}
+
+
+.contact-item h3 {
+    color: #1e3a8a;
+
+    font-size: 18px;
+
+    margin-bottom: 8px;
+}
+
+
+.contact-item p {
+    color: #555;
+
+    font-size: 14px;
+
+    font-style: normal;
+
+    line-height: 1.5;
+}
+
+
+/* STUDENT PANEL LINK */
+
+.panel-link {
+    display: inline-block;
+
+    margin-top: 10px;
+
+    color: #2563eb;
+
+    text-decoration: none;
+
+    font-size: 14px;
 
     font-weight: bold;
 }
 
 
-/* =========================================
+.panel-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =====================================================
    FOOTER
-========================================= */
+===================================================== */
 
-.footer {
+.main-footer {
+    margin-top: 50px;
+
+    padding: 30px 20px;
+
+    background: #1e3a8a;
+
+    color: white;
+
     text-align: center;
+}
 
-    margin-top: 25px;
 
-    color: #9ca3af;
+.main-footer h3 {
+    color: white;
+
+    margin-bottom: 8px;
+}
+
+
+.main-footer p {
+    color: #e5e7eb;
+
+    font-size: 14px;
+
+    font-style: normal;
+
+    margin-bottom: 5px;
+}
+
+
+/* =====================================================
+   MOBILE - TABLET
+===================================================== */
+
+@media (max-width: 800px) {
+
+    .main-navbar {
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+
+    .nav-menu {
+        width: 100%;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+    }
+
+
+    .nav-menu a {
+        font-size: 12px;
+
+        padding: 8px 10px;
+    }
+
+
+    .about-box-container {
+        grid-template-columns: 1fr;
+    }
+
+
+    .why-container {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .facility-container {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .gallery-container {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 500px) {
+
+    body {
+        padding-bottom: 30px;
+    }
+
+
+    .nav-logo {
+        font-size: 17px;
+    }
+
+
+    .nav-logo img {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    .nav-menu {
+        gap: 4px;
+    }
+
+
+    .nav-menu a {
+        font-size: 11px;
+
+        padding: 7px 8px;
+    }
+
+
+    #home {
+        padding-top: 30px;
+    }
+
+
+    .welcome-box {
+        width: 92%;
+
+        padding: 25px 20px;
+    }
+
+
+    .logo {
+        width: 100px;
+    }
+
+
+    h1 {
+        font-size: 32px;
+    }
+
+
+    .welcome-box h2 {
+        font-size: 18px;
+    }
+
+
+    .welcome-box h3 {
+        font-size: 15px;
+    }
+
+
+    .welcome-box p {
+        font-size: 17px;
+    }
+
+
+    .admission {
+        font-size: 18px;
+    }
+
+
+    .course-container {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    .course-card {
+        font-size: 15px;
+
+        padding: 20px 8px;
+    }
+
+
+    .course-modal {
+        padding: 15px 8px;
+    }
+
+
+    .course-modal-content {
+        width: 95%;
+
+        padding: 25px 15px;
+
+        margin: 10px auto;
+    }
+
+
+    .modal-title {
+        font-size: 24px;
+    }
+
+
+    .course-info li {
+        font-size: 15px;
+    }
+
+
+    .course-fees p {
+        font-size: 15px;
+    }
+
+
+    .about-section > h2,
+    .why-section h2,
+    .facility-section h2,
+    .gallery-section h2,
+    .admission-section > h2,
+    .enquiry-form-section h2,
+    .contact-section > h2 {
+
+        font-size: 26px;
+    }
+
+
+    .why-container {
+        grid-template-columns: 1fr;
+    }
+
+
+    .facility-container {
+        grid-template-columns: 1fr;
+    }
+
+
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+
+
+    .gallery-box {
+        height: 200px;
+    }
+
+
+    .call-btn,
+    .whatsapp-btn {
+        display: block;
+
+        margin: 8px auto;
+
+        max-width: 220px;
+    }
+
+
+    .enquiry-form {
+        padding: 20px 15px;
+    }
+
+
+    .enquiry-submit-btn {
+        font-size: 14px;
+    }
+
+}
+
+
+/* =====================================================
+   NEW STUDENT ADMISSION FORM
+===================================================== */
+
+.admission-form-title {
+    color: #1e3a8a;
+
+    font-size: 28px;
+
+    margin-bottom: 8px;
+}
+
+
+.admission-form-note {
+    color: #666;
+
+    font-size: 15px;
+
+    margin-bottom: 25px;
+}
+
+
+/* FORM TWO COLUMN */
+
+.admission-form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+
+/* FULL WIDTH FIELD */
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+
+/* PHOTO UPLOAD */
+
+.photo-upload-group {
+    grid-column: 1 / -1;
+
+    text-align: center;
+}
+
+
+.photo-upload-box {
+    width: 150px;
+    height: 180px;
+
+    margin: 10px auto 12px auto;
+
+    border: 2px dashed #2563eb;
+
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+.photo-upload-box img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.photo-upload-box span {
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+.photo-upload-group input[type="file"] {
+    width: 100%;
+
+    max-width: 400px;
+
+    padding: 8px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 7px;
+
+    background: white;
+}
+
+
+.photo-upload-group small {
+    display: block;
+
+    margin-top: 7px;
+
+    color: #777;
 
     font-size: 12px;
 }
 
 
-/* =========================================
-   STUDENT TABLE
-========================================= */
+/* READONLY FIELDS */
 
-#studentTable button {
-    display: inline-block;
+.form-group input[readonly] {
+    background: #f1f5f9;
 
-    margin: 2px;
+    color: #333;
 
-    padding: 7px 11px;
+    font-weight: bold;
+}
+
+
+/* DUE FIELD */
+
+#admissionDue {
+    color: #dc2626;
+
+    font-weight: bold;
+}
+
+
+/* FORM BUTTON AREA */
+
+.admission-form-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+
+.admission-form-buttons button {
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 8px;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: bold;
 
     cursor: pointer;
+
+    transition: 0.3s;
 }
 
 
-#studentTable td:last-child {
-    white-space: nowrap;
+.admission-form-buttons button:hover {
+    transform:
+        translateY(-2px);
 }
 
 
-#studentTable td:last-child button {
-    display: inline-block !important;
+/* SAVE */
 
-    width: auto !important;
-
-    margin: 2px 4px 2px 0 !important;
+.admission-save-btn {
+    background: #16a34a;
 }
 
 
-/* =========================================
-   PROFESSIONAL MODAL
-========================================= */
+.admission-save-btn:hover {
+    background: #15803d;
+}
 
-.modal {
+
+/* PRINT */
+
+.admission-print-btn {
+    background: #2563eb;
+}
+
+
+.admission-print-btn:hover {
+    background: #1d4ed8;
+}
+
+
+/* RESET */
+
+.admission-reset-btn {
+    background: #6b7280;
+}
+
+
+.admission-reset-btn:hover {
+    background: #4b5563;
+}
+
+
+/* =====================================================
+   ADMISSION PRINT AREA
+===================================================== */
+
+.admission-print-area {
     display: none;
 
-    position: fixed;
+    width: 210mm;
 
-    z-index: 9999;
-
-    left: 0;
-
-    top: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    background: rgba(
-        15,
-        23,
-        42,
-        0.65
-    );
-
-    backdrop-filter: blur(4px);
-
-    animation: fadeIn 0.2s ease;
-
-    overflow-y: auto;
-
-    overflow-x: hidden;
-
-    padding: 20px;
-}
-
-
-/* =========================================
-   POPUP BOX
-========================================= */
-
-.modal-content {
-    position: relative;
-
-    background: #ffffff;
-
-    width: 430px;
-
-    max-width: 100%;
+    min-height: 297mm;
 
     margin: 20px auto;
 
-    padding: 0 30px 30px 30px;
+    padding: 15mm;
 
-    border-radius: 18px;
+    background: white;
 
-    box-shadow:
-        0 20px 50px rgba(
-            0,
-            0,
-            0,
-            0.25
-        );
+    color: #111;
 
-    overflow-y: auto;
+    text-align: left;
 
-    overflow-x: hidden;
-
-    max-height: calc(100vh - 40px);
-
-    animation: popupOpen 0.25s ease;
+    border: 1px solid #ddd;
 }
 
 
-/* =========================================
-   RECEIPT MODAL
-========================================= */
+/* PRINT HEADER */
 
-#receiptModal {
-    overflow-y: auto;
+.admission-print-header {
+    text-align: center;
 
-    overflow-x: hidden;
+    border-bottom: 2px solid #1e3a8a;
 
-    padding: 20px;
+    padding-bottom: 12px;
+
+    margin-bottom: 18px;
 }
 
 
-/* =========================================
-   RECEIPT POPUP CONTENT
-========================================= */
+.admission-print-header img {
+    width: 65px;
 
-#receiptModal .modal-content {
-    width: 600px;
+    height: 65px;
 
-    max-width: 100%;
-
-    max-height: calc(100vh - 40px);
-
-    overflow-y: auto;
-
-    overflow-x: hidden;
-
-    margin: 20px auto;
-}
-
-
-/* =========================================
-   PAYMENT MODAL
-========================================= */
-
-#paymentModal .modal-content {
-    max-height: calc(100vh - 40px);
-
-    overflow-y: auto;
-}
-
-
-/* =========================================
-   EDIT MODAL
-========================================= */
-
-#editModal .modal-content {
-    max-height: calc(100vh - 40px);
-
-    overflow-y: auto;
-}
-
-
-/* =========================================
-   POPUP TOP HEADER
-========================================= */
-
-.modal-content::before {
-    content: "";
+    object-fit: contain;
 
     display: block;
 
-    height: 7px;
-
-    margin:
-        0 -30px 22px -30px;
-
-    background: linear-gradient(
-        90deg,
-        #2563eb,
-        #7c3aed
-    );
+    margin: 0 auto 5px auto;
 }
 
 
-/* =========================================
-   POPUP TITLE
-========================================= */
+.admission-print-header h1 {
+    color: #1e3a8a;
 
-.modal-content h2 {
-    margin:
-        0 0 25px 0;
+    font-size: 28px;
 
+    margin: 0 0 5px 0;
+}
+
+
+.admission-print-header h2 {
+    color: #2563eb;
+
+    font-size: 18px;
+
+    margin: 0 0 5px 0;
+}
+
+
+.admission-print-header p {
+    color: #555;
+
+    font-size: 13px;
+
+    margin: 3px 0;
+}
+
+
+/* PRINT TITLE */
+
+.admission-print-title {
     text-align: center;
 
-    font-size: 24px;
+    font-size: 20px;
 
-    color: #1e293b;
+    color: #111;
 
-    font-weight: 700;
+    margin: 15px 0;
+
+    font-weight: bold;
 }
 
 
-/* =========================================
-   CLOSE BUTTON
-========================================= */
+/* PRINT TOP SECTION */
 
-.close {
-    position: absolute;
+.admission-print-top {
+    display: flex;
 
-    right: 18px;
+    justify-content: space-between;
 
-    top: 16px;
+    align-items: flex-start;
 
-    width: 34px;
+    gap: 20px;
 
-    height: 34px;
+    margin-bottom: 18px;
+}
+
+
+/* PRINT PHOTO */
+
+.print-photo-box {
+    width: 110px;
+
+    height: 135px;
+
+    border: 1px solid #333;
 
     display: flex;
 
@@ -413,578 +1849,981 @@ button:hover {
 
     justify-content: center;
 
-    border-radius: 50%;
+    overflow: hidden;
 
-    font-size: 25px;
-
-    font-weight: bold;
-
-    color: #64748b;
-
-    background: #f1f5f9;
-
-    cursor: pointer;
-
-    transition: 0.2s;
+    flex-shrink: 0;
 }
 
 
-.close:hover {
-    background: #fee2e2;
-
-    color: #dc2626;
-
-    transform: rotate(90deg);
-}
-
-
-/* =========================================
-   POPUP LABEL
-========================================= */
-
-.modal-content label {
-    display: block;
-
-    margin-top: 15px;
-
-    margin-bottom: 7px;
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    color: #334155;
-}
-
-
-/* =========================================
-   POPUP INPUT
-========================================= */
-
-.modal-content input {
+.print-photo-box img {
     width: 100%;
 
-    box-sizing: border-box;
+    height: 100%;
 
-    padding: 12px 14px;
-
-    margin-bottom: 0;
-
-    border: 1px solid #cbd5e1;
-
-    border-radius: 9px;
-
-    background: #f8fafc;
-
-    font-size: 15px;
-
-    outline: none;
-
-    transition: 0.2s;
+    object-fit: cover;
 }
 
 
-.modal-content input:focus {
-    border-color: #2563eb;
+/* PRINT INFORMATION TABLE */
 
-    background: #ffffff;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(
-            37,
-            99,
-            235,
-            0.12
-        );
-}
-
-
-/* =========================================
-   POPUP SAVE BUTTON
-========================================= */
-
-.modal-content button {
-    width: 100%;
-
-    margin-top: 25px;
-
-    padding: 13px;
-
-    border: none;
-
-    border-radius: 9px;
-
-    background: linear-gradient(
-        90deg,
-        #2563eb,
-        #7c3aed
-    );
-
-    color: white;
-
-    font-size: 16px;
-
-    font-weight: 600;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 6px 15px
-        rgba(
-            37,
-            99,
-            235,
-            0.25
-        );
-
-    transition: 0.2s;
-}
-
-
-.modal-content button:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 9px 20px
-        rgba(
-            37,
-            99,
-            235,
-            0.35
-        );
-}
-
-
-.modal-content button:active {
-    transform: translateY(0);
-}
-
-
-/* =========================================
-   RECEIPT AREA
-========================================= */
-
-#receiptContent {
-    width: 100%;
-
-    background: white;
-}
-
-
-/* =========================================
-   RECEIPT TABLE
-========================================= */
-
-#receiptContent table {
+.admission-print-table {
     width: 100%;
 
     border-collapse: collapse;
+
+    margin-top: 12px;
 }
 
 
-#receiptContent table th,
-#receiptContent table td {
-    padding: 10px;
+.admission-print-table th,
+.admission-print-table td {
+    border: 1px solid #999;
 
-    border: 1px solid #d1d5db;
+    padding: 8px 10px;
 
-    text-align: left;
+    font-size: 13px;
+
+    vertical-align: top;
 }
 
 
-/* =========================================
-   RECEIPT PRINT BUTTON AREA
-========================================= */
+.admission-print-table th {
+    width: 28%;
 
-.receipt-buttons {
-    display: flex;
+    background: #f1f5f9;
 
-    gap: 10px;
+    font-weight: bold;
 
+    color: #1e3a8a;
+}
+
+
+/* PAYMENT SECTION */
+
+.admission-print-payment {
     margin-top: 20px;
 }
 
 
-.receipt-buttons button {
-    flex: 1;
+.admission-print-payment h3 {
+    color: #1e3a8a;
+
+    font-size: 16px;
+
+    margin-bottom: 8px;
 }
 
 
-/* =========================================
-   EDIT POPUP BUTTONS
-========================================= */
+/* =====================================================
+   SIGNATURE
+===================================================== */
 
-.edit-buttons {
+.admission-signature-area {
     display: flex;
 
-    gap: 12px;
+    justify-content: space-between;
 
-    margin-top: 25px;
+    margin-top: 60px;
+
+    font-size: 13px;
 }
 
 
-.edit-buttons button {
-    width: 50%;
+.admission-signature {
+    width: 180px;
 
-    margin-top: 0;
+    text-align: center;
+
+    border-top: 1px solid #333;
+
+    padding-top: 7px;
 }
 
 
-/* =========================================
-   SAVE BUTTON
-========================================= */
+/* =====================================================
+   FEE RECEIPT SIGNATURE
+===================================================== */
 
-.edit-buttons .save-btn {
-    background: linear-gradient(
-        90deg,
-        #2563eb,
-        #7c3aed
-    );
+.receipt-signatures {
+    width: 100%;
+
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    justify-content: space-between !important;
+
+    align-items: flex-end !important;
+
+    gap: 30px;
+
+    margin-top: 45px;
 }
 
 
-.edit-buttons .save-btn:hover {
-    background: linear-gradient(
-        90deg,
-        #1d4ed8,
-        #6d28d9
-    );
+.receipt-signature-box {
+    width: 45% !important;
+
+    flex: 0 0 45% !important;
+
+    text-align: center !important;
 }
 
 
-/* =========================================
-   CANCEL BUTTON
-========================================= */
+.receipt-signature-line {
+    width: 100%;
 
-.edit-buttons .cancel-btn {
-    background: #e5e7eb;
+    border-top: 1px solid #222;
 
-    color: #374151;
+    padding-top: 5px;
 
-    box-shadow: none;
+    font-size: 13px;
+
+    font-weight: bold;
+
+    text-align: center;
 }
 
 
-.edit-buttons .cancel-btn:hover {
-    background: #d1d5db;
+/* =====================================================
+   ADMISSION RECEIPT LOGO
+===================================================== */
 
-    color: #111827;
+.admission-receipt-logo {
+    width: 55px;
 
-    transform: translateY(-2px);
+    height: 55px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 0 auto 6px auto;
 }
 
 
-/* =========================================
-   ANIMATION
-========================================= */
+/* =====================================================
+   ADMISSION RECEIPT SIGNATURES
+===================================================== */
 
-@keyframes fadeIn {
+.admission-receipt-signatures {
+    width: 100%;
 
-    from {
-        opacity: 0;
-    }
+    display: flex !important;
 
-    to {
-        opacity: 1;
-    }
+    flex-direction: row !important;
 
+    justify-content: space-between !important;
+
+    align-items: flex-end !important;
+
+    gap: 30px;
+
+    margin-top: 50px;
+
+    padding: 0 5px;
+
+    page-break-inside: avoid;
+
+    break-inside: avoid;
 }
 
 
-@keyframes popupOpen {
+.admission-signature-box {
+    width: 45% !important;
 
-    from {
-        opacity: 0;
+    flex: 0 0 45% !important;
 
-        transform:
-            translateY(-20px)
-            scale(0.96);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-
+    text-align: center !important;
 }
 
 
-/* =========================================
-   PRINT RECEIPT
-========================================= */
+.signature-space {
+    height: 40px;
+}
+
+
+.admission-signature-line {
+    width: 100%;
+
+    border-top: 1px solid #222;
+
+    padding-top: 5px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    text-align: center;
+}
+
+
+/* =====================================================
+   ALL PRINT SETTINGS
+===================================================== */
 
 @media print {
 
     @page {
         size: A4;
 
-        margin: 15mm;
+        margin: 0;
     }
 
 
-    html,
     body {
         background: white !important;
 
-        min-height: auto !important;
-
-        height: auto !important;
-
-        overflow: visible !important;
-    }
-
-
-    body {
-        margin: 0 !important;
-
         padding: 0 !important;
+
+        margin: 0 !important;
     }
 
 
-    /* Hide complete dashboard */
+    /* =================================================
+       PUBLIC ADMISSION PRINT
+    ================================================= */
+
     body > * {
         display: none !important;
     }
 
 
-    /* Show Receipt Modal */
-    #receiptModal {
+    #admissionPrintArea {
         display: block !important;
 
-        position: static !important;
+        width: 210mm !important;
 
-        width: 100% !important;
-
-        height: auto !important;
-
-        min-height: 0 !important;
-
-        padding: 0 !important;
+        min-height: 297mm !important;
 
         margin: 0 !important;
+
+        padding: 10mm 12mm !important;
+
+        border: none !important;
+
+        box-shadow: none !important;
 
         background: white !important;
 
-        overflow: visible !important;
+        color: #111 !important;
 
-        backdrop-filter: none !important;
+        text-align: left !important;
     }
 
 
-    /* Receipt popup */
-    #receiptModal .modal-content {
+    #admissionPrintArea .admission-print-area {
         display: block !important;
+    }
 
-        position: static !important;
+
+    /* PRINT HEADER */
+
+    #admissionPrintArea .admission-print-header {
+        position: relative !important;
 
         width: 100% !important;
 
+        display: block !important;
+
+        text-align: center !important;
+
+        margin: 0 auto 12px auto !important;
+
+        padding: 0 0 8px 0 !important;
+
+        border-bottom: 2px solid #1e3a8a !important;
+    }
+
+
+    /* PUBLIC ADMISSION LOGO */
+
+    #admissionPrintArea .admission-print-header img {
+        display: block !important;
+
+        width: 20px !important;
+
+        height: 20px !important;
+
+        max-width: 20px !important;
+
+        max-height: 20px !important;
+
+        object-fit: contain !important;
+
+        margin: 0 auto 4px auto !important;
+    }
+
+
+    /* INSTITUTE NAME */
+
+    #admissionPrintArea .admission-print-header h1 {
+        width: 100% !important;
+
+        text-align: center !important;
+
+        color: #1e3a8a !important;
+
+        font-size: 25px !important;
+
+        line-height: 30px !important;
+
+        margin: 0 0 2px 0 !important;
+
+        padding: 0 !important;
+    }
+
+
+    /* SUBTITLE */
+
+    #admissionPrintArea .admission-print-header h2 {
+        width: 100% !important;
+
+        text-align: center !important;
+
+        color: #2563eb !important;
+
+        font-size: 16px !important;
+
+        line-height: 20px !important;
+
+        margin: 0 0 3px 0 !important;
+
+        padding: 0 !important;
+    }
+
+
+    /* ADDRESS / PHONE */
+
+    #admissionPrintArea .admission-print-header p {
+        width: 100% !important;
+
+        text-align: center !important;
+
+        color: #555 !important;
+
+        font-size: 11px !important;
+
+        line-height: 15px !important;
+
+        margin: 1px 0 !important;
+
+        padding: 0 !important;
+    }
+
+
+    /* ADMISSION TITLE */
+
+    #admissionPrintArea .admission-print-title {
+        width: 100% !important;
+
+        display: block !important;
+
+        text-align: center !important;
+
+        color: #111 !important;
+
+        font-size: 19px !important;
+
+        font-weight: bold !important;
+
+        line-height: 24px !important;
+
+        margin: 10px 0 10px 0 !important;
+
+        padding: 0 !important;
+    }
+
+
+    /* TOP AREA */
+
+    #admissionPrintArea .admission-print-top {
+        width: 100% !important;
+
+        display: flex !important;
+
+        flex-direction: row !important;
+
+        justify-content: space-between !important;
+
+        align-items: flex-start !important;
+
+        gap: 15px !important;
+
+        margin: 0 0 10px 0 !important;
+
+        padding: 0 !important;
+    }
+
+
+    /* STUDENT PHOTO */
+
+    #admissionPrintArea .print-photo-box {
+        width: 85px !important;
+
+        height: 105px !important;
+
+        min-width: 85px !important;
+
+        max-width: 85px !important;
+
+        flex-shrink: 0 !important;
+
+        margin: 0 0 0 auto !important;
+
+        border: 1px solid #333 !important;
+
+        display: flex !important;
+
+        align-items: center !important;
+
+        justify-content: center !important;
+
+        overflow: hidden !important;
+    }
+
+
+    #admissionPrintArea .print-photo-box img {
+        width: 100% !important;
+
+        height: 100% !important;
+
         max-width: 100% !important;
+
+        max-height: 100% !important;
+
+        object-fit: cover !important;
+
+        margin: 0 !important;
+    }
+
+
+    /* TABLE */
+
+    #admissionPrintArea .admission-print-table {
+        width: 100% !important;
+
+        border-collapse: collapse !important;
+
+        margin-top: 8px !important;
+    }
+
+
+    #admissionPrintArea .admission-print-table th,
+    #admissionPrintArea .admission-print-table td {
+        border: 1px solid #999 !important;
+
+        padding: 6px 8px !important;
+
+        font-size: 11px !important;
+
+        line-height: 14px !important;
+    }
+
+
+    /* PAYMENT */
+
+    #admissionPrintArea .admission-print-payment {
+        margin-top: 15px !important;
+    }
+
+
+    #admissionPrintArea .admission-print-payment h3 {
+        color: #1e3a8a !important;
+
+        font-size: 15px !important;
+
+        margin-bottom: 6px !important;
+    }
+
+
+    /* RULES */
+
+    #admissionPrintArea .print-rules {
+        width: 100% !important;
+
+        margin-top: 18px !important;
+
+        padding-top: 7px !important;
+
+        border-top: 1px solid #333 !important;
+    }
+
+
+    #admissionPrintArea .print-rules h3 {
+        font-size: 13px !important;
+
+        font-weight: bold !important;
+
+        text-align: left !important;
+
+        margin: 0 0 5px 0 !important;
+
+        padding: 0 !important;
+    }
+
+
+    #admissionPrintArea .print-rules ul {
+        margin: 0 !important;
+
+        padding-left: 22px !important;
+    }
+
+
+    #admissionPrintArea .print-rules li {
+        font-size: 10px !important;
+
+        line-height: 13px !important;
+
+        margin-bottom: 3px !important;
+
+        padding: 0 !important;
+    }
+
+
+    /* THREE SIGNATURES */
+
+    #admissionPrintArea .three-signatures {
+        width: 100% !important;
+
+        display: flex !important;
+
+        flex-direction: row !important;
+
+        justify-content: space-between !important;
+
+        align-items: flex-end !important;
+
+        margin-top: 30px !important;
+
+        padding: 0 5px !important;
+
+        page-break-inside: avoid !important;
+
+        break-inside: avoid !important;
+    }
+
+
+    #admissionPrintArea .three-signatures .signature-box {
+        width: 30% !important;
+
+        min-height: 80px !important;
+
+        text-align: center !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+    }
+
+
+    #admissionPrintArea .three-signatures .signature-space {
+        width: 100% !important;
+
+        height: 35px !important;
+
+        display: block !important;
+    }
+
+
+    #admissionPrintArea .three-signatures .signature-line {
+        width: 100% !important;
+
+        font-size: 10px !important;
+
+        line-height: 13px !important;
+
+        margin: 0 0 3px 0 !important;
+
+        padding: 0 !important;
+    }
+
+
+    #admissionPrintArea .three-signatures .signature-box strong {
+        display: block !important;
+
+        font-size: 10px !important;
+
+        line-height: 13px !important;
+
+        font-weight: bold !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+    }
+
+
+    /* FOOTER */
+
+    #admissionPrintArea .print-footer {
+        width: 100% !important;
+
+        text-align: center !important;
+
+        font-size: 9px !important;
+
+        line-height: 12px !important;
+
+        margin-top: 5px !important;
+
+        padding: 0 !important;
+
+        page-break-before: avoid !important;
+
+        page-break-after: avoid !important;
+
+        break-before: avoid !important;
+
+        break-after: avoid !important;
+    }
+
+
+    /* =================================================
+       FEE RECEIPT PRINT
+    ================================================= */
+
+    #receiptModal {
+        position: absolute !important;
+
+        left: 0 !important;
+
+        top: 0 !important;
+
+        width: 100% !important;
 
         height: auto !important;
 
-        max-height: none !important;
+        background: white !important;
+    }
+
+
+    #receiptModal .modal-content {
+        width: 100% !important;
+
+        max-width: none !important;
 
         margin: 0 !important;
 
         padding: 0 !important;
 
+        box-shadow: none !important;
+
+        border-radius: 0 !important;
+    }
+
+
+    #receiptModal .receipt {
+        width: 100% !important;
+
+        padding: 18px !important;
+
+        border: 2px solid #222 !important;
+
+        background: white !important;
+    }
+
+
+    /* FEE RECEIPT LOGO */
+
+    #receiptModal .receipt-logo {
+        width: 60px !important;
+
+        height: 60px !important;
+
+        max-width: 60px !important;
+
+        max-height: 60px !important;
+
+        object-fit: contain !important;
+
+        display: block !important;
+
+        margin: 0 auto 6px auto !important;
+    }
+
+
+    /* FEE RECEIPT SIGNATURE */
+
+    #receiptModal .receipt-signatures {
+        width: 100% !important;
+
+        display: flex !important;
+
+        flex-direction: row !important;
+
+        justify-content: space-between !important;
+
+        align-items: flex-end !important;
+
+        gap: 30px !important;
+
+        margin-top: 45px !important;
+
+        page-break-inside: avoid !important;
+
+        break-inside: avoid !important;
+    }
+
+
+    #receiptModal .receipt-signature-box {
+        width: 45% !important;
+
+        flex: 0 0 45% !important;
+
+        text-align: center !important;
+    }
+
+
+    #receiptModal .receipt-signature-line {
+        width: 100% !important;
+
+        border-top: 1px solid #222 !important;
+
+        padding-top: 5px !important;
+
+        font-size: 12px !important;
+
+        text-align: center !important;
+    }
+
+
+    /* =================================================
+       DASHBOARD ADMISSION RECEIPT PRINT
+    ================================================= */
+
+    #admissionReceiptModal {
+        position: absolute !important;
+
+        left: 0 !important;
+
+        top: 0 !important;
+
+        width: 100% !important;
+
+        height: auto !important;
+
+        background: white !important;
+
+        display: block !important;
+
         overflow: visible !important;
+    }
+
+
+    #admissionReceiptModal .modal-content {
+        display: block !important;
+
+        width: 100% !important;
+
+        max-width: none !important;
+
+        margin: 0 !important;
+
+        padding: 15px !important;
 
         background: white !important;
 
         box-shadow: none !important;
 
-        border-radius: 0 !important;
-
-        animation: none !important;
+        border: none !important;
     }
 
 
-    /* Hide popup top line */
-    #receiptModal .modal-content::before {
-        display: none !important;
-    }
-
-
-    /* Hide close button */
-    #receiptModal .close {
-        display: none !important;
-    }
-
-
-    /* Hide print buttons */
-    .receipt-buttons {
-        display: none !important;
-    }
-
-
-    /* Receipt itself */
-    #receiptContent {
+    #admissionReceiptModal .receipt {
         display: block !important;
-
-        visibility: visible !important;
-
-        position: static !important;
 
         width: 100% !important;
 
-        max-width: 100% !important;
+        max-width: 700px !important;
 
-        height: auto !important;
+        margin: 0 auto !important;
 
-        max-height: none !important;
-
-        overflow: visible !important;
+        padding: 20px !important;
 
         background: white !important;
 
-        color: #000 !important;
+        color: #222 !important;
     }
 
 
-    #receiptContent * {
-        visibility: visible !important;
+    /* ADMISSION RECEIPT LOGO */
+
+    #admissionReceiptModal .admission-receipt-logo {
+        width: 55px !important;
+
+        height: 55px !important;
+
+        max-width: 55px !important;
+
+        max-height: 55px !important;
+
+        display: block !important;
+
+        object-fit: contain !important;
+
+        margin: 0 auto 6px auto !important;
     }
 
 
-    /* Receipt table */
-    #receiptContent table {
+    /* ADMISSION RECEIPT HEADER */
+
+    #admissionReceiptModal .receipt-header {
+        display: block !important;
+
+        text-align: center !important;
+    }
+
+
+    #admissionReceiptModal .receipt-header h2 {
+        text-align: center !important;
+
+        margin: 0 0 5px 0 !important;
+    }
+
+
+    #admissionReceiptModal .receipt-header h3 {
+        text-align: center !important;
+
+        margin-top: 5px !important;
+    }
+
+
+    /* RECEIPT ROW */
+
+    #admissionReceiptModal .receipt-row {
+        display: flex !important;
+
+        justify-content: space-between !important;
+
+        align-items: center !important;
+
         width: 100% !important;
 
-        border-collapse: collapse !important;
+        padding: 8px 0 !important;
     }
 
 
-    #receiptContent table th,
-    #receiptContent table td {
-        border: 1px solid #000 !important;
+    /* ADMISSION RECEIPT SIGNATURES */
 
-        padding: 10px !important;
+    #admissionReceiptModal .admission-receipt-signatures {
+        width: 100% !important;
 
-        color: #000 !important;
+        display: flex !important;
+
+        flex-direction: row !important;
+
+        justify-content: space-between !important;
+
+        align-items: flex-end !important;
+
+        gap: 30px !important;
+
+        margin-top: 50px !important;
+
+        padding: 0 5px !important;
+
+        page-break-inside: avoid !important;
+
+        break-inside: avoid !important;
+    }
+
+
+    #admissionReceiptModal .admission-signature-box {
+        width: 45% !important;
+
+        flex: 0 0 45% !important;
+
+        text-align: center !important;
+    }
+
+
+    #admissionReceiptModal .signature-space {
+        height: 40px !important;
+    }
+
+
+    #admissionReceiptModal .admission-signature-line {
+        width: 100% !important;
+
+        border-top: 1px solid #222 !important;
+
+        padding-top: 5px !important;
+
+        font-size: 12px !important;
+
+        font-weight: bold !important;
+
+        text-align: center !important;
+    }
+
+
+    /* PRINT BUTTON / CLOSE BUTTON */
+
+    .no-print {
+        display: none !important;
     }
 
 }
 
 
-/* =========================================
-   MOBILE RESPONSIVE
-========================================= */
+/* =====================================================
+   MOBILE ADMISSION FORM
+===================================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
 
-    .modal {
-        padding: 10px;
+    .admission-form-grid {
+        grid-template-columns: 1fr;
     }
 
 
-    .modal-content {
-        width: 100%;
-
-        max-width: 100%;
-
-        margin: 10px auto;
-
-        padding:
-            0 20px 25px 20px;
-
-        max-height:
-            calc(100vh - 20px);
+    .form-group.full-width {
+        grid-column: auto;
     }
 
 
-    .modal-content::before {
-        margin-left: -20px;
+    .photo-upload-box {
+        width: 130px;
 
-        margin-right: -20px;
+        height: 160px;
     }
 
 
-    .modal-content h2 {
-        font-size: 21px;
-    }
-
-
-    #receiptModal .modal-content {
-        width: 100%;
-
-        max-width: 100%;
-
-        margin: 10px auto;
-
-        max-height:
-            calc(100vh - 20px);
-    }
-
-
-    .edit-buttons {
+    .admission-form-buttons {
         flex-direction: column;
     }
 
 
-    .edit-buttons button {
+    .admission-form-buttons button {
         width: 100%;
     }
 
 
-    .receipt-buttons {
+    .admission-print-area {
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 15px;
+    }
+
+
+    .admission-print-top {
         flex-direction: column;
     }
 
 
-    .receipt-buttons button {
-        width: 100%;
-    }
-
-}
-
-
-/* =========================================
-   VERY SMALL SCREEN
-========================================= */
-
-@media (max-width: 400px) {
-
-    .modal-content {
-        padding:
-            0 15px 20px 15px;
+    .print-photo-box {
+        margin: auto;
     }
 
 
-    .modal-content::before {
-        margin-left: -15px;
+    .admission-print-table th,
+    .admission-print-table td {
+        font-size: 11px;
 
-        margin-right: -15px;
+        padding: 6px;
     }
 
-
-    #receiptContent table {
-        font-size: 13px;
-    }
-
-
-    #receiptContent table th,
-    #receiptContent table td {
-        padding: 7px;
-    }
-
-}
-.centre-logo {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto 10px;
-}
-.receipt-logo {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto 10px;
 }
