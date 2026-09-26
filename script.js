@@ -8,10 +8,254 @@ const API_URL =
 
 
 /* =====================================================
+   CENTER LOGIN
+===================================================== */
+
+function openCenterLogin() {
+
+    const modal =
+        document.getElementById("centerLoginModal");
+
+    const username =
+        document.getElementById("centerUsername");
+
+    const password =
+        document.getElementById("centerPassword");
+
+    const error =
+        document.getElementById("centerLoginError");
+
+
+    if (modal) {
+
+        modal.style.display = "flex";
+
+    }
+
+
+    if (username) {
+
+        username.value = "";
+
+        setTimeout(function () {
+
+            username.focus();
+
+        }, 100);
+
+    }
+
+
+    if (password) {
+
+        password.value = "";
+
+    }
+
+
+    if (error) {
+
+        error.textContent = "";
+
+    }
+
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+
+function closeCenterLogin() {
+
+    const modal =
+        document.getElementById("centerLoginModal");
+
+
+    if (modal) {
+
+        modal.style.display = "none";
+
+    }
+
+
+    document.body.style.overflow = "auto";
+
+}
+
+
+
+function centerLogin() {
+
+    const username =
+        document.getElementById(
+            "centerUsername"
+        )?.value.trim();
+
+
+    const password =
+        document.getElementById(
+            "centerPassword"
+        )?.value;
+
+
+    const error =
+        document.getElementById(
+            "centerLoginError"
+        );
+
+
+    /* =================================================
+       LOGIN DETAILS
+    ================================================= */
+
+    const correctUsername = "admin";
+
+    const correctPassword = "12345";
+
+
+    /* =================================================
+       EMPTY CHECK
+    ================================================= */
+
+    if (!username || !password) {
+
+        if (error) {
+
+            error.textContent =
+                "Please enter Username and Password.";
+
+        }
+
+        return;
+
+    }
+
+
+    /* =================================================
+       CHECK LOGIN
+    ================================================= */
+
+    if (
+        username === correctUsername &&
+        password === correctPassword
+    ) {
+
+        sessionStorage.setItem(
+            "centerLoggedIn",
+            "true"
+        );
+
+
+        window.location.href =
+            "dashboard.html";
+
+    }
+
+
+    else {
+
+        if (error) {
+
+            error.textContent =
+                "Invalid Username or Password.";
+
+        }
+
+
+        const passwordBox =
+            document.getElementById(
+                "centerPassword"
+            );
+
+
+        if (passwordBox) {
+
+            passwordBox.value = "";
+
+            passwordBox.focus();
+
+        }
+
+    }
+
+}
+
+
+
+/* =====================================================
+   LOGIN MODAL EVENTS
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        const modal =
+            document.getElementById(
+                "centerLoginModal"
+            );
+
+
+        if (!modal) {
+
+            return;
+
+        }
+
+
+        if (
+            event.key === "Enter" &&
+            modal.style.display === "flex"
+        ) {
+
+            centerLogin();
+
+        }
+
+
+        if (
+            event.key === "Escape" &&
+            modal.style.display === "flex"
+        ) {
+
+            closeCenterLogin();
+
+        }
+
+    }
+);
+
+
+
+window.addEventListener(
+    "click",
+    function(event) {
+
+        const modal =
+            document.getElementById(
+                "centerLoginModal"
+            );
+
+
+        if (
+            modal &&
+            event.target === modal
+        ) {
+
+            closeCenterLogin();
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
    UNIQUE COMPUTERS
    COURSE DETAILS
 ===================================================== */
-
 
 const courseData = {
 
@@ -739,14 +983,14 @@ const courseData = {
 };
 
 
-
 /* =====================================================
    SHOW COURSE DETAILS
 ===================================================== */
 
 function showCourseDetails(course) {
 
-    const data = courseData[course];
+    const data =
+        courseData[course];
 
 
     if (!data) {
@@ -763,7 +1007,8 @@ function showCourseDetails(course) {
 
     document.getElementById(
         "modalCourseTitle"
-    ).textContent = data.title;
+    ).textContent =
+        data.title;
 
 
     let contentHTML = "";
@@ -875,8 +1120,6 @@ function showCourseDetails(course) {
 
                 `;
 
-
-                /* Divider between packages */
 
                 if (
                     index <
@@ -1033,18 +1276,16 @@ function showCourseDetails(course) {
     }
 
 
-    /* =================================================
-       SHOW MODAL
-    ================================================= */
-
     document.getElementById(
         "courseDetailsContent"
-    ).innerHTML = contentHTML;
+    ).innerHTML =
+        contentHTML;
 
 
     document.getElementById(
         "courseModal"
-    ).style.display = "block";
+    ).style.display =
+        "block";
 
 
     document.body.style.overflow =
@@ -1060,9 +1301,18 @@ function showCourseDetails(course) {
 
 function closeCourseDetails() {
 
-    document.getElementById(
-        "courseModal"
-    ).style.display = "none";
+    const modal =
+        document.getElementById(
+            "courseModal"
+        );
+
+
+    if (modal) {
+
+        modal.style.display =
+            "none";
+
+    }
 
 
     document.body.style.overflow =
@@ -1073,7 +1323,7 @@ function closeCourseDetails() {
 
 
 /* =====================================================
-   CLICK OUTSIDE MODAL
+   CLICK OUTSIDE COURSE MODAL
 ===================================================== */
 
 window.addEventListener(
@@ -1087,6 +1337,7 @@ window.addEventListener(
 
 
         if (
+            modal &&
             event.target === modal
         ) {
 
@@ -1100,7 +1351,7 @@ window.addEventListener(
 
 
 /* =====================================================
-   ESC KEY
+   ESC KEY FOR COURSE MODAL
 ===================================================== */
 
 document.addEventListener(
@@ -1111,7 +1362,41 @@ document.addEventListener(
             event.key === "Escape"
         ) {
 
-            closeCourseDetails();
+            const loginModal =
+                document.getElementById(
+                    "centerLoginModal"
+                );
+
+
+            const courseModal =
+                document.getElementById(
+                    "courseModal"
+                );
+
+
+            /*
+               If login modal is open,
+               do not close course modal.
+            */
+
+            if (
+                loginModal &&
+                loginModal.style.display === "flex"
+            ) {
+
+                return;
+
+            }
+
+
+            if (
+                courseModal &&
+                courseModal.style.display === "block"
+            ) {
+
+                closeCourseDetails();
+
+            }
 
         }
 
@@ -1122,46 +1407,61 @@ document.addEventListener(
 
 /* =====================================================
    OLD ADMISSION ENQUIRY - WHATSAPP
-   Kept for now.
-   Later index.html থেকে এই form remove করা হবে.
 ===================================================== */
 
 function sendAdmissionEnquiry() {
 
     const name =
-        document.getElementById("enquiryName").value.trim();
+        document.getElementById(
+            "enquiryName"
+        )?.value.trim();
+
 
     const mobile =
-        document.getElementById("enquiryMobile").value.trim();
+        document.getElementById(
+            "enquiryMobile"
+        )?.value.trim();
+
 
     const course =
-        document.getElementById("enquiryCourse").value;
+        document.getElementById(
+            "enquiryCourse"
+        )?.value;
+
 
     const message =
-        document.getElementById("enquiryMessage").value.trim();
+        document.getElementById(
+            "enquiryMessage"
+        )?.value.trim();
 
 
-    if (name === "") {
+    if (!name) {
 
-        alert("Please enter Student Name.");
-
-        return;
-
-    }
-
-
-    if (mobile === "") {
-
-        alert("Please enter Mobile Number.");
+        alert(
+            "Please enter Student Name."
+        );
 
         return;
 
     }
 
 
-    if (course === "") {
+    if (!mobile) {
 
-        alert("Please select a Course.");
+        alert(
+            "Please enter Mobile Number."
+        );
+
+        return;
+
+    }
+
+
+    if (!course) {
+
+        alert(
+            "Please select a Course."
+        );
 
         return;
 
@@ -1178,7 +1478,9 @@ function sendAdmissionEnquiry() {
 
     const whatsappURL =
         "https://wa.me/918653929775?text=" +
-        encodeURIComponent(whatsappMessage);
+        encodeURIComponent(
+            whatsappMessage
+        );
 
 
     window.open(
@@ -1202,68 +1504,107 @@ function sendAdmissionEnquiry() {
 const admissionCourseMap = {
 
     "BASIC": {
+
         duration: "3 Months",
+
         fee: 2000
+
     },
 
     "DIPLOMA IN INFORMATION TECHNOLOGY (DIT)": {
+
         duration: "12 Months",
+
         fee: 7000
+
     },
 
     "DTP": {
+
         duration: "6 Months",
+
         fee: 6000
+
     },
 
     "TALLY WITH GST": {
+
         duration: "6 Months",
+
         fee: 7000
+
     },
 
     "GRAPHICS PRO": {
+
         duration: "6 Months",
+
         fee: 8000
+
     },
 
     "WEB DESIGNING": {
+
         duration: "6 Months",
+
         fee: 6000
+
     },
 
     "CHILD PACKAGE": {
+
         duration: "12 Months",
+
         fee: 0
+
     },
 
     "SMART AI": {
+
         duration: "6 Months",
+
         fee: 6000
+
     },
 
     "ADVANCE EXCEL": {
+
         duration: "3 Months",
+
         fee: 4000
+
     },
 
     "ADVANCED DIPLOMA": {
+
         duration: "12 Months",
+
         fee: 12000
+
     },
 
     "MULTIMEDIA ANIMATION - PACKAGE 1 (1 YEAR)": {
+
         duration: "1 Year",
+
         fee: 150000
+
     },
 
     "MULTIMEDIA ANIMATION - PACKAGE 2 (2 YEAR)": {
+
         duration: "2 Year",
+
         fee: 200000
+
     },
 
     "VFX - PACKAGE 3 (3 YEAR)": {
+
         duration: "3 Year",
+
         fee: 375000
+
     }
 
 };
@@ -1277,48 +1618,76 @@ const admissionCourseMap = {
 function updateAdmissionCourseDetails() {
 
     const courseElement =
-        document.getElementById("admissionCourse");
+        document.getElementById(
+            "admissionCourse"
+        );
+
 
     const durationElement =
-        document.getElementById("admissionDuration");
+        document.getElementById(
+            "admissionDuration"
+        );
+
 
     const feeElement =
-        document.getElementById("admissionTotalFee");
+        document.getElementById(
+            "admissionTotalFee"
+        );
+
 
     if (!courseElement) {
+
         return;
+
     }
+
 
     const selectedCourse =
         courseElement.value;
 
+
     const data =
         admissionCourseMap[selectedCourse];
+
 
     if (!data) {
 
         if (durationElement) {
+
             durationElement.value = "";
+
         }
 
+
         if (feeElement) {
+
             feeElement.value = "";
+
         }
+
 
         updateAdmissionDue();
 
         return;
+
     }
+
 
     if (durationElement) {
+
         durationElement.value =
             data.duration;
+
     }
 
+
     if (feeElement) {
+
         feeElement.value =
             data.fee;
+
     }
+
 
     updateAdmissionDue();
 
@@ -1337,36 +1706,52 @@ function updateAdmissionDue() {
             "admissionTotalFee"
         );
 
+
     const paymentElement =
         document.getElementById(
             "admissionPayment"
         );
+
 
     const dueElement =
         document.getElementById(
             "admissionDue"
         );
 
+
     if (
         !totalFeeElement ||
         !paymentElement ||
         !dueElement
     ) {
+
         return;
+
     }
 
+
     const totalFee =
-        Number(totalFeeElement.value) || 0;
+        Number(
+            totalFeeElement.value
+        ) || 0;
+
 
     const firstPayment =
-        Number(paymentElement.value) || 0;
+        Number(
+            paymentElement.value
+        ) || 0;
+
 
     let due =
         totalFee - firstPayment;
 
+
     if (due < 0) {
+
         due = 0;
+
     }
+
 
     dueElement.value =
         due;
@@ -1384,20 +1769,32 @@ function previewStudentPhoto(event) {
     const file =
         event.target.files[0];
 
+
     const preview =
         document.getElementById(
             "studentPhotoPreview"
         );
 
+
+    const photoText =
+        document.getElementById(
+            "photoUploadText"
+        );
+
+
     if (
         !file ||
         !preview
     ) {
+
         return;
+
     }
+
 
     const reader =
         new FileReader();
+
 
     reader.onload =
         function(e) {
@@ -1405,10 +1802,23 @@ function previewStudentPhoto(event) {
             preview.src =
                 e.target.result;
 
+
             preview.style.display =
                 "block";
 
+
+            if (photoText) {
+
+                photoText.style.display =
+                    "none";
+
+            }
+
+
+            updatePrintPhoto();
+
         };
+
 
     reader.readAsDataURL(file);
 
@@ -1427,45 +1837,54 @@ async function saveAdmission() {
             "admissionName"
         )?.value.trim();
 
+
     const fatherName =
         document.getElementById(
             "fatherName"
         )?.value.trim();
+
 
     const motherName =
         document.getElementById(
             "motherName"
         )?.value.trim();
 
+
     const dob =
         document.getElementById(
             "dateOfBirth"
         )?.value;
+
 
     const mobile =
         document.getElementById(
             "admissionMobile"
         )?.value.trim();
 
+
     const alternativeMobile =
         document.getElementById(
             "alternativeMobile"
         )?.value.trim();
+
 
     const address =
         document.getElementById(
             "studentAddress"
         )?.value.trim();
 
+
     const course =
         document.getElementById(
             "admissionCourse"
         )?.value;
 
+
     const duration =
         document.getElementById(
             "admissionDuration"
         )?.value;
+
 
     const totalFee =
         Number(
@@ -1474,12 +1893,14 @@ async function saveAdmission() {
             )?.value
         ) || 0;
 
+
     const firstPayment =
         Number(
             document.getElementById(
                 "admissionPayment"
             )?.value
         ) || 0;
+
 
     const due =
         Number(
@@ -1488,15 +1909,18 @@ async function saveAdmission() {
             )?.value
         ) || 0;
 
+
     const paymentMode =
         document.getElementById(
             "paymentMode"
         )?.value;
 
+
     const remarks =
         document.getElementById(
             "admissionRemarks"
         )?.value.trim();
+
 
     const photoElement =
         document.getElementById(
@@ -1558,6 +1982,7 @@ async function saveAdmission() {
 
     let photo = "";
 
+
     if (
         photoElement &&
         photoElement.files &&
@@ -1567,8 +1992,30 @@ async function saveAdmission() {
         const file =
             photoElement.files[0];
 
-        photo =
-            await readFileAsDataURL(file);
+
+        try {
+
+            photo =
+                await readFileAsDataURL(
+                    file
+                );
+
+        }
+
+        catch (photoError) {
+
+            console.error(
+                "Photo Error:",
+                photoError
+            );
+
+            alert(
+                "Student photo could not be read."
+            );
+
+            return;
+
+        }
 
     }
 
@@ -1617,7 +2064,7 @@ async function saveAdmission() {
 
 
     /* =================================================
-       BUTTON
+       SAVE BUTTON
     ================================================= */
 
     const saveButton =
@@ -1625,10 +2072,11 @@ async function saveAdmission() {
             "saveAdmissionBtn"
         );
 
+
     const oldButtonText =
         saveButton
             ? saveButton.textContent
-            : "";
+            : "💾 Save Admission";
 
 
     if (saveButton) {
@@ -1675,7 +2123,7 @@ async function saveAdmission() {
 
 
             /* =================================================
-               PUT RETURNED DATA INTO PRINT FORM
+               FILL PRINT DATA
             ================================================= */
 
             fillAdmissionPrintData(
@@ -1692,8 +2140,11 @@ async function saveAdmission() {
                     "admissionForm"
                 );
 
+
             if (form) {
+
                 form.reset();
+
             }
 
 
@@ -1701,6 +2152,7 @@ async function saveAdmission() {
                 document.getElementById(
                     "studentPhotoPreview"
                 );
+
 
             if (preview) {
 
@@ -1712,13 +2164,28 @@ async function saveAdmission() {
             }
 
 
+            const photoText =
+                document.getElementById(
+                    "photoUploadText"
+                );
+
+
+            if (photoText) {
+
+                photoText.style.display =
+                    "block";
+
+            }
+
+
             /* =================================================
-               OPEN PRINT PREVIEW
+               OPEN PRINT
             ================================================= */
 
             openAdmissionPrint();
 
         }
+
 
         else {
 
@@ -1729,8 +2196,8 @@ async function saveAdmission() {
 
         }
 
-
     }
+
 
     catch (error) {
 
@@ -1738,6 +2205,7 @@ async function saveAdmission() {
             "Admission Error:",
             error
         );
+
 
         alert(
             "Error saving admission. Please check your internet connection and Apps Script."
@@ -1753,9 +2221,9 @@ async function saveAdmission() {
             saveButton.disabled =
                 false;
 
+
             saveButton.textContent =
-                oldButtonText ||
-                "Save Admission";
+                oldButtonText;
 
         }
 
@@ -1777,6 +2245,7 @@ function readFileAsDataURL(file) {
             const reader =
                 new FileReader();
 
+
             reader.onload =
                 function() {
 
@@ -1785,6 +2254,7 @@ function readFileAsDataURL(file) {
                     );
 
                 };
+
 
             reader.onerror =
                 function() {
@@ -1797,7 +2267,10 @@ function readFileAsDataURL(file) {
 
                 };
 
-            reader.readAsDataURL(file);
+
+            reader.readAsDataURL(
+                file
+            );
 
         }
     );
@@ -1817,80 +2290,98 @@ function fillAdmissionPrintData(data) {
         data.admissionNo || ""
     );
 
+
     setPrintValue(
         "printStudentId",
         data.studentId || ""
     );
+
 
     setPrintValue(
         "printAdmissionDate",
         data.admissionDate || ""
     );
 
+
     setPrintValue(
         "printStudentName",
-        data.studentName || data.name || ""
+        data.studentName ||
+        data.name ||
+        ""
     );
+
 
     setPrintValue(
         "printFatherName",
         data.fatherName || ""
     );
 
+
     setPrintValue(
         "printMotherName",
         data.motherName || ""
     );
+
 
     setPrintValue(
         "printDOB",
         data.dob || ""
     );
 
+
     setPrintValue(
         "printMobile",
         data.mobile || ""
     );
+
 
     setPrintValue(
         "printAlternativeMobile",
         data.alternativeMobile || ""
     );
 
+
     setPrintValue(
         "printAddress",
         data.address || ""
     );
+
 
     setPrintValue(
         "printCourse",
         data.course || ""
     );
 
+
     setPrintValue(
         "printDuration",
         data.duration || ""
     );
+
 
     setPrintValue(
         "printTotalFee",
         data.totalFee || ""
     );
 
+
     setPrintValue(
         "printFirstPayment",
         data.firstPayment || ""
     );
+
 
     setPrintValue(
         "printDue",
         data.due || ""
     );
 
+
     setPrintValue(
         "printPaymentMode",
         data.paymentMode || ""
     );
+
 
     setPrintValue(
         "printRemarks",
@@ -1907,6 +2398,7 @@ function fillAdmissionPrintData(data) {
             "printStudentPhoto"
         );
 
+
     if (
         printPhoto &&
         data.photo
@@ -1914,6 +2406,7 @@ function fillAdmissionPrintData(data) {
 
         printPhoto.src =
             data.photo;
+
 
         printPhoto.style.display =
             "block";
@@ -1938,9 +2431,13 @@ function setPrintValue(
             elementId
         );
 
+
     if (!element) {
+
         return;
+
     }
+
 
     element.textContent =
         value;
@@ -1960,6 +2457,7 @@ function openAdmissionPrint() {
             "admissionPrintArea"
         );
 
+
     if (!printArea) {
 
         alert(
@@ -1969,6 +2467,7 @@ function openAdmissionPrint() {
         return;
 
     }
+
 
     printArea.style.display =
         "block";
@@ -2002,17 +2501,22 @@ function updatePrintPhoto() {
             "studentPhotoPreview"
         );
 
+
     const target =
         document.getElementById(
             "printStudentPhoto"
         );
 
+
     if (
         !source ||
         !target
     ) {
+
         return;
+
     }
+
 
     if (
         source.src &&
@@ -2023,82 +2527,137 @@ function updatePrintPhoto() {
         target.src =
             source.src;
 
+
         target.style.display =
             "block";
 
     }
 
 }
+
+
+
 /* =====================================================
    PREPARE ADMISSION PRINT
 ===================================================== */
 
 function prepareAdmissionPrint() {
 
-    /* Get current form values */
-
     const data = {
 
         admissionNo:
-            document.getElementById("printAdmissionNo")?.textContent || "",
+            document.getElementById(
+                "printAdmissionNo"
+            )?.textContent || "",
+
 
         studentId:
-            document.getElementById("printStudentId")?.textContent || "",
+            document.getElementById(
+                "printStudentId"
+            )?.textContent || "",
+
 
         admissionDate:
-            document.getElementById("printAdmissionDate")?.textContent || "",
+            document.getElementById(
+                "printAdmissionDate"
+            )?.textContent || "",
+
 
         name:
-            document.getElementById("admissionName")?.value.trim() || "",
+            document.getElementById(
+                "admissionName"
+            )?.value.trim() || "",
+
 
         fatherName:
-            document.getElementById("fatherName")?.value.trim() || "",
+            document.getElementById(
+                "fatherName"
+            )?.value.trim() || "",
+
 
         motherName:
-            document.getElementById("motherName")?.value.trim() || "",
+            document.getElementById(
+                "motherName"
+            )?.value.trim() || "",
+
 
         dob:
-            document.getElementById("dateOfBirth")?.value || "",
+            document.getElementById(
+                "dateOfBirth"
+            )?.value || "",
+
 
         mobile:
-            document.getElementById("admissionMobile")?.value.trim() || "",
+            document.getElementById(
+                "admissionMobile"
+            )?.value.trim() || "",
+
 
         alternativeMobile:
-            document.getElementById("alternativeMobile")?.value.trim() || "",
+            document.getElementById(
+                "alternativeMobile"
+            )?.value.trim() || "",
+
 
         address:
-            document.getElementById("studentAddress")?.value.trim() || "",
+            document.getElementById(
+                "studentAddress"
+            )?.value.trim() || "",
+
 
         course:
-            document.getElementById("admissionCourse")?.value || "",
+            document.getElementById(
+                "admissionCourse"
+            )?.value || "",
+
 
         duration:
-            document.getElementById("admissionDuration")?.value || "",
+            document.getElementById(
+                "admissionDuration"
+            )?.value || "",
+
 
         totalFee:
-            document.getElementById("admissionTotalFee")?.value || "",
+            document.getElementById(
+                "admissionTotalFee"
+            )?.value || "",
+
 
         firstPayment:
-            document.getElementById("admissionPayment")?.value || "",
+            document.getElementById(
+                "admissionPayment"
+            )?.value || "",
+
 
         due:
-            document.getElementById("admissionDue")?.value || "",
+            document.getElementById(
+                "admissionDue"
+            )?.value || "",
+
 
         paymentMode:
-            document.getElementById("paymentMode")?.value || "",
+            document.getElementById(
+                "paymentMode"
+            )?.value || "",
+
 
         remarks:
-            document.getElementById("admissionRemarks")?.value.trim() || ""
+            document.getElementById(
+                "admissionRemarks"
+            )?.value.trim() || ""
 
     };
 
 
-    /* Photo */
+    /* =================================================
+       PHOTO
+    ================================================= */
 
     const photoPreview =
         document.getElementById(
             "studentPhotoPreview"
         );
+
 
     if (
         photoPreview &&
@@ -2112,7 +2671,9 @@ function prepareAdmissionPrint() {
     }
 
 
-    /* Basic validation */
+    /* =================================================
+       VALIDATION
+    ================================================= */
 
     if (!data.name) {
 
@@ -2147,17 +2708,17 @@ function prepareAdmissionPrint() {
     }
 
 
-    /* Fill print area */
+    /* =================================================
+       FILL PRINT AREA
+    ================================================= */
 
-    fillAdmissionPrintData(data);
+    fillAdmissionPrintData(
+        data
+    );
 
-
-    /* Update photo */
 
     updatePrintPhoto();
 
-
-    /* Open print */
 
     openAdmissionPrint();
 
@@ -2176,8 +2737,11 @@ function resetAdmissionForm() {
             "admissionForm"
         );
 
+
     if (!form) {
+
         return;
+
     }
 
 
@@ -2188,24 +2752,30 @@ function resetAdmissionForm() {
 
 
     if (!confirmReset) {
+
         return;
+
     }
 
 
     form.reset();
 
 
-    /* Clear course details */
+    /* =================================================
+       CLEAR COURSE DETAILS
+    ================================================= */
 
     const duration =
         document.getElementById(
             "admissionDuration"
         );
 
+
     const totalFee =
         document.getElementById(
             "admissionTotalFee"
         );
+
 
     const due =
         document.getElementById(
@@ -2214,31 +2784,41 @@ function resetAdmissionForm() {
 
 
     if (duration) {
+
         duration.value = "";
+
     }
 
 
     if (totalFee) {
+
         totalFee.value = "";
+
     }
 
 
     if (due) {
+
         due.value = "";
+
     }
 
 
-    /* Clear photo */
+    /* =================================================
+       CLEAR PHOTO
+    ================================================= */
 
     const photoInput =
         document.getElementById(
             "studentPhoto"
         );
 
+
     const photoPreview =
         document.getElementById(
             "studentPhotoPreview"
         );
+
 
     const photoText =
         document.getElementById(
@@ -2247,7 +2827,9 @@ function resetAdmissionForm() {
 
 
     if (photoInput) {
+
         photoInput.value = "";
+
     }
 
 
@@ -2262,17 +2844,22 @@ function resetAdmissionForm() {
 
 
     if (photoText) {
+
         photoText.style.display =
             "block";
+
     }
 
 
-    /* Clear print photo */
+    /* =================================================
+       CLEAR PRINT PHOTO
+    ================================================= */
 
     const printPhoto =
         document.getElementById(
             "printStudentPhoto"
         );
+
 
     if (printPhoto) {
 
@@ -2289,52 +2876,3 @@ function resetAdmissionForm() {
     );
 
 }
-
-
-
-/* =====================================================
-   IMPROVED PHOTO PREVIEW
-===================================================== */
-
-const originalPreviewStudentPhoto =
-    previewStudentPhoto;
-
-
-previewStudentPhoto =
-    function(event) {
-
-        originalPreviewStudentPhoto(event);
-
-
-        const photoText =
-            document.getElementById(
-                "photoUploadText"
-            );
-
-        const file =
-            event.target.files[0];
-
-
-        if (
-            photoText &&
-            file
-        ) {
-
-            photoText.style.display =
-                "none";
-
-        }
-
-
-        /* Update print photo */
-
-        setTimeout(
-            function() {
-
-                updatePrintPhoto();
-
-            },
-            100
-        );
-
-    };

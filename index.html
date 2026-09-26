@@ -56,13 +56,14 @@
 
         <a href="#admission"
            class="admission-nav-btn">
-
             New Admission
-
         </a>
 
-        <a href="dashboard.html"
-           class="student-login-btn">
+        <!-- CENTER LOGIN -->
+
+        <a href="javascript:void(0)"
+           class="student-login-btn"
+           onclick="openCenterLogin()">
 
             Center Login
 
@@ -71,7 +72,6 @@
     </div>
 
 </nav>
-
 
 
 <!-- =================================================
@@ -115,7 +115,6 @@
 </section>
 
 
-
 <!-- =================================================
      COURSES SECTION
 ================================================= -->
@@ -128,10 +127,8 @@
     </h2>
 
     <p class="section-subtitle">
-
         Choose your course and click to view
         complete course details.
-
     </p>
 
 
@@ -311,7 +308,6 @@
 </section>
 
 
-
 <!-- =================================================
      ABOUT US
 ================================================= -->
@@ -346,8 +342,10 @@
             </h3>
 
             <p>
+
                 Practical and easy-to-understand
                 computer training.
+
             </p>
 
         </div>
@@ -364,8 +362,10 @@
             </h3>
 
             <p>
+
                 Hands-on learning with real
                 computer applications.
+
             </p>
 
         </div>
@@ -382,8 +382,10 @@
             </h3>
 
             <p>
+
                 Computer courses designed for
                 students and job seekers.
+
             </p>
 
         </div>
@@ -392,7 +394,6 @@
     </div>
 
 </section>
-
 
 
 <!-- =================================================
@@ -406,9 +407,7 @@
     </h2>
 
     <p class="why-subtitle">
-
         Learn today, build your future tomorrow.
-
     </p>
 
 
@@ -426,8 +425,10 @@
             </h3>
 
             <p>
+
                 Practical computer training with
                 easy-to-understand teaching.
+
             </p>
 
         </div>
@@ -444,8 +445,10 @@
             </h3>
 
             <p>
+
                 Students get hands-on practice
                 during their course.
+
             </p>
 
         </div>
@@ -462,8 +465,10 @@
             </h3>
 
             <p>
+
                 Courses designed to develop
                 useful computer skills.
+
             </p>
 
         </div>
@@ -480,8 +485,10 @@
             </h3>
 
             <p>
+
                 Small batches help students get
                 better attention during training.
+
             </p>
 
         </div>
@@ -490,7 +497,6 @@
     </div>
 
 </section>
-
 
 
 <!-- =================================================
@@ -584,7 +590,6 @@
 </section>
 
 
-
 <!-- =================================================
      GALLERY
 ================================================= -->
@@ -596,9 +601,7 @@
     </h2>
 
     <p class="gallery-subtitle">
-
         Some moments from Unique Computers
-
     </p>
 
 
@@ -649,7 +652,6 @@
 </section>
 
 
-
 <!-- =================================================
      NEW STUDENT ADMISSION
 ================================================= -->
@@ -684,6 +686,7 @@
                 Student Photo
             </label>
 
+
             <div class="photo-upload-box">
 
                 <img id="studentPhotoPreview"
@@ -697,17 +700,18 @@
 
             </div>
 
+
             <input type="file"
                    id="studentPhoto"
                    accept="image/*"
                    onchange="previewStudentPhoto(event); updatePrintPhoto();">
+
 
             <small>
                 JPG / PNG image recommended
             </small>
 
         </div>
-
 
 
         <!-- STUDENT NAME -->
@@ -726,7 +730,6 @@
         </div>
 
 
-
         <!-- FATHER NAME -->
 
         <div class="form-group">
@@ -740,7 +743,6 @@
                    placeholder="Enter Father's Name">
 
         </div>
-
 
 
         <!-- MOTHER NAME -->
@@ -758,7 +760,6 @@
         </div>
 
 
-
         <!-- DOB -->
 
         <div class="form-group">
@@ -771,7 +772,6 @@
                    id="dateOfBirth">
 
         </div>
-
 
 
         <!-- MOBILE -->
@@ -792,7 +792,6 @@
         </div>
 
 
-
         <!-- ALTERNATIVE MOBILE -->
 
         <div class="form-group">
@@ -810,7 +809,6 @@
         </div>
 
 
-
         <!-- ADDRESS -->
 
         <div class="form-group form-full">
@@ -826,7 +824,6 @@
         </div>
 
 
-
         <!-- COURSE -->
 
         <div class="form-group">
@@ -835,70 +832,85 @@
                 Select Course *
             </label>
 
+
             <select id="admissionCourse"
                     onchange="updateAdmissionCourseDetails()"
                     required>
+
 
                 <option value="">
                     Select Course
                 </option>
 
+
                 <option value="BASIC">
                     BASIC
                 </option>
+
 
                 <option value="DIPLOMA IN INFORMATION TECHNOLOGY (DIT)">
                     DIPLOMA
                 </option>
 
+
                 <option value="DTP">
                     DTP
                 </option>
+
 
                 <option value="TALLY WITH GST">
                     TALLY WITH GST
                 </option>
 
+
                 <option value="GRAPHICS PRO">
                     GRAPHICS PRO
                 </option>
+
 
                 <option value="WEB DESIGNING">
                     WEB DESIGNING
                 </option>
 
+
                 <option value="CHILD PACKAGE">
                     CHILD PACKAGE
                 </option>
+
 
                 <option value="SMART AI">
                     SMART AI
                 </option>
 
+
                 <option value="ADVANCE EXCEL">
                     ADVANCE EXCEL
                 </option>
+
 
                 <option value="ADVANCED DIPLOMA">
                     ADVANCED DIPLOMA
                 </option>
 
+
                 <option value="MULTIMEDIA ANIMATION - PACKAGE 1 (1 YEAR)">
                     MULTIMEDIA ANIMATION - PACKAGE 1 (1 YEAR)
                 </option>
+
 
                 <option value="MULTIMEDIA ANIMATION - PACKAGE 2 (2 YEAR)">
                     MULTIMEDIA ANIMATION - PACKAGE 2 (2 YEAR)
                 </option>
 
+
                 <option value="VFX - PACKAGE 3 (3 YEAR)">
                     VFX - PACKAGE 3 (3 YEAR)
                 </option>
 
+
             </select>
 
         </div>
-
 
 
         <!-- COURSE DURATION -->
@@ -915,7 +927,6 @@
                    readonly>
 
         </div>
-
 
 
         <!-- TOTAL FEE -->
@@ -936,7 +947,6 @@
         </div>
 
 
-
         <!-- FIRST PAYMENT -->
 
         <div class="form-group">
@@ -955,7 +965,6 @@
         </div>
 
 
-
         <!-- DUE -->
 
         <div class="form-group">
@@ -972,7 +981,6 @@
         </div>
 
 
-
         <!-- PAYMENT MODE -->
 
         <div class="form-group">
@@ -980,6 +988,7 @@
             <label for="paymentMode">
                 Payment Mode
             </label>
+
 
             <select id="paymentMode">
 
@@ -1000,7 +1009,6 @@
         </div>
 
 
-
         <!-- REMARKS -->
 
         <div class="form-group form-full">
@@ -1014,7 +1022,6 @@
                       placeholder="Any remarks"></textarea>
 
         </div>
-
 
 
         <!-- BUTTONS -->
@@ -1054,9 +1061,7 @@
 
     </form>
 
-
 </section>
-
 
 
 <!-- =================================================
@@ -1089,8 +1094,9 @@
 
                 <p>
 
-                    Kakdwip Collage More Near Rabindra Shiksha Mandir, South 24 Parganas,
-                    West Bengal,pin-743347
+                    Kakdwip Collage More Near Rabindra
+                    Shiksha Mandir, South 24 Parganas,
+                    West Bengal, pin-743347
 
                 </p>
 
@@ -1139,8 +1145,12 @@
 
                 </p>
 
-                <a href="dashboard.html"
-                   class="panel-link">
+
+                <!-- CENTER LOGIN -->
+
+                <a href="javascript:void(0)"
+                   class="panel-link"
+                   onclick="openCenterLogin()">
 
                     Center Login →
 
@@ -1153,9 +1163,7 @@
 
     </div>
 
-
 </section>
-
 
 
 <!-- =================================================
@@ -1189,7 +1197,6 @@
 </footer>
 
 
-
 <!-- =================================================
      COURSE DETAILS POPUP
 ================================================= -->
@@ -1218,7 +1225,6 @@
 
 
         <div id="courseDetailsContent">
-
         </div>
 
 
@@ -1235,6 +1241,88 @@
 </div>
 
 
+<!-- =================================================
+     CENTER LOGIN MODAL
+================================================= -->
+
+<div id="centerLoginModal"
+     class="center-login-modal">
+
+
+    <div class="center-login-box">
+
+
+        <button type="button"
+                class="center-login-close"
+                onclick="closeCenterLogin()">
+
+            ×
+
+        </button>
+
+
+        <img src="logo.png"
+             alt="Unique Computers"
+             class="center-login-logo">
+
+
+        <h2>
+            Center Login
+        </h2>
+
+
+        <p class="center-login-subtitle">
+
+            Unique Computers
+
+        </p>
+
+
+        <div class="center-login-form">
+
+
+            <label for="centerUsername">
+                Username
+            </label>
+
+
+            <input type="text"
+                   id="centerUsername"
+                   placeholder="Enter Username"
+                   autocomplete="username">
+
+
+            <label for="centerPassword">
+                Password
+            </label>
+
+
+            <input type="password"
+                   id="centerPassword"
+                   placeholder="Enter Password"
+                   autocomplete="current-password">
+
+
+            <button type="button"
+                    class="center-login-submit"
+                    onclick="centerLogin()">
+
+                🔐 Login
+
+            </button>
+
+
+            <p id="centerLoginError"
+               class="center-login-error">
+            </p>
+
+
+        </div>
+
+    </div>
+
+</div>
+
 
 <!-- =================================================
      PRINT AREA
@@ -1248,24 +1336,33 @@
 
     <div class="print-header">
 
-       <center> <img src="logo.png"width="100px"
-             alt="Unique Computers"></center>
+        <div style="text-align:center;">
+
+            <img src="logo.png"
+                 width="100"
+                 alt="Unique Computers">
+
+        </div>
+
 
         <div>
 
-            <h1>
-                <center>UNIQUE COMPUTERS</center>
+            <h1 style="text-align:center;">
+                UNIQUE COMPUTERS
             </h1>
 
-            <p>
+
+            <p style="text-align:center;">
                 NO.1 Computer Training Institute in Kakdwip
             </p>
 
-            <p>
+
+            <p style="text-align:center;">
                 Kakdwip, South 24 Parganas, West Bengal
             </p>
 
-            <p>
+
+            <p style="text-align:center;">
                 Phone: 8653929775
             </p>
 
@@ -1274,11 +1371,9 @@
     </div>
 
 
-
     <h2 class="print-title">
         STUDENT ADMISSION FORM
     </h2>
-
 
 
     <!-- ADMISSION INFORMATION -->
@@ -1286,22 +1381,44 @@
     <div class="print-admission-info">
 
         <div>
-            <strong>Admission No:</strong>
-            <span id="printAdmissionNo">—</span>
+
+            <strong>
+                Admission No:
+            </strong>
+
+            <span id="printAdmissionNo">
+                —
+            </span>
+
         </div>
 
-        <div>
-            <strong>Student ID:</strong>
-            <span id="printStudentId">—</span>
-        </div>
 
         <div>
-            <strong>Admission Date:</strong>
-            <span id="printAdmissionDate">—</span>
+
+            <strong>
+                Student ID:
+            </strong>
+
+            <span id="printStudentId">
+                —
+            </span>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                Admission Date:
+            </strong>
+
+            <span id="printAdmissionDate">
+                —
+            </span>
+
         </div>
 
     </div>
-
 
 
     <!-- STUDENT PHOTO -->
@@ -1316,58 +1433,129 @@
     </div>
 
 
-
     <!-- STUDENT DETAILS -->
 
     <table class="print-student-table">
 
-        <tr>
-            <th>Student Name</th>
-            <td id="printStudentName">—</td>
-        </tr>
 
         <tr>
-            <th>Father's Name</th>
-            <td id="printFatherName">—</td>
+
+            <th>
+                Student Name
+            </th>
+
+            <td id="printStudentName">
+                —
+            </td>
+
         </tr>
 
-        <tr>
-            <th>Mother's Name</th>
-            <td id="printMotherName">—</td>
-        </tr>
 
         <tr>
-            <th>Date of Birth</th>
-            <td id="printDOB">—</td>
+
+            <th>
+                Father's Name
+            </th>
+
+            <td id="printFatherName">
+                —
+            </td>
+
         </tr>
 
-        <tr>
-            <th>Mobile Number</th>
-            <td id="printMobile">—</td>
-        </tr>
 
         <tr>
-            <th>Alternative Mobile</th>
-            <td id="printAlternativeMobile">—</td>
+
+            <th>
+                Mother's Name
+            </th>
+
+            <td id="printMotherName">
+                —
+            </td>
+
         </tr>
 
-        <tr>
-            <th>Address</th>
-            <td id="printAddress">—</td>
-        </tr>
 
         <tr>
-            <th>Course</th>
-            <td id="printCourse">—</td>
+
+            <th>
+                Date of Birth
+            </th>
+
+            <td id="printDOB">
+                —
+            </td>
+
         </tr>
 
+
         <tr>
-            <th>Course Duration</th>
-            <td id="printDuration">—</td>
+
+            <th>
+                Mobile Number
+            </th>
+
+            <td id="printMobile">
+                —
+            </td>
+
         </tr>
+
+
+        <tr>
+
+            <th>
+                Alternative Mobile
+            </th>
+
+            <td id="printAlternativeMobile">
+                —
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <th>
+                Address
+            </th>
+
+            <td id="printAddress">
+                —
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <th>
+                Course
+            </th>
+
+            <td id="printCourse">
+                —
+            </td>
+
+        </tr>
+
+
+        <tr>
+
+            <th>
+                Course Duration
+            </th>
+
+            <td id="printDuration">
+                —
+            </td>
+
+        </tr>
+
 
     </table>
-
 
 
     <!-- FEE DETAILS -->
@@ -1377,8 +1565,8 @@
     </h3>
 
 
-
     <table class="print-fee-table">
+
 
         <tr>
 
@@ -1431,8 +1619,8 @@
 
         </tr>
 
-    </table>
 
+    </table>
 
 
     <!-- REMARKS -->
@@ -1450,23 +1638,21 @@
     </div>
 
 
-
     <!-- DECLARATION -->
 
     <div class="print-declaration">
 
         <p>
+
             I hereby confirm that the information
             provided above is correct.
+
         </p>
 
     </div>
 
 
-
-    <!-- =================================================
-         RULES & REGULATIONS
-    ================================================= -->
+    <!-- RULES & REGULATIONS -->
 
     <div class="print-rules">
 
@@ -1478,25 +1664,36 @@
         <ul>
 
             <li>
+
                 Fees must be paid on or before the
                 specified due date of every month.
+
             </li>
 
+
             <li>
+
                 Students must strictly maintain discipline
                 and attend classes regularly. Minimum
                 80% attendance is required.
+
             </li>
 
+
             <li>
+
                 Fees once paid are strictly non-refundable
                 and non-transferable under any circumstances.
+
             </li>
 
+
             <li>
+
                 The institution reserves the right to cancel
                 admission in case of major misconduct or
                 prolonged unauthorized absence.
+
             </li>
 
         </ul>
@@ -1504,10 +1701,7 @@
     </div>
 
 
-
-    <!-- =================================================
-         THREE SIGNATURES
-    ================================================= -->
+    <!-- THREE SIGNATURES -->
 
     <div class="print-signature three-signatures">
 
@@ -1518,7 +1712,7 @@
             </div>
 
             <div class="signature-line">
-                ______________________
+                ______________________________
             </div>
 
             <strong>
@@ -1528,14 +1722,13 @@
         </div>
 
 
-
         <div class="signature-box">
 
             <div class="signature-space">
             </div>
 
             <div class="signature-line">
-                ______________________
+                ______________________________
             </div>
 
             <strong>
@@ -1545,14 +1738,13 @@
         </div>
 
 
-
         <div class="signature-box">
 
             <div class="signature-space">
             </div>
 
             <div class="signature-line">
-                ______________________
+                ______________________________
             </div>
 
             <strong>
@@ -1563,7 +1755,6 @@
 
 
     </div>
-
 
 
     <!-- PRINT FOOTER -->
@@ -1577,7 +1768,6 @@
 
 
 </div>
-
 
 
 <!-- =================================================
